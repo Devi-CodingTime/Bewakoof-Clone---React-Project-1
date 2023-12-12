@@ -1,0 +1,63 @@
+/* .slider
+{
+    position: absolute;
+    top: 140px;
+    left: 0;
+} */
+.card{
+    padding: 6px;
+}
+.card:focus{
+    outline: none;
+}
+.iconContainerNext{
+    font-size: 19px;
+    color: rgb(0, 0, 0);
+    width: 47px;
+    height: 47px;
+    cursor: pointer;
+    /* top: calc(50% - 25px); */
+    top: 53%;
+    right: 2%;
+    z-index: 5;
+    position: absolute !important;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    padding: 11px;
+}
+
+.iconContainer {
+    font-size: 19px;
+    color: rgb(0, 0, 0);
+    width: 47px;
+    height: 47px;
+    cursor: pointer;
+    /* top: calc(50% - 25px); */
+    top: 53%;
+    left: 2%;
+    z-index: 5;
+    position: absolute !important;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    padding: 10px;
+}
+/* .prevIcon .nextIcon{
+    margin-top:1px ;
+} */
+
+/* .slickPrevarrow {
+    right: 20px;
+}
+.commonArrow, .slickNextarrow, .slickPrevarrow {
+    font-size: 19px;
+    color: rgb(0, 0, 0);
+    width: 47px;
+    height: 47px;
+    cursor: pointer;
+    top: calc(50% - 25px);
+    z-index: 5;
+    position: absolute !important;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    padding: 14px;
+} */

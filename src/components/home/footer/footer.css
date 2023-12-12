@@ -1,0 +1,258 @@
+.footerToBottom {
+    width: 100%;
+    display: block;
+    position: relative;
+    top: 120%;
+    float: left;
+    margin-top: 20px;
+    background-color: rgb(24, 24, 24);
+}
+.footerDiv {
+    font-size: 12px;
+    font-family: montserrat, sans-serif;
+    line-height: 18px;
+    color: rgba(255, 255, 255, 0.9);
+    
+    padding: 75px 0px;
+}
+@media (min-width: 1200px){
+.container {
+    width: 1170px;
+}
+}
+@media (min-width: 992px){
+.container {
+    width: 970px;
+}
+}
+@media (min-width: 769px)
+{
+.container {
+    width: 100%;
+}
+}
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.noMg {
+    margin: 0px;
+}
+@media (min-width: 769px)
+{
+.noPdSm {
+    padding: 0px;
+}
+}
+.noPd, .noPdSm {
+    padding: 0px;
+}
+
+a, a:focus, a:hover {
+    color: rgba(0, 0, 0, 0.9);
+}
+a {
+    font-size: 100%;
+    vertical-align: baseline;
+    margin: 0px;
+    padding: 0px;
+    background: transparent;
+    outline: none;
+    text-decoration: none;
+}
+.footerDiv .bewakoofLogo {
+    color: rgb(253, 216, 53);
+    font-size: 113px;
+    padding: 0px;
+}
+.icon_bewakoof_logo::before {
+    content: "";
+}
+
+.noPd, .noPdSm {
+    padding: 0px;
+}
+
+@media (min-width: 769px)
+{
+.noPdSm {
+    padding: 0px;
+}
+.col-sm-6{
+    width: 50%;
+}
+}
+@media (min-width: 992px)
+{
+.col-md-3 {
+    width: 25%;
+}
+}
+@media (min-width: 992px)
+{
+.col-md-3{
+ float: left;
+}}
+
+.footerDiv .footerTitle {
+    color: rgb(253, 216, 53);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    font-size: 12px;
+    display: block;
+}
+hr, ul {
+    display: block;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+ul {
+    list-style-type: none;
+    margin-bottom: 0px;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    padding-inline-start: 0px;
+}
+.footerDiv li a {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 18px;
+    display: inline-block;
+}
+
+.col-xs-12 {
+    width: 100%;
+    float: left;
+}
+.footerForMobile .socialIcoMobile {
+    float: left;
+}
+.footerForMobile .socialIcoMobile .fbInsta {
+    margin-bottom: 10px;
+    display: block;
+}
+.footerForMobile .connectWithUs a {
+    margin-right: 10px;
+}
+.footerDiv .whiteText {
+    color: rgb(255, 255, 255);
+}
+.footerDiv i {
+    color: rgba(255, 255, 255, 0.9);
+    padding: 0px 5px;
+}
+form{
+    display: block;
+}
+.footerDiv .subscription {
+border-top-width: initial;
+border-right-width: initial;
+border-left-width: initial;
+border-top-color: initial;
+border-right-color: initial;
+border-left-color: initial;
+width: 55%;
+height: 34px;
+outline: none;
+background: transparent;
+border-style: none none solid;
+border-image: initial;
+border-bottom: 1px solid rgb(253, 216, 53);
+}
+.form-control {
+    /* width: 100%;
+    height: 34px;
+    background-color: rgb(255, 255, 255); */
+    box-shadow: rgba(0, 0, 0, 0.075) 0px 1px 1px inset;
+    font-size: 14px;
+    line-height: 1.42857;
+    color: rgb(85, 85, 85);
+    display: block;
+    padding: 6px 12px;
+    /* border-width: 1px;
+    border-style: solid;
+    border-color: rgb(204, 204, 204);
+    border-image: initial; */
+    border-radius: 0px;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+}
+input, select {
+    vertical-align: middle;
+}
+.footerDiv .subscribeButton {
+    width: 45%;
+    height: 34px;
+    color: rgb(0, 0, 0);
+    background: rgb(253, 216, 53);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(253, 216, 53);
+    border-image: initial;
+    padding: 0px;
+}
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+    appearance: button;
+    cursor: pointer;
+}
+.errorHolder {
+    margin-bottom: 0px;
+}
+section {
+    display: block;
+}
+.footerDiv .tNC li {
+    line-height: 30px;
+}
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+ul {
+    list-style-type: none;
+}
+.footerForMobile .downloadAppIcon a {
+    display: inline-block;
+    padding-right: 0px;
+    margin-right: 6px;
+}
+.visible-xs{
+    display: none !important;
+}
+.footerDiv .paymentImg {
+    max-width: 300px;
+}
+.footCategoryList {
+    margin-top: 20px;
+    border-top: 2px solid rgb(151, 151, 151);
+}
+.fcWhite {
+    color: rgb(255, 255, 255);
+}
+.footerDiv h1, .footerDiv h2, .footerDiv h3, .footerDiv h4, .footerDiv h5, .footerDiv strong {
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    font-size: 17px;
+    display: inline-block;
+}
+.seperate-li {
+    /* display: block; */
+    font-size: 12px;
+    margin-top: 10px;
+    color: rgb(255, 255, 255) !important;
+}
+.success {
+    color: rgb(81, 204, 204) !important;
+}
+.footerAboutUs {
+    float: left;
+    width: 100%;
+    font-size: 18px;
+    line-height: 20px;
+    font-family: montserrat-regular, sans-serif;
+    margin: 0px 0px 160px;
+    padding: 15px 0px;
+}
