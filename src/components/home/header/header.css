@@ -3,6 +3,8 @@
     position: fixed;
     top: 0px;
     width: 100%;
+    max-width: inherit;
+    z-index: 4;
 }
 .upperHeader
 {
@@ -69,7 +71,14 @@
     {
         display: block !important;
     }
+    /* .visible-xs
+    {
+        display: block !important;
+    } */
 }
+/* .visible-xs{
+    display: none !important;
+} */
 
 .sideNavBox .mHeader {
     display: flex;
@@ -175,6 +184,7 @@ img {
     transition: left .2s cubic-bezier(.77,.2,.05,1);
     overflow-x: hidden;
     background: #fff;
+    overflow-y: hidden;
 }
 .sideNavBox .sideMenuHolder {
     width: 270px;
@@ -451,7 +461,7 @@ input {
 }
 .fixedHeaderContainer{
     width: 100%;
-    z-index: 3;
+    z-index: 1;
     background-color: #fff;
     overflow-y: scroll;
     display: inline-block;
@@ -462,9 +472,10 @@ input {
     display: flex;
     gap: 4.1%;
     position: fixed;
-    width: 90%;
-    margin: 0 auto;
-    padding: 1.3rem 0px;
+    width: 100%;
+    margin: 3 auto;
+    padding: 1.3rem 17px;
+    background-color: white;
 }
 /* .menuItem:hover{
     display: block;

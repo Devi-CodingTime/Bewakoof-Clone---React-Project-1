@@ -4,7 +4,7 @@
     position: relative;
     top: 120%;
     float: left;
-    margin-top: 20px;
+    margin-top: 2px;
     background-color: rgb(24, 24, 24);
 }
 .footerDiv {
@@ -42,14 +42,22 @@
 }
 @media (min-width: 769px)
 {
-.noPdSm {
-    padding: 0px;
-}
+    .noPdSm {
+        padding: 0px;
+    }
+    .col-sm-6{
+        width: 50%;
+    }
 }
 .noPd, .noPdSm {
     padding: 0px;
 }
-
+.footerMenuSec
+{
+    padding-left: 6.7%;
+    margin-bottom: -1.8%;
+    text-align: left;
+}
 a, a:focus, a:hover {
     color: rgba(0, 0, 0, 0.9);
 }
@@ -70,31 +78,50 @@ a {
 .icon_bewakoof_logo::before {
     content: "";
 }
-
-.noPd, .noPdSm {
-    padding: 0px;
+.fbimage{
+    width: 13px;
+    height: 13px;
+    background-color: white;
+    display: inline-block;
+    text-align: center;
+    margin-right: 3px;
+    margin-bottom: 5px;
 }
-
-@media (min-width: 769px)
+.instaImg{
+    width: 13px;
+    height: 13px;
+    display: inline-block;
+    text-align: center;
+    margin-right: 3px;
+    margin-bottom: 5px;
+}
+.icon_return_order{
+    width: 13px;
+    height: 13px;
+    display: inline-block;
+    text-align: center;
+    margin-right: 3px;
+    margin-bottom: 5px;
+}
+.icon_cod
 {
-.noPdSm {
-    padding: 0px;
+    width: 13px;
+    height: 13px;
+    display: inline-block;
+    text-align: center;
+    margin-right: 3px;
+    margin-bottom: 5px;
 }
-.col-sm-6{
-    width: 50%;
-}
+.downloadAppIcon{
+    margin-left: -32%;
 }
 @media (min-width: 992px)
 {
-.col-md-3 {
+    .col-md-3{
+    float: left;
     width: 25%;
+    }
 }
-}
-@media (min-width: 992px)
-{
-.col-md-3{
- float: left;
-}}
 
 .footerDiv .footerTitle {
     color: rgb(253, 216, 53);
@@ -103,6 +130,7 @@ a {
     letter-spacing: 1px;
     font-size: 12px;
     display: block;
+    text-align: left;
 }
 hr, ul {
     display: block;
@@ -144,9 +172,6 @@ ul {
     color: rgba(255, 255, 255, 0.9);
     padding: 0px 5px;
 }
-form{
-    display: block;
-}
 .footerDiv .subscription {
 border-top-width: initial;
 border-right-width: initial;
@@ -154,7 +179,7 @@ border-left-width: initial;
 border-top-color: initial;
 border-right-color: initial;
 border-left-color: initial;
-width: 55%;
+width: 40%;
 height: 34px;
 outline: none;
 background: transparent;
@@ -218,9 +243,7 @@ ul {
     padding-right: 0px;
     margin-right: 6px;
 }
-.visible-xs{
-    display: none !important;
-}
+
 .footerDiv .paymentImg {
     max-width: 300px;
 }
@@ -247,12 +270,23 @@ ul {
 .success {
     color: rgb(81, 204, 204) !important;
 }
-.footerAboutUs {
-    float: left;
-    width: 100%;
-    font-size: 18px;
-    line-height: 20px;
-    font-family: montserrat-regular, sans-serif;
-    margin: 0px 0px 160px;
-    padding: 15px 0px;
+
+.demoText
+{
+text-shadow: 3px 2px 3px rgba(255,255,255,.2), 2px 6px 2px rgba(206,89,55,0);
+color: #FDD835;
+font-size: 22px;
+font-weight: 700;
+text-align: left;
+padding-left: 6.7%;
+margin-bottom: -1.8%;
+
+}
+.footerContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 15px;
+    gap: 5%;
+    text-align: left;
 }

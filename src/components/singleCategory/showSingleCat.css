@@ -1,0 +1,129 @@
+.topheadContainer
+{
+    width: 100%;
+    padding: 2px 20%;
+    margin: 0 auto;
+    text-align: left;
+}
+.imgSlider
+{
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    cursor: pointer;
+}
+.imageView
+{
+    width: 24rem;
+    height: 15rem;
+}
+.brandName
+{
+    cursor: pointer;
+    font-family: montserrat-semibold,sans-serif!important;
+    font-size: 18px!important;
+    line-height: 17px!important;
+    color: #4f5362;
+}
+.prodName
+{
+    margin-bottom: 2px;
+    font-size: 14px;
+    font-family: montserrat,sans-serif;
+    line-height: 20px;
+    color: rgba(0,0,0,.7);
+    font-weight: 500;
+    
+}
+.rating{
+    width: 40px;
+    height: 18px;
+    border: 1px solid grey;
+    justify-content: center;
+    align-items: center;
+    /* margin: 0 3px 0 5px; */
+}
+.tribeContainer {
+    font-family: montserrat,sans-serif;
+    font-size: 12px;
+    margin-top: 4px;
+    line-height: normal;
+    cursor: pointer;
+    padding: 16px 0;
+    color: #333;
+    border-top: 3px solid rgb(234, 232, 232);
+    border-bottom: 3px solid rgb(234, 232, 232);
+}
+.colorName {
+    font-size: 14px;
+}
+.colorLabel
+{
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.multiColorBlockV3.active {
+    height: 20px;
+    width: 20px;
+    box-shadow: rgb(255, 255, 255) 0px 0px 0px 4px, rgb(81, 204, 204) 0px 0px 4px 7px;
+    padding: 0px;
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.slideimages img{
+    border:1px solid #42a2a2;
+}
+.selectSize
+{
+    font-size: 12px;
+    font-family: montserrat-bold,sans-serif;
+    line-height: 18px;
+    text-transform: uppercase;
+    color: #000;
+}
+.p-add-bag {
+    gap: 5px;
+    background-color: rgb(255, 216, 77);
+    font-size: 15px;
+    padding: 8px 52px;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    cursor: pointer;
+    border-color: transparent;
+}
+.addButtons .btn-border {
+    height: 44px;
+    border-width: 1px;
+    border-style: solid;
+    /* border-color: rgb(214, 214, 214); */
+    border-image: initial;
+    border-radius: 3px;
+}
+.addButtons .p-add-bag .bag-icon {
+    height: 20px;
+    width: 20px;
+}
+.addButtons .p-add-bag span {
+    color: rgb(48, 48, 48);
+    padding-left: 8px;
+    font-family: montserrat-semibold, sans-serif !important;
+    font-size: 14px !important;
+    line-height: 17px !important;
+}
+.aboutProduct{
+    margin: 0 12px;
+    padding: 0 3px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

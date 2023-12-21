@@ -1,4 +1,60 @@
 .slider
 {
-    margin-top: 10%;
+    margin-top: 5%;
+    overflow:hidden;
+    position: relative;
+}
+.nextSlider{
+    margin: -40px 20px 10px;
+    overflow:hidden ;
+    /* position: absolute;
+    top: 10%;
+    left: 5%; */
+}
+.thirdSlider{
+    margin: -70px 20px 10px;
+    overflow:hidden ;
+    position: relative;
+    /* position: absolute;
+    top: 10%;
+    left: 5%; */
+}
+.bestSlider
+{
+    margin: -90px 20px 10px;
+    overflow:hidden ;
+    position: relative;
+}
+.designHeading
+{
+    font-family: montserrat, sans-serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 20px;
+    color: black;
+    text-align: center;
+}
+.designContainer
+{
+    display: flex;
+    height: 197px;
+    width: 100%;
+    margin-bottom: 206px;
+}
+.bewakoofOriginalSlider {
+    margin-top: -52px;
+    position: relative;
+}
+.sellerHeadeing
+{
+    font-family: montserrat, sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: black;
+    text-align: center;
+}
+.explore{
+    color:#42a2a2;
+    text-decoration:underline;
+    cursor: pointer;
 }

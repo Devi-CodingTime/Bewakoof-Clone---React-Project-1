@@ -1,0 +1,12 @@
+.designContainer a{
+    display: block;
+    width: "100%";
+    padding-top:57.1429%;
+    /* margin:0 5px; */
+    position: relative;
+}
+.designContainer img{
+    position: absolute;
+    width: 100%;
+    top: 0;
+}

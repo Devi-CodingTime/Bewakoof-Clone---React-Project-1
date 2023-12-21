@@ -1,0 +1,32 @@
+.footerAboutUs {
+    float: left;
+    width: 100%;
+    font-size: 18px;
+    line-height: 20px;
+    font-family: montserrat-regular, sans-serif;
+    margin: 0px 0px 160px;
+    padding: 15px 0px;
+}
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+.footerDiv h1, .footerDiv h2, .footerDiv h3, .footerDiv h4, .footerDiv h5, .footerDiv strong {
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    font-size: 17px;
+    display: inline-block;
+}
+h2 {
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}

@@ -1,0 +1,30 @@
+.Bewakoofimg
+{padding: 10px 15px;}
+
+.cartHolder
+{
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.emptylisting .searchCategoriesList {
+    display: flex;
+    gap: 30px;
+    white-space: nowrap;
+    line-height: 30px;
+}
+.emptylisting .searchCategories {
+    vertical-align: top;
+    font-size: 14px;
+    text-align: left;
+}
+.searchCategories .blueText {
+    text-decoration: underline!important;
+    color: #51cccc;
+}

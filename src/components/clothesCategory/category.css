@@ -1,0 +1,125 @@
+/* .btncomponent
+{
+    color:grey;
+    font-size:10px;
+    display: block;
+} */
+/* . */
+h3{
+    text-align: left;
+    font-size: 11px;
+    font-weight: 500;
+    margin: 7px
+}
+h2{
+    color: #808080bf;
+    font-size: 10px;
+    text-align: left;
+    font-weight: 300;
+    margin: 7px;
+}
+section
+{
+    position: relative;
+    top: 0;
+    left: 0;
+}
+.wishlist-icon
+{
+    position: absolute;
+    top: -26px;
+    left: 190px;
+}
+.PriceText{
+    text-align: left;
+    margin-left: 7px
+}
+.Imagetag
+{
+    object-fit: cover;
+    width: fit-content;
+}
+.Imagetag:hover {
+    animation-name: fadeInOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-duration: 0.7s;
+}
+@keyframes fadeInOpacity{
+    0% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.categoryHolder
+{
+    margin: 0 auto;
+}
+/* .mainHeading
+{
+    float: left;
+    width: 100%;
+} */
+@media (min-width: 769px)
+{
+    .mainHeading {
+        margin-top: 45px;
+        text-align: left;
+        padding: 0px;
+    }
+}
+.mainHeading .headingInner {
+    position: relative;
+}
+.mainHeading .searchResults {
+    display: inline-block;
+    color: rgb(45, 45, 45);
+    font: 700 16px montserrat-bold, sans-serif;
+}
+@media (min-width: 769px)
+{
+    .mainHeading .searchResults {
+        font-size: 24px;
+        text-align: left;
+        float: left;
+    }
+}
+@media (min-width: 769px)
+{.mainHeading .totalProductCount {
+    font-size: 24px;
+}
+}
+.mainHeading .totalProductCount {
+    color: rgb(148, 148, 148);
+    padding-left: 10px;
+    font: 16px montserrat-regular, sans-serif;
+}
+.filterList
+{
+    width: 25%;
+    float:right;
+}
+.filtered
+{
+    width: 60%;
+    float:left;
+}
+.tophead
+{
+    font-family: montserrat-regular,sans-serif;
+    font-size: 12px;
+    color: #2d2d2d;
+    /* float: left; */
+}
+.tophead:nth-child(2):after , .tophead:first-child:after{
+    content: " /   ";
+    color: #2d2d2d;
+    font-size: 14px;
+}
+.topheadContainer
+{
+    width: 35%;
+    padding: 12px 0px;
+}
