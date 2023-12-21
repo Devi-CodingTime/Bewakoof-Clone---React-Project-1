@@ -4,9 +4,11 @@ import '../bestSeller/bestSeller.css';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useNavigate } from "react-router-dom";
 
 const BestSellerSlider = () => {
   const sliderRef = useRef();
+  const navigate = useNavigate();
   const [bestSeller,setBestSeller] = useState();
 
   async function getbestSellerProduct()
@@ -40,15 +42,18 @@ const BestSellerSlider = () => {
   const goToPrev = ()=>{
     sliderRef.current.slickPrev();
   }
-  
+  const cardClick = (id)=>{
+    navigate(`/allCategory/${id}`)
+  }
   return (<>
   {console.log(bestSeller)}
       <Slider {...settings} className="slider" ref={sliderRef}>
         {bestSeller?.map((i)=>{
-          return(<div className="card" style={{padding:"20px"}}>
+          return(<div className="card" style={{padding:"20px"}} 
+          onClick={()=>{cardClick(i._id)}}>
             <div className="border-solid border-2 border-gray-200 w-56 rounded-md">
             <img src={i.displayImage} height={250} className="Imagetag"/>
-            <h3 className="brand-name rvCardDetails undefined">Bewakoof®</h3>
+            <h3 className="brand-name rvCardDetails undefined">{i.brand}</h3>
             
             <section>
                 <h2 style={{fontSize:"10px"}}>{i.name}</h2>

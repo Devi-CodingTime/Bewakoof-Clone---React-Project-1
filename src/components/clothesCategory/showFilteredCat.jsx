@@ -6,7 +6,14 @@ import { Link, NavLink, useNavigate,useSearchParams } from "react-router-dom";
 const ShowFilterdCat = (props)=>{
     const {data,filterdata}=props;
     
-    const[searchParams, setSearhcParams]= useSearchParams();
+    const[searchParams, setSearhcParams,]= useSearchParams();
+    // const [searchfilter,setsearchfilter] = useSearchParams();
+    console.log("-----------------------------------------");
+    // console.log("searchParams",searchParams.get("data"));
+    // console.log("setSearhcParams",setSearhcParams.get("filterdata"));
+    // console.log("setsearchfilter",setsearchfilter.get("setsearchfilter"));
+    // console.log("searchfilter",searchfilter.get("searchfilter"));
+    console.log("------------------------------------------");
 
     const {search,searchTerm} = useContext(categoryContext);
     const navigate = useNavigate();
@@ -18,8 +25,8 @@ const ShowFilterdCat = (props)=>{
     {
         try
         {
-            console.log("ghaaas ",data);
-            console.log("rthuyruyrtr ",filterdata);
+            console.log("ghaaas ",typeof data);
+            console.log("rthuyruyrtr ",typeof filterdata);
 
             const res = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?filter={"${searchParams.get("data")}":"${searchParams.get("filterdata")}"}&limit=50`,{
                

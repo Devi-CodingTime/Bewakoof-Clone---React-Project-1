@@ -8,10 +8,11 @@ import { useParams } from 'react-router-dom';
 const ShowSingleCategory=()=> {
     const {id} = useParams();
     console.log("id is : ",id);
+
     const [singleProduct,setSingleProduct] = useState({});
     const[src,setSrc] = useState("");
     const[selected,setSelected] = useState(false);
-
+    const[open,setOpen] = useState(false);
 
     const api = `https://academics.newtonschool.co/api/v1/ecommerce/product/${id}`;
 
@@ -33,7 +34,9 @@ const ShowSingleCategory=()=> {
             console.log(error);
         }
     }
-
+    const openDesc = ()=>{
+        setOpen(!open);
+    }
     const selectImg= (src)=>{
         setSrc(src);
         setSelected(true);
@@ -97,25 +100,54 @@ const ShowSingleCategory=()=> {
                             </>
                         )
                     })}
-                {/* <Button style={{border:"1px solid grey", padding:"10px 0",color:"grey"}}>S</Button>
-                <Button style={{border:"1px solid grey" ,padding:"10px 0",color:"grey"}}>M</Button>
-                <Button style={{border:"1px solid grey" ,padding:"10px 0",color:"grey"}}>L</Button>
-                <Button style={{border:"1px solid grey" ,padding:"10px 0",color:"grey"}}>XL</Button>
-                <Button style={{border:"1px solid grey" ,padding:"10px 0",color:"grey"}}>XXL</Button> */}
+                
                 </div>
                 
-                <div className='flex gap-4'>
-                <div className="p-add-bag flex">
-                    <img src="https://images.bewakoof.com/web/ic-web-head-cart.svg" alt="bag"
-                        className="bag-icon"/>
-                    <span>ADD TO BAG</span>
+                <div className='flex gap-4 wishlistContainer'>
+                    <div className="p-add-bag flex">
+                        <img src="https://images.bewakoof.com/web/ic-web-head-cart.svg" alt="bag"
+                            className="bag-icon"/>
+                        <span>ADD TO BAG</span>
+                    </div>
+                    <div className="p-add-bag flex" style={{backgroundColor:"white",border:"1px solid grey"}}>
+                        <i className="fa-regular fa-heart" style={{color: "grey"}}></i>
+                        <span>WISHLIST</span>
+                    </div>
                 </div>
-                <div className="p-add-bag flex" style={{backgroundColor:"white",border:"1px solid grey"}}>
-                    <i className="fa-regular fa-heart" style={{color: "grey"}}></i>
-                    <span>WISHLIST</span>
-                </div>
+                <div className='desc'>
+                    <div className='descChild' >
+                       <section className='flex'>
+                            <img src="https://images.bewakoof.com/web/ic-prod-desc.svg"/> 
+                            <span>Product Description</span>
+                        </section>
+                        <span style={{ cursor:"pointer"}} onClick={openDesc}>+</span>
+                    </div>
+                    
+                    {open?(<p className='py-1 descpara'>{singleProduct.description}</p>):""}
                 </div>
                 
+                <div className="flex justify-between">
+                    <div className="flex flex-row  containerInner">
+                        <div className="flex flex-col items-center">
+                        <img loading="lazy" alt="offer" src="https://images.bewakoof.com/web/trust-cart.svg"/>
+                        <span className="trustBadgeTitle">100% SECURE PAYMENTS</span>
+                        </div>
+                    </div>
+                    <div className="flex flex-row  containerInner">
+                        <div className="flex flex-col items-center">
+                        <img loading="lazy" alt="offer" src="https://images.bewakoof.com/web/Easy-Returns.svg"/>
+                        <span className="trustBadgeTitle"> EASY RETURNS &amp; INSTANT REFUNDS
+                        </span>
+                        </div>
+                    </div>
+                    <div className="d-flex flex-row  containerInner">
+                        <div className="d-flex flex-column align-items-center">
+                        <img loading="lazy" alt="offer" src="https://images.bewakoof.com/web/Globe.svg"/>
+                        <span className="trustBadgeTitle font-light">SHIPPING GLOBALLY</span>
+                        </div>
+                    </div>
+                    </div>
+
             </div>
 
         </div>

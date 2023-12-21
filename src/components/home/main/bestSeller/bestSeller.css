@@ -41,6 +41,7 @@ section
 {
     object-fit: cover;
     width: fit-content;
+    cursor: pointer;
 }
 .Imagetag:hover {
     animation-name: fadeInOpacity;

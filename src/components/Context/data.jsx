@@ -138,6 +138,145 @@ export const MenData = {
     }
 }
 
+export const WomenData = {
+    Topwear : {
+        list: [
+            {
+                name:"Fashion Top",
+                search: {name: 'Top', description: 'Top'},
+                filter:{subCategory:'shirt'}
+            },
+            {
+                name:"Printed T-shirt",
+                search: {name: 'Printed', description: 'Printed'},
+                filter:{subCategory:'tshirt'}
+            },
+
+            {
+                name:"Oversized T-Shirt",
+                search: {name: 'Oversize', description: 'Oversize'},
+                filter:{subCategory:'tshirt'}
+            },
+
+            {
+                name:"plain T-shirt",
+                search: {name: 'plain', description: 'plain'},
+                filter:{subCategory:'tshirt'}
+            },
+
+            {
+                name:"Polo T-Shirts",
+                search: {name: 'Polo', description: 'Polo'},
+                filter:{subCategory:'tshirt'}
+            },
+
+            {
+                name:"Full Sleeve T Shirt",
+                search: {name: 'Full Sleeve', description: 'Full Sleeve'},
+                filter:{subCategory:'tshirt'}
+            },
+
+            {
+                name:"Half Sleeve T Shirt",
+                search: {name: 'Half Sleeve', description: 'Half Sleeve'},
+                filter:{subCategory:'tshirt'}
+            },
+
+            {
+                name:"Shirt",
+                search: {name: 'Shirt', description: 'Shirt'},
+                filter:{subCategory:'shirt'}
+            },
+
+            {
+                name:"Hoodie",
+                search: {name: 'Hoodie', description: 'Hoodie'},
+                filter:{subCategory:'hoodie'}
+            },
+            
+            {
+                name:"Kurti",
+                search: {name: 'Kurti', description: 'Kurti'},
+                filter:{subCategory:'kurti'}
+            }
+        ]
+    },
+
+    Bottomwear :{
+        list: [
+            {
+                name:"Jogger",
+                search: {name: 'Jogger', description: 'Jogger'},
+                filter:{subCategory:'jogger'}
+            },
+
+            {
+                name:"Jeans",
+                search: {name: 'Jeans', description: 'Jeans'},
+                filter:{subCategory:'jeans'}
+            },
+
+            {
+                name:"Pyjama",
+                search: {name: 'Pyjama', description: 'Pyjama'},
+                filter:{subCategory:'pyjamas'}
+            },
+
+            {
+                name:"Shorts",
+                search: {name: 'Shorts', description: 'Shorts'},
+                filter:{subCategory:'shorts'}
+            },
+
+            {
+                name:"Trouser",
+                search: {name: 'Trouser', description: 'Trouser'},
+                filter:{subCategory:'trouser'}
+            },
+
+            {
+                name:"Jumpsuit",
+                search: {name: 'Jumpsuit', description: 'Jumpsuit'},
+                filter:{subCategory:'jumpsuit'}
+            },
+            {
+                name:"Tracksuit",
+                search: {name: 'Tracksuit', description: 'Tracksuit'},
+                filter:{subCategory:'tracksuit'}
+            },
+        ]
+    },
+
+
+    Winterwear :{
+        list: [
+            {
+                name:"Sweater",
+                search: {name: 'Sweater', description: 'Sweater'},
+                filter:{subCategory:'sweater'}
+            },
+
+            {
+                name:"Jogger",
+                search: {name: 'Jogger', description: 'Jogger'},
+                filter:{subCategory:'jogger'}
+            },
+
+            {
+                name:"Hoodie",
+                search: {name: 'Hoodie', description: 'Hoodie'},
+                filter:{subCategory:'hoodie'}
+            },
+
+            {
+                name:"Full Sleeve T Shirt",
+                search: {name: 'Full Sleeve', description: 'Full Sleeve'},
+                filter:{subCategory:'tshirt'}
+            }
+        ]
+    }
+}
+
 export const imgArray = [{src:"https://images.bewakoof.com/nav_menu/Circle-Nav-168x168--1702026638.png",imgName:"OOF Sale"},
                   {src:"https://images.bewakoof.com/nav_menu/circle-168x168-IK-1699605086.png",imgName:"Bwkf X Ishaan Khatter"},
                   {src:"https://images.bewakoof.com/nav_menu/MayCOTM-office-168x168-HarryPotter-1701350799.png",imgName:"COTM X Harry potter"},
@@ -232,5 +371,171 @@ export const category = [
         name:"Trouser",
         search: {name: 'Trouser', description: 'Trouser'},
         filter:{subCategory:'trouser'}
+    },
+]
+
+export const allMixed = [
+    {
+        name:"Printed Tshirt",
+        search: {name: 'Printed', description: 'Printed'},
+        filter:{subCategory:'tshirt'}
+    },
+
+    {
+        name:"Oversized TShirt",
+        search: {name: 'Oversize', description: 'Oversize'},
+        filter:{subCategory:'tshirt'}
+    },
+
+    {
+        name:"plain Tshirt",
+        search: {name: 'plain', description: 'plain'},
+        filter:{subCategory:'tshirt'}
+    },
+
+    {
+        name:"Polo TShirts",
+        search: {name: 'Polo', description: 'Polo'},
+        filter:{subCategory:'tshirt'}
+    },
+
+    {
+        name:"Full Sleeve T Shirt",
+        search: {name: 'Full Sleeve', description: 'Full Sleeve'},
+        filter:{subCategory:'tshirt'}
+    },
+
+    {
+        name:"Half Sleeve TShirt",
+        search: {name: 'Half Sleeve', description: 'Half Sleeve'},
+        filter:{subCategory:'tshirt'}
+    },
+
+    {
+        name:"Shirt",
+        search: {name: 'Shirt', description: 'Shirt'},
+        filter:{subCategory:'shirt'}
+    },
+    {
+        name:"Men's Shirt",
+        search: {name: 'Shirt', description: 'Shirt'},
+        filter:{subCategory:'shirt',gender:'Men'}
+    },
+    {
+        name:"Women's Shirt",
+        search: {name: 'Shirt', description: 'Shirt'},
+        filter:{subCategory:'shirt',gender:'Women'}
+    },
+
+    {
+        name:"Jumpsuit",
+        search: {name: 'Jumpsuit', description: 'Jumpsuit'},
+        filter:{subCategory:'jumpsuit'}
+    },
+    {
+        name:"Men's Jumpsuit",
+        search: {name: 'Jumpsuit', description: 'Jumpsuit'},
+        filter:{subCategory:'jumpsuit',gender:'Men'}
+    },
+    {
+        name:"Women's Jumpsuit",
+        search: {name: 'Jumpsuit', description: 'Jumpsuit'},
+        filter:{subCategory:'jumpsuit',gender:'Women'}
+    },
+    {
+        name:"Men's Jogger",
+        search: {name: 'Jogger', description: 'Jogger'},
+        filter:{subCategory:'jogger',gender:'Men'}
+    },
+    {
+        name:"Women Jogger",
+        search: {name: 'Jogger', description: 'Jogger'},
+        filter:{subCategory:'jogger',gender:'Women'}
+    },
+    {
+        name:"Jogger",
+        search: {name: 'jogger', description: 'jogger'},
+        filter:{subCategory:'jogger'}
+    },
+
+    {
+        name:"Men's Jeans",
+        search: {name: 'Jeans', description: 'Jeans'},
+        filter:{subCategory:'Jeans',gender:'Men'}
+    },
+    {
+        name:"Women's Jeans",
+        search: {name: 'jeans', description: 'jeans'},
+        filter:{subCategory:'jeans',gender:'Women'}
+    },
+    {
+        name:"Jeans",
+        search: {name: 'jeans', description: 'jeans'},
+        filter:{subCategory:'jeans'}
+    },
+
+    {
+        name:"Sweater",
+        search: {name: 'sweater', description: 'sweater'},
+        filter:{subCategory:'sweater'}
+    },
+
+    {
+        name:"Pyjama",
+        search: {name: 'pyjama', description: 'pyjama'},
+        filter:{subCategory:'pyjamas'}
+    },
+
+    {
+        name:"Hoodie",
+        search: {name: 'Hoodie', description: 'Hoodie'},
+        filter:{subCategory:'hoodie'}
+    },
+    {
+        name:"Men's Hoodie",
+        search: {name: 'Hoodie', description: 'Hoodie'},
+        filter:{subCategory:'hoodie',gender:'Men'}
+    },
+    {
+        name:"Women's Hoodie",
+        search: {name: 'Hoodie', description: 'Hoodie'},
+        filter:{subCategory:'hoodie',gender:'Women'}
+    },
+    {
+        name:"Tracksuit",
+        search: {name: 'tracksuit', description: 'tracksuit'},
+        filter:{subCategory:'tracksuit'}
+    },
+    {
+        name:"Kurta",
+        search: {name: 'kurta', description: 'kurta'},
+        filter:{subCategory:'kurta'}
+    },
+    
+    {
+        name:"Kurti",
+        search: {name: 'kurti', description: 'kurti'},
+        filter:{subCategory:'kurti'}
+    },
+    {
+        name:"Shorts",
+        search: {name: 'shorts', description: 'shorts'},
+        filter:{subCategory:'shorts'}
+    },
+    
+    {
+        name:"Trouser",
+        search: {name: 'Trouser', description: 'Trouser'},
+        filter:{subCategory:'trouser'}
+    },
+    {
+        name:"Men's Trouser",
+        search: {name: 'Trouser', description: 'Trouser'},
+        filter:{subCategory:'trouser',gender:'Men'}
+    },
+    {
+        name:"Women's Trouser",
+        search: {name: 'Trouser', description: 'Trouser'},
+        filter:{subCategory:'trouser',gender:'Women'}
     },
 ]

@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import './header';
-import { MenData,imgArray } from "../../Context/data";
-import { Link } from "react-router-dom";
+import { MenData,imgArray,WomenData,allMixed } from "../../Context/data";
+import { Link, json } from "react-router-dom";
+import { debounce } from "../../Context/debounce";
 const TopHeader = () =>{
+  const [search,setSearch] = useState("");
+  const [matchedProduct, setMatchedProducts] = useState([]);
 
-  
+  const changeHandler = (event)=>{
+    console.log(event.target.value);
+    setSearch(event.target.value);
+    let userInput = event.target.value;
+    let filteredData = allMixed.filter((value)=>{
+      return value.name.toUpperCase().includes(userInput.toUpperCase());
+    });
+    setMatchedProducts(filteredData);
+    console.log("filterd daata ",filteredData);
+
+  }
+  const debounceChange = debounce(changeHandler,500);
     return (<>
     <div className='upperHeader'>
         <div className='leftheader'>
@@ -83,22 +97,22 @@ const TopHeader = () =>{
                     <div className='col-xs-7 noPd navSeperator flex flex-wrap'>
                       <div className='col-xs-4 noPd'>
                       <a className="headings singleEntry false" href="/top-wear-for-men">Topwear</a>
-                        {MenData.Topwear.list.map((i)=>{
-                          return(<a className="singleEntry false" href="/men-printed-tshirts"><span>{i.name}</span></a>)
+                        {WomenData.Topwear.list.map((i)=>{
+                          return(<Link to={`/allCategory?data=subCategory&filterdata=${i.filter.subCategory}`}  className="singleEntry false" ><span>{i.name}</span></Link>)
                         })}
                       </div>
 
                       <div className="col-xs-4 noPd">
                           <a className="headings singleEntry false" href="/men-bottom-wear-collection">Bottomwear</a>
-                          {MenData.Bottomwear.list.map((i)=>{
-                          return(<a className="singleEntry false" href="/men-joggers"><span>{i.name}</span></a>)
+                          {WomenData.Bottomwear.list.map((i)=>{
+                          return(<Link to={`/allCategory?data=subCategory&filterdata=${i.filter.subCategory}`}  className="singleEntry false" ><span>{i.name}</span></Link>)
                           })}
                           
                       </div>
                       <div className="col-xs-4 noPd">
                           <a className="headings singleEntry false" href="/winter-wear-for-men">Winterwear</a>
-                          {MenData.Winterwear.list.map((i)=>{
-                            return(<a className="singleEntry false" href="/men-hoodies-sweatshirts"><span>{i.name}</span></a>)
+                          {WomenData.Winterwear.list.map((i)=>{
+                            return(<Link to={`/allCategory?data=subCategory&filterdata=${i.filter.subCategory}`}  className="singleEntry false" ><span>{i.name}</span></Link>)
                           })}
                       </div>
                                     
@@ -117,7 +131,7 @@ const TopHeader = () =>{
                 </div>
               </div>
               </span>
-              <span className="menuItem">MOBILE COVERS</span>
+              {/* <span className="menuItem">MOBILE COVERS</span> */}
             </div>
             <div className='col-xs-5 mainHeaderCols searchMyAccount d-flex flex-row-reverse'>
             <div className='pull-right mainHeaderCols activemenuwrp' style={{paddingRight:"0px"}}>
@@ -145,8 +159,9 @@ const TopHeader = () =>{
             <div className='pull-right mainHeaderCols searchWrapper'>
                 <div className='icon-addon addon-sm'>
                     <form className='searchContainer' style={{position:"relative",borderBottom:"none",top:0}}>
-                    <input className="searchInput form-controls" placeholder="Search by product, category or collection" type="text" autoComplete="off"
-                    style={{fontSize: "10px"}}/>
+                    <input className="searchInput form-controls" placeholder="Search by product, category or collection" 
+                    type="text" autoComplete="off" onChange={debounceChange}
+                    style={{fontSize: "13px"}}/>
                     <i className="fa-solid fa-magnifying-glass" style={{color: "grey",opacity: "0.6"}}></i>
                     </form>
                     <div className="seperator"></div>
@@ -155,6 +170,16 @@ const TopHeader = () =>{
         </div>
         </div>
       </div>
+      {/* mathed product  */}
+      {search?<div className="filtered1">
+        {matchedProduct?.map((i)=>{
+          return(<>
+          <Link to={`/allCategory?searchfilter=${JSON.stringify(i.search)}&searchfilter=${JSON.stringify(i.filter)}`}>
+            <div className="child1">{i.name}</div>
+          </Link></>)
+        })}
+      </div>:""}
+
     </>)
 }
 export default TopHeader;

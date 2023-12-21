@@ -1,5 +1,7 @@
 import React from 'react'
 import './doubleImgContainer';
+import { Link } from 'react-router-dom';
+
 const DoubleImgContainer =(props)=> {
     const {doubleImg,margin} = props;
     return (
@@ -9,12 +11,12 @@ const DoubleImgContainer =(props)=> {
             <img src={i.src} alt=""/>
           </a>)
         })} */}
-         <a title="" style={{margin:`0 ${margin}px`}}>
+         <Link to={`/allCategory?data=gender&filterdata=Men`} style={{margin:`0 ${margin}px`,cursor:"pointer"}}>
             <img src={doubleImg[0].src} alt=""/>
-          </a>
-          <a title="">
+          </Link>
+          <Link to={`/allCategory?data=gender&filterdata=Women`} style={{cursor:"pointer"}}>
             <img src={doubleImg[1].src} alt=""/>
-          </a>
+          </Link>
     </div>
   )
 }
