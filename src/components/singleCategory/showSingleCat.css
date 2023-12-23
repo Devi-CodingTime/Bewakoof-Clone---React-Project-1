@@ -147,12 +147,22 @@
         width: 100%;
         align-content: center;
     }
-    .trustBaggeContainer .containerInner img {
-        width: 40px;
-        height: 40px;
+    .trustBadgeTitle {
+        font-size: 10px;
+    }
+    
+     .trustBaggeContainer .containerInner img {
+        max-width: 30px;
+        max-height: 30px;
         margin-bottom: 6px;
         color: #8f98a9;
+        
     }
+    .Heading{
+        height: 30px;
+        border-bottom: 4px solid rgb(255, 210, 50) !important;
+    }
+    /*
     .trustBaggeContainer .containerInner .trustBadgeTitle {
         font-family: montserrat-semibold,sans-serif!important;
         font-size: 8px!important;
@@ -162,4 +172,4 @@
     .trustBaggeContainer .containerInner .trustBadgeTitle {
         color: #8f98a9;
         width: 50px;
-    }
+    } */

@@ -1,0 +1,110 @@
+.DeliveryBox{
+    background-color: rgb(252, 255, 238);
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+.df-img{
+    width: 19px;
+    height: 12px;
+    animation-duration: 2s;
+    position: absolute;
+    
+    left: 201px;
+    animation: truckMoveAnim 2s ease-in-out;
+}
+@keyframes truckMoveAnim{
+    0% {
+        left: 15px;
+    }
+    79% {
+        opacity: 1;
+    }
+    85% {
+        left: 105%;
+        opacity: 0;
+    }
+    89% {
+        left: -50px;
+        opacity: 0;
+    }
+    100% {
+        left: 15px;
+        opacity: 1;
+    }
+}
+.pp{
+    font-size: 12px;
+    color: black;
+    font-family: Montserrat;
+    margin-left: -196px;
+}
+.CART{
+    margin-top: 14px;
+    border: 1px solid #d2cfcf;
+    padding: 15px;
+    font-family: montserrat-regular,sans-serif!important;
+    font-size: 14px!important;
+    line-height: 15px!important;
+    line-height: normal;
+    color: rgba(0,0,0,.7);
+    border-bottom: 1px solid #efe9e9;
+}
+
+.pricepara{
+    font-family: montserrat-bold,sans-serif;
+    font-size: 18px;
+    margin-right: 5px;
+    text-align: left;
+}
+select{
+    width: 65px;
+    padding: 5px;
+}
+.cartbyn{
+    width: 535px;
+    padding: 10px;
+    border: 1px solid #d2cfcf;
+    border-top: 0px;
+    color:rgba(76, 74, 74, 0.7);
+    font-size: 14px;
+    cursor: pointer;
+}
+.extra{
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #fdd835;
+    padding: 10px;
+    text-align: left;
+}
+.wishpara{
+    border: 1px solid #efe9e9;
+    padding: 10px;
+    color: rgba(76, 74, 74, 0.7);
+    margin-top: 10px;
+}
+.divprice{
+    font-size: 11px;
+    font-family: montserrat-bold,sans-serif;
+    color: #000;
+    text-transform: uppercase;
+}
+.priceSummary{
+    padding: 10px;
+}
+.span1{
+    width: 94%;
+    padding: 10px;
+    text-align: left;
+}
+.span2{
+    padding: 10px;
+    text-align: left;
+}
+.addsection
+{
+    padding-top: 10px;    
+    border: 1px solid #d2cfcf;
+
+}

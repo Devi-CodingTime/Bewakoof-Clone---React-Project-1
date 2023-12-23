@@ -5,6 +5,10 @@ import Login from "./login/login";
 import ShowAllCategory from "./clothesCategory/showAllCategory";
 import ShowSingleCategory from "./singleCategory/showSingleCat";
 import NoCart from "./cart/noCart";
+import Review from "./review/review";
+import Signup from "./signup/signup";
+import ForgetPassword from "./forgetPassword/forgetPassword";
+import AddToCart from "./cart/addToCart";
 
 function App() {
 
@@ -12,9 +16,16 @@ function App() {
     <Routes>
       <Route exact path="/" element={<Home/>}/>
       <Route path="/login" element={<Login/>}/>
+      <Route path="/signup" element={<Signup/>}/>
+      <Route path="/forgetpassword" element={<ForgetPassword/>}/>
+
       <Route path="/allCategory" element={<ShowAllCategory/>}/>
       <Route path="/allCategory/:id" element={<ShowSingleCategory/>}/>
       <Route path="/nocart" element={<NoCart/>}/>
+      <Route path="/addtocart" element={<AddToCart/>}/>
+
+      <Route path="/review" element={<Review/>}/>
+
       
     </Routes>
    {/* <ShowSingleCategory/> */}

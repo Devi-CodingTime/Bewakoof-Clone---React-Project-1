@@ -6,8 +6,8 @@ import { Link, NavLink, useNavigate,useSearchParams } from "react-router-dom";
 const ShowFilterdCat = (props)=>{
     const {data,filterdata}=props;
     
-    const[searchParams, setSearhcParams,]= useSearchParams();
-    // const [searchfilter,setsearchfilter] = useSearchParams();
+    const[searchParams, setSearhcParams]= useSearchParams();
+    const [searcheddata,setSearcheddata] = useSearchParams();
     console.log("-----------------------------------------");
     // console.log("searchParams",searchParams.get("data"));
     // console.log("setSearhcParams",setSearhcParams.get("filterdata"));
@@ -76,6 +76,29 @@ const ShowFilterdCat = (props)=>{
         }
     }
 
+    async function getproductBySearchAndFilter()
+    {
+        try
+        {
+            // console.log("ghaaas ",typeof data);
+            // console.log("rthuyruyrtr ",typeof filterdata);
+
+            const res = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?search={"${JSON.parse(searcheddata.get("searcheddata"))}"}&filter{"${JSON.parse(searcheddata.get("filtereddata"))}"}&limit=50`,{
+               
+            method: "GET", // *GET, POST, PUT, DELETE, etc.                        
+                headers: {
+                    "Content-Type": "application/json",
+                    'projectId': 'ctxjid7mj6o5',
+                }});
+                console.log("*****************",res);
+            const result = await res.json();
+            // console.log("result.data : ",result);  https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?limit=1597"
+            setProduct(result.data);
+        
+        }catch (error) {
+            console.log(error);
+        }
+    }
     const cardClick = (id)=>{
         navigate(`/allCategory/${id}`)
       }
@@ -83,7 +106,16 @@ const ShowFilterdCat = (props)=>{
     useEffect(()=>{
         getBestSellerProducts();
     },[searchParams]);
-    
+
+    useEffect(()=>{
+        if(searchParams){
+            getBestSellerProducts();
+        }
+        else
+        {
+            getproductBySearchAndFilter();
+        }
+    },[])
     useEffect(()=>{
         console.log("search here ",search);
         getsearchedProductsByCategory();

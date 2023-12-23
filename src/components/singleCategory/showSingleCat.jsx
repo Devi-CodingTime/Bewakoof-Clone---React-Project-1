@@ -2,20 +2,26 @@ import React, { useState , useEffect} from 'react'
 import '../singleCategory/showSingleCat.css';
 import TopHeader from '../home/header/topHeader';
 import SideNavbar from '../home/header/sideNavbar';
-import { Button } from '@mui/material';
-import { useParams } from 'react-router-dom';
+
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import {Link, useNavigate, useParams } from 'react-router-dom';
 
 const ShowSingleCategory=()=> {
     const {id} = useParams();
     console.log("id is : ",id);
-
+    // const navigate = useNavigate();s
     const [singleProduct,setSingleProduct] = useState({});
+    const [review,setReview] = useState([]);
     const[src,setSrc] = useState("");
     const[selected,setSelected] = useState(false);
     const[open,setOpen] = useState(false);
+    const [size,setSize] = useState("");
 
     const api = `https://academics.newtonschool.co/api/v1/ecommerce/product/${id}`;
-
+    const reviewApi = `https://academics.newtonschool.co/api/v1/ecommerce/review/${id}`;
     async function getSingleProduct()
     {
         try
@@ -34,8 +40,30 @@ const ShowSingleCategory=()=> {
             console.log(error);
         }
     }
+
+    async function getSingleProductReview()
+    {
+        try
+        {
+            const res = await fetch(reviewApi,{
+                method: "GET", // *GET, POST, PUT, DELETE, etc.                        
+                headers: {
+                    "Content-Type": "application/json",
+                    'projectId': 'ctxjid7mj6o5',
+                }});
+            const result = await res.json();
+            console.log("review.data : ",result.data);  
+            setReview(result.data);
+        
+        }catch (error) {
+            console.log(error);
+        }
+    }
     const openDesc = ()=>{
         setOpen(!open);
+    }
+    const getSize = (sizevalue)=>{
+       setSize(sizevalue);
     }
     const selectImg= (src)=>{
         setSrc(src);
@@ -43,7 +71,10 @@ const ShowSingleCategory=()=> {
     }
     useEffect(()=>{
         getSingleProduct();
+        getSingleProductReview();
     },[]);
+
+
 
   return (<>
     <div className='MainWrpr'>
@@ -95,9 +126,10 @@ const ShowSingleCategory=()=> {
 
                     {singleProduct.size?.map((i)=>{
                         return(
-                            <>
-                                <Button style={{border:"1px solid grey", padding:"10px 0",color:"grey"}}>{i}</Button>
-                            </>
+                            
+                                <Button style={{border:"1px solid grey", padding:"10px 0",color:"grey"}} 
+                                onClick={()=>{getSize(i)}}>{i}</Button>
+                            
                         )
                     })}
                 
@@ -107,7 +139,8 @@ const ShowSingleCategory=()=> {
                     <div className="p-add-bag flex">
                         <img src="https://images.bewakoof.com/web/ic-web-head-cart.svg" alt="bag"
                             className="bag-icon"/>
-                        <span>ADD TO BAG</span>
+                          
+                        <Link to={`/addtocart?size=${size}&Qty=1`}><span>ADD TO BAG</span></Link>
                     </div>
                     <div className="p-add-bag flex" style={{backgroundColor:"white",border:"1px solid grey"}}>
                         <i className="fa-regular fa-heart" style={{color: "grey"}}></i>
@@ -126,10 +159,10 @@ const ShowSingleCategory=()=> {
                     {open?(<p className='py-1 descpara'>{singleProduct.description}</p>):""}
                 </div>
                 
-                <div className="flex justify-between">
+                <div className="flex justify-center items-center gap-3 pb-4">
                     <div className="flex flex-row  containerInner">
                         <div className="flex flex-col items-center">
-                        <img loading="lazy" alt="offer" src="https://images.bewakoof.com/web/trust-cart.svg"/>
+                        <img loading="lazy" alt="offer" width={"33px"} height={"33px"} src="https://images.bewakoof.com/web/trust-cart.svg"/>
                         <span className="trustBadgeTitle">100% SECURE PAYMENTS</span>
                         </div>
                     </div>
@@ -141,12 +174,38 @@ const ShowSingleCategory=()=> {
                         </div>
                     </div>
                     <div className="d-flex flex-row  containerInner">
-                        <div className="d-flex flex-column align-items-center">
-                        <img loading="lazy" alt="offer" src="https://images.bewakoof.com/web/Globe.svg"/>
-                        <span className="trustBadgeTitle font-light">SHIPPING GLOBALLY</span>
+                        <div className="d-flex flex-col align-items-center">
+                            <img loading="lazy" alt="offer" src="https://images.bewakoof.com/web/Globe.svg"/>
+                            <span className="trustBadgeTitle font-light">SHIPPING GLOBALLY</span>
                         </div>
                     </div>
-                    </div>
+                </div>
+                <Card sx={{ minWidth: 275 }}>
+                    <CardContent>
+                        <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                        Customer Rating
+                        </Typography>
+                        {review.slice(0,2).map((i)=>{return(<Typography variant="body2">
+                        Ratings : {i.ratings}.
+                        <br />
+                        Review : {i.text}
+                        </Typography>)})}
+                        
+                    </CardContent>
+                    <Link to={`/review/${id}`}>
+                        <Button size="small" >View All Reviews</Button>
+                    </Link>
+                </Card>
+                {/* <div>
+                    <div className='Heading'>Customer Rating</div>
+                    {review.map((i)=>{
+                        return (<div>
+                            <div>Ratings : {i.ratings}</div>
+                            <div>Review : {i.text}</div>
+
+                        </div>)
+                    })}
+                </div> */}
 
             </div>
 

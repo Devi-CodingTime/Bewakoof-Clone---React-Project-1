@@ -1,0 +1,21 @@
+.rew-wrpr {
+    margin-bottom: 20px;
+    font-family: montserrat-regular, sans-serif;
+}
+.purchase-row-wrpr {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+.purchase-row-wrpr .purchase-wrpr {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+.review {
+    margin-top: 10px;
+    opacity: 0.7;
+    color: rgb(0, 0, 0);
+    line-height: 1.5;
+    overflow: hidden;
+}

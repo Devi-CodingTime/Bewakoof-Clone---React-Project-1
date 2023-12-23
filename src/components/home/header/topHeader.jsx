@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import './header';
 import { MenData,imgArray,WomenData,allMixed } from "../../Context/data";
-import { Link, json } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { debounce } from "../../Context/debounce";
 const TopHeader = () =>{
   const [search,setSearch] = useState("");
@@ -152,7 +152,7 @@ const TopHeader = () =>{
                         
                     </span>
                     <div className='actionMenu' style={{display: "flex",alignItems: "baseline",textAlign: "right"}}>
-                        <a href="#" id="loginLink" className="loginLink">Login</a>
+                        <Link to={'/login'} id="loginLink" className="loginLink">Login</Link>
                     </div>
                 </div>
             </div>
@@ -174,7 +174,7 @@ const TopHeader = () =>{
       {search?<div className="filtered1">
         {matchedProduct?.map((i)=>{
           return(<>
-          <Link to={`/allCategory?searchfilter=${JSON.stringify(i.search)}&searchfilter=${JSON.stringify(i.filter)}`}>
+          <Link to={`/allCategory?searcheddata=${JSON.stringify(i.search)}&filtereddata=${JSON.stringify(i.filter)}`}>
             <div className="child1">{i.name}</div>
           </Link></>)
         })}
