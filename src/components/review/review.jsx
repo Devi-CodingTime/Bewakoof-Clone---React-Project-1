@@ -7,7 +7,7 @@ import SideNavbar from '../home/header/sideNavbar'
 
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
+import Rating from '@mui/material/Rating';
 import Typography from '@mui/material/Typography';
  const Review=()=> {
     const [review,setReview] = useState([]);
@@ -49,7 +49,8 @@ import Typography from '@mui/material/Typography';
             </Typography>
             {review?.map((i)=>{return(
             <Typography>
-                Ratings : {i.ratings}
+                <Rating name="half-rating-read" defaultValue={i.ratings} precision={0.5} readOnly />
+                {/* Ratings : {i.ratings} */}
                 <br />
                 Review : {i.text}
             </Typography>)})}

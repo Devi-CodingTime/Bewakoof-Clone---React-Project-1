@@ -33,6 +33,7 @@ const Signup =()=> {
      }
 
   return (<>
+  {console.log("success",success)}
     <TopHeader/>
     <SideNavbar/>
     <div className="login-signup-body">
@@ -48,6 +49,8 @@ const Signup =()=> {
           </div>
         </div>
         {/* welcomeLOGO section */}
+
+        {console.log("success1",success)}
         <div className="col-md-6 col-sm-6 lgs-section form">
           <div className="form-wrap">
             <div className="login-text-desk-wrap">
@@ -70,7 +73,8 @@ const Signup =()=> {
             onClick={handleContinue}>
                 SignUp
             </button>
-            {/* {success?<div style={{color:"green"}}>Registered Successfully !</div>:<div style={{color:"green"}}>Registered Successfully !</div>} */}
+            {console.log("success2",success)}
+            {success===true?<div style={{color:"green"}}>Registered Successfully !</div>:<div></div>}
         
     </form>
               

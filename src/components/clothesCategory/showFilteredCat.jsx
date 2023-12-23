@@ -19,6 +19,7 @@ const ShowFilterdCat = (props)=>{
     const navigate = useNavigate();
 
     const [product,setProduct] = useState([]);
+    const [heartClicked,setheartClicked] = useState(false);
     const [searchWithFilter, setSearchWillFilter] = useState("");
     // api call here
     async function getBestSellerProducts()
@@ -83,7 +84,7 @@ const ShowFilterdCat = (props)=>{
             // console.log("ghaaas ",typeof data);
             // console.log("rthuyruyrtr ",typeof filterdata);
 
-            const res = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?search={"${JSON.parse(searcheddata.get("searcheddata"))}"}&filter{"${JSON.parse(searcheddata.get("filtereddata"))}"}&limit=50`,{
+            const res = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?search=${searcheddata.get("searcheddata")}&filter=${searcheddata.get("filtereddata")}&limit=50`,{
                
             method: "GET", // *GET, POST, PUT, DELETE, etc.                        
                 headers: {
@@ -103,22 +104,30 @@ const ShowFilterdCat = (props)=>{
         navigate(`/allCategory/${id}`)
       }
 
-    useEffect(()=>{
-        getBestSellerProducts();
-    },[searchParams]);
+      const clickHeart = (id,index)=>{
+        console.log("id",id);
+        console.log("index",index);
+        // let filter
+        setheartClicked(!heartClicked);
+      }
+
 
     useEffect(()=>{
-        if(searchParams){
+        if(searchParams.get("data")=="sellerTag" || searchParams.get("data")=="subCategory"){
             getBestSellerProducts();
         }
         else
         {
             getproductBySearchAndFilter();
         }
-    },[])
+    },[searchParams])
+    
     useEffect(()=>{
         console.log("search here ",search);
-        getsearchedProductsByCategory();
+        if(search)
+            {
+             getsearchedProductsByCategory();
+            }
     },[search]);
 
     
@@ -127,24 +136,28 @@ const ShowFilterdCat = (props)=>{
         
         <img src="https://images.bewakoof.com/uploads/category/desktop/Oversize-cargo-Joggers_RM_Inside-Desktop-banner_(1)-1702821926.jpg"/>
         <div className="flex flex-wrap">
-        {product?.map((i)=>{
+        {product?.map((i,index)=>{
           return(<div className="card" style={{padding:"10px"}}>
             <div className="border-solid border-2 border-gray-200 w-56 rounded-md" style={{height:"370px"}}
-            onClick={()=>{cardClick(i._id)}}>
+            >
                 
             {/* <NavLink to = {(`/allCategory?search=${JSON.stringify(i.search)}&filter=${JSON.stringify(i.filter)}`)}> */}
                 
                 <img src={i.displayImage} style={{height:"278px"}} className="Imagetag"
                 onError={({ currentTarget }) => {
                 currentTarget.onerror = null; // prevents looping
-                currentTarget.src="../../../../images/notAvailableimages.jpg"}}/>
+                currentTarget.src="../../../../images/notAvailableimages.jpg"}}
+                onClick={()=>{cardClick(i._id)}}/>
                 
             {/* </NavLink> */}
             <h3 className="brand-name rvCardDetails undefined">{i.brand}</h3>
             
             <section>
                 <h2 style={{fontSize:"10px"}}>{i.name}</h2>
-                <img  src="https://images.bewakoof.com/web/Wishlist.svg"  alt="wishlist"  className="wishlist-icon"/>
+                <div onClick={()=>{clickHeart(i._id,index)}}>
+                    {heartClicked?<img src="https://images.bewakoof.com/web/Wishlist-selected.svg" className="wishlist-icon"/>:
+                    <img src="https://images.bewakoof.com/web/Wishlist.svg" className="wishlist-icon"/>}
+                </div>
                 <div className="PriceText">
                   <span>₹</span>{i.price}
                 </div>

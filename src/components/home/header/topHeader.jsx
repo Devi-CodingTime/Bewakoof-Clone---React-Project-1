@@ -69,7 +69,7 @@ const TopHeader = () =>{
                       <div className="col-xs-4 noPd">
                           <a className="headings singleEntry false" href="/winter-wear-for-men">Winterwear</a>
                           {MenData.Winterwear.list.map((i)=>{
-                            return(<a className="singleEntry false" href="/men-hoodies-sweatshirts"><span>{i.name}</span></a>)
+                            return(<Link to={`/allCategory?data=subCategory&filterdata=${i.filter.subCategory}`} className="singleEntry false"><span>{i.name}</span></Link>)
                           })}
                       </div>
                                     

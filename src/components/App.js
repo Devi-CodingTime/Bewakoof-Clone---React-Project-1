@@ -24,7 +24,7 @@ function App() {
       <Route path="/nocart" element={<NoCart/>}/>
       <Route path="/addtocart" element={<AddToCart/>}/>
 
-      <Route path="/review" element={<Review/>}/>
+      <Route path="/review/:id" element={<Review/>}/>
 
       
     </Routes>
