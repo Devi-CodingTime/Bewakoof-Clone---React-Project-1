@@ -160,7 +160,7 @@ const TopHeader = () =>{
                     </span>
                     <div className='actionMenu' style={{display: "flex",alignItems: "baseline",textAlign: "right"}}>
                         {loggedIn===false?<Link to={'/login'} id="loginLink" className="loginLink">Login</Link>:
-                        <img src="../../../images/User_icon.png" onClick={()=>{handleLogout()}} style={{width:"50px",height:"46px"}}/>}
+                        <img src="../../../images/User_Icon.png" onClick={()=>{handleLogout()}} style={{width:"50px",height:"46px"}}/>}
                     </div>
                 </div>
             </div>
