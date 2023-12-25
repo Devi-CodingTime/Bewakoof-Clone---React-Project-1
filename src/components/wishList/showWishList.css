@@ -1,0 +1,24 @@
+.my-wishList{
+        position: absolute;
+        top: -6px;
+        left: 190px;
+}
+.cross {
+    position: relative;
+    top: -367px;
+    right: -98px;
+    width: 16px;
+    line-height: 0.6;
+    height: 16px;
+    border-radius: 50%;
+    padding: 5px;
+    font-size: 10px;
+    background-color: white;
+    color: grey;
+    cursor: pointer;
+    border: 1px solid grey;
+}
+.showWishList
+{
+    margin-top: 78px;
+}

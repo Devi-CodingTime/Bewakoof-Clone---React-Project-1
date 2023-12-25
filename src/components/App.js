@@ -9,10 +9,13 @@ import Review from "./review/review";
 import Signup from "./signup/signup";
 import ForgetPassword from "./forgetPassword/forgetPassword";
 import AddToCart from "./cart/addToCart";
-
+import { ContextProvider } from "./Context/provider";
+import ShowWishList from "./wishList/showWishList";
 function App() {
 
   return( <div className="App">
+    
+    <ContextProvider>
     <Routes>
       <Route exact path="/" element={<Home/>}/>
       <Route path="/login" element={<Login/>}/>
@@ -23,11 +26,15 @@ function App() {
       <Route path="/allCategory/:id" element={<ShowSingleCategory/>}/>
       <Route path="/nocart" element={<NoCart/>}/>
       <Route path="/addtocart" element={<AddToCart/>}/>
+      <Route path="/showWishList" element={<ShowWishList/>}/>
+      {/* <Route path="/payment" element={<Payment/>}/> */}
 
       <Route path="/review/:id" element={<Review/>}/>
+      </Routes>
+      </ContextProvider>
 
       
-    </Routes>
+    
    {/* <ShowSingleCategory/> */}
   </div>);
 }

@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import TopHeader from "../home/header/topHeader";
 import SideNavbar from "../home/header/sideNavbar";
 import "../login/login.css"
 
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { categoryContext } from "../Context/provider";
 const Login = ()=>{
-  
+  const {loggedIn,token,handleLogin,handleToken} = useContext(categoryContext);
+  console.log("initial loggerdIn value",loggedIn);
+  console.log("initial token value",token);
+  console.log("initial handleLogin value",handleLogin);
+  console.log("initial handleToken value",handleToken);
+
   const navigate = useNavigate();
 
   const  [loginData , setLoginData] = useState({
@@ -32,11 +38,23 @@ const Login = ()=>{
     }
     console.log("options",options);
     const res = await fetch('https://academics.newtonschool.co/api/v1/user/login' ,options);
-    console.log("res ",res);
+    
     const resJson = await res.json();
+
     console.log("token :",resJson.token);
-    localStorage.setItem('token' , resJson.token)
-    navigate('/');
+    // localStorage.setItem('token' , resJson.token)
+    if(resJson.status==="success")
+    {
+      handleLogin(true);
+      handleToken(resJson.token);
+      navigate('/');
+    }
+    else
+    {
+      handleLogin(false);
+      navigate('/login');
+    }
+
   }
     return(<>
     <TopHeader/>
@@ -62,7 +80,7 @@ const Login = ()=>{
             <div className="login-text-desk-wrap">
               <h1 style={{ fontSize:"24px",
                 fontFamily: "montserrat-bold sans-serif",
-                marginBottom: "22px"}}>Log in / <Link to="/signup">Sign up</Link></h1>
+                marginBottom: "22px"}}>Login</h1>
               <p className="login-text">
                 for Latest trends, exciting offers and everything Bewakoof
                 <span className="tradeMark">®</span>!
@@ -78,6 +96,10 @@ const Login = ()=>{
                 <button id="web_continue_submit" type="button" className="loginSubmit" onClick={handleContinue} >
                   Login
                 </button>
+                <section className='flex flex-row gap-2 w-[50%] ml-[177px] justify-center items-center'>
+                  <p>Don't have an account ?</p>
+                  <Link to="/signup" style={{padding:"7px", width:"20%",color:"#42a2a2",cursor:"pointer"}}>Signup</Link>
+              </section>
               </form>
               
               <p className="termsAndConditions">

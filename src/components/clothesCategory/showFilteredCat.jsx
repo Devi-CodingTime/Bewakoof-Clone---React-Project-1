@@ -15,12 +15,14 @@ const ShowFilterdCat = (props)=>{
     // console.log("searchfilter",searchfilter.get("searchfilter"));
     console.log("------------------------------------------");
 
-    const {search,searchTerm} = useContext(categoryContext);
+    const {search,searchTerm,token} = useContext(categoryContext);
     const navigate = useNavigate();
 
     const [product,setProduct] = useState([]);
-    const [heartClicked,setheartClicked] = useState(false);
     const [searchWithFilter, setSearchWillFilter] = useState("");
+
+    const [favArr,setFavArr] = useState([]);
+    const [wishList,setWishList] = useState([]);
     // api call here
     async function getBestSellerProducts()
     {
@@ -36,7 +38,7 @@ const ShowFilterdCat = (props)=>{
                     "Content-Type": "application/json",
                     'projectId': 'ctxjid7mj6o5',
                 }});
-                console.log("res",res);
+                console.log("res from design of the week",res);
             const result = await res.json();
             // console.log("result.data : ",result);  https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?limit=1597"
             setProduct(result.data);
@@ -100,20 +102,40 @@ const ShowFilterdCat = (props)=>{
             console.log(error);
         }
     }
+
+    const addToWishList = async(id)=>{
+        try
+            {
+                setFavArr([...favArr,id]);
+
+                let bagData = { productId : id };
+                let res = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/wishlist`,{
+                    method:"PATCH",
+                    headers : {projectID:'ctxjid7mj6o5' , 'Content-Type': 'application/json',Authorization:`Bearer ${token}`},
+                    body: JSON.stringify(bagData)
+                });
+                let data = await res.json();
+                setWishList(data.data);
+                
+                console.log("get setWishList -------",data.data);
+            }
+            catch(error)
+            {
+                console.log(error);
+            }
+    }
+    
     const cardClick = (id)=>{
         navigate(`/allCategory/${id}`)
       }
 
-      const clickHeart = (id,index)=>{
-        console.log("id",id);
-        console.log("index",index);
-        // let filter
-        setheartClicked(!heartClicked);
-      }
+    //   const clickHeart = (id)=>{
+    //     setFavArr([...favArr,id]);
+    //   }
 
 
     useEffect(()=>{
-        if(searchParams.get("data")=="sellerTag" || searchParams.get("data")=="subCategory"){
+        if(searchParams.get("data")=="sellerTag" || searchParams.get("data")=="subCategory" || searchParams.get("data")=="gender"){
             getBestSellerProducts();
         }
         else
@@ -133,11 +155,10 @@ const ShowFilterdCat = (props)=>{
     
     return(
     <div className="filtered">
-        
         <img src="https://images.bewakoof.com/uploads/category/desktop/Oversize-cargo-Joggers_RM_Inside-Desktop-banner_(1)-1702821926.jpg"/>
         <div className="flex flex-wrap">
         {product?.map((i,index)=>{
-          return(<div className="card" style={{padding:"10px"}}>
+          return(<div className="card relative" style={{padding:"10px"}}>
             <div className="border-solid border-2 border-gray-200 w-56 rounded-md" style={{height:"370px"}}
             >
                 
@@ -150,12 +171,15 @@ const ShowFilterdCat = (props)=>{
                 onClick={()=>{cardClick(i._id)}}/>
                 
             {/* </NavLink> */}
-            <h3 className="brand-name rvCardDetails undefined">{i.brand}</h3>
+            <h3 className="absolute top-60 left-2 bg-white ml-0 pl-2">{parseFloat(i.ratings).toFixed(1)}
+            <i className="fa-solid fa-star py-1" style={{color: "#eee044", fontSize:"10px" }}></i>
+            </h3>
+            <h3 className="brand-name rvCardDetails undefined break-all">{i.brand}</h3>
             
             <section>
                 <h2 style={{fontSize:"10px"}}>{i.name}</h2>
-                <div onClick={()=>{clickHeart(i._id,index)}}>
-                    {heartClicked?<img src="https://images.bewakoof.com/web/Wishlist-selected.svg" className="wishlist-icon"/>:
+                <div onClick={()=>{addToWishList(i._id)}}>
+                    {favArr.includes(i._id)?<img src="https://images.bewakoof.com/web/Wishlist-selected.svg" className="wishlist-icon"/>:
                     <img src="https://images.bewakoof.com/web/Wishlist.svg" className="wishlist-icon"/>}
                 </div>
                 <div className="PriceText">
@@ -165,7 +189,6 @@ const ShowFilterdCat = (props)=>{
             </div>
         </div>)
         })}
-
 
         </div>
         </div>

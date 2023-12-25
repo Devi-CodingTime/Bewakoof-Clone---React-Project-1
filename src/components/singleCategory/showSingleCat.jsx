@@ -1,18 +1,22 @@
-import React, { useState , useEffect} from 'react'
+import React, { useState , useEffect,useContext} from 'react'
 import '../singleCategory/showSingleCat.css';
 import TopHeader from '../home/header/topHeader';
 import SideNavbar from '../home/header/sideNavbar';
-
+import Rating from '@mui/material/Rating';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import {Link, useNavigate, useParams } from 'react-router-dom';
+import { categoryContext } from '../Context/provider';
 
 const ShowSingleCategory=()=> {
     const {id} = useParams();
     console.log("id is : ",id);
-    // const navigate = useNavigate();s
+
+  const {loggedIn,addToBag} = useContext(categoryContext);
+    console.log("inside single cate",loggedIn);
+    const navigate = useNavigate();
     const [singleProduct,setSingleProduct] = useState({});
     const [review,setReview] = useState([]);
     const[src,setSrc] = useState("");
@@ -20,6 +24,8 @@ const ShowSingleCategory=()=> {
     const[open,setOpen] = useState(false);
     const [size,setSize] = useState("");
 
+    
+    const [clickCount,setClickCount] = useState(0);
     const api = `https://academics.newtonschool.co/api/v1/ecommerce/product/${id}`;
     const reviewApi = `https://academics.newtonschool.co/api/v1/ecommerce/review/${id}`;
     async function getSingleProduct()
@@ -59,6 +65,8 @@ const ShowSingleCategory=()=> {
             console.log(error);
         }
     }
+    
+
     const openDesc = ()=>{
         setOpen(!open);
     }
@@ -127,8 +135,8 @@ const ShowSingleCategory=()=> {
                     {singleProduct.size?.map((i)=>{
                         return(
                             
-                                <Button style={{border:"1px solid grey", padding:"10px 0",color:"grey"}} 
-                                onClick={()=>{getSize(i)}}>{i}</Button>
+                            <Button style={{border:"1px solid grey", padding:"10px 0",color:"grey"}} 
+                            onClick={()=>{getSize(i)}}>{i}</Button>
                             
                         )
                     })}
@@ -140,7 +148,9 @@ const ShowSingleCategory=()=> {
                         <img src="https://images.bewakoof.com/web/ic-web-head-cart.svg" alt="bag"
                             className="bag-icon"/>
                           
-                        <Link to={`/addtocart?size=${size}&Qty=1`}><span>ADD TO BAG</span></Link>
+                        {/* <Link to={`/addtocart`}> */}
+                            <span onClick={()=>addToBag({size:size,quantity:'1'},id)}>ADD TO BAG</span>
+                        {/* </Link> */}
                     </div>
                     <div className="p-add-bag flex" style={{backgroundColor:"white",border:"1px solid grey"}}>
                         <i className="fa-regular fa-heart" style={{color: "grey"}}></i>
@@ -185,15 +195,19 @@ const ShowSingleCategory=()=> {
                         <Typography sx={{ mb: 1.5 }} color="text.secondary">
                         Customer Rating
                         </Typography>
-                        {review.slice(0,2).map((i)=>{return(<Typography variant="body2">
-                        Ratings : {i.ratings}.
-                        <br />
-                        Review : {i.text}
+                        {review.slice(0,2).map((i)=>{return(
+                        <Typography variant="body2">
+                            <Rating name="half-rating-read" defaultValue={i.ratings} precision={0.5} readOnly />
+                            <br />
+                            <Typography style={{color:"GrayText"}}>
+                                {i.text}
+                            </Typography>
+                           
                         </Typography>)})}
                         
                     </CardContent>
-                    <Link to={`/review/${id}`}>
-                        <Button size="small" >View All Reviews</Button>
+                    <Link to={loggedIn?`/review/${id}`:`/login`}>
+                        <Button size="small" style={{color:"GrayText"}} >View All Reviews</Button>
                     </Link>
                 </Card>
                 {/* <div>

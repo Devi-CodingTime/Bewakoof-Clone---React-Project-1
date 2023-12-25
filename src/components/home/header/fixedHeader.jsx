@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const FixedHeaderContainer = ()=>{
     return (<>
         {/* secondHeader closing */}
-      <div className='fixedHeaderContainer' style={{position: "fixed",top: "81px",left:"0"}}>
+      <div className='fixedHeaderContainer' style={{position: "fixed",top: "80px",left:"0"}}>
         <div className='lastHeader'>
         <Link to={`/allCategory?data=sellerTag&filterdata=top rated`}>
           <div className="fixedHeader">SALE</div>

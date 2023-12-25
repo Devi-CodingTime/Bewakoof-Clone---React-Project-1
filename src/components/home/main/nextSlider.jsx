@@ -7,32 +7,33 @@ import {useRef, useCallback,useEffect} from "react";
 const NextSliderShow = (props) => {
 
     const sliderRef = useRef();
-    const scroll = useCallback(
-        y => {
-            if (y > 0) {
-                return sliderRef?.current?.slickNext(); /// ? <- using description below 
-            } else {
-                return sliderRef?.current?.slickPrev();
-            }
-        },
-        [sliderRef]
-    );
-    useEffect(() => {
-        window.addEventListener("scroll", e => {
-            scroll(e.deltaY);
-        });
-    }, [scroll]);
+    // const scroll = useCallback(
+    //     y => {
+    //         if (y > 0) {
+    //             return sliderRef?.current?.slickNext(); 
+    //         } else {
+    //             return sliderRef?.current?.slickPrev();
+    //         }
+    //     },
+    //     [sliderRef]
+    // );
     // useEffect(() => {
+    //     window.addEventListener("scroll", e => {
+    //         scroll(e.deltaY);
+    //     });
+    // }, [scroll]);
 
-    //     window.addEventListener("scroll", scroll,true);
+    useEffect(() => {
+
+        window.addEventListener("scroll", scroll,true);
         
-    //     return () => {
+        return () => {
         
-    //     window.removeEventListener("scroll", scroll, true);
+        window.removeEventListener("scroll", scroll, true);
         
-    //     };
+        };
         
-    //     }, []);
+        }, []);
 
     const { arrayImage } = props;
     const settings = {

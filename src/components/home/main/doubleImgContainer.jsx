@@ -11,6 +11,7 @@ const DoubleImgContainer =(props)=> {
             <img src={i.src} alt=""/>
           </a>)
         })} */}
+        
          <Link to={`/allCategory?data=gender&filterdata=Men`} style={{margin:`0 ${margin}px`,cursor:"pointer"}}>
             <img src={doubleImg[0].src} alt=""/>
           </Link>

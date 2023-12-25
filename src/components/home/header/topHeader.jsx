@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import './header';
+import { categoryContext } from "../../Context/provider";
 import { MenData,imgArray,WomenData,allMixed } from "../../Context/data";
 import { Link} from "react-router-dom";
 import { debounce } from "../../Context/debounce";
@@ -7,15 +8,16 @@ const TopHeader = () =>{
   const [search,setSearch] = useState("");
   const [matchedProduct, setMatchedProducts] = useState([]);
 
+  const {loggedIn,handleLogout,bagLength} = useContext(categoryContext);
+  console.log("inside top header ,",loggedIn);
   const changeHandler = (event)=>{
-    console.log(event.target.value);
     setSearch(event.target.value);
     let userInput = event.target.value;
+
     let filteredData = allMixed.filter((value)=>{
       return value.name.toUpperCase().includes(userInput.toUpperCase());
     });
     setMatchedProducts(filteredData);
-    console.log("filterd daata ",filteredData);
 
   }
   const debounceChange = debounce(changeHandler,500);
@@ -37,11 +39,11 @@ const TopHeader = () =>{
       <div className='secondHeader'>
         <div className='secondHeaderWrpr'>
             <div className="bewakoofLogoDiv">
-                <a href="/" style={{display: "inline-block", height: "inherit",marginTop:"12px",width: "8rem",
-              margin: "-8px 3.4rem"}}>
+                <Link to={"/"} style={{display: "inline-block", height: "inherit",marginTop:"12px",width: "8rem",
+                margin: "-8px 3.4rem"}}>
                 
                     <img src="https://images.bewakoof.com/web/ic-desktop-bwkf-trademark-logo.svg" alt="bewakoof_logo" title="Bewakoof.com" style={{height: "20px",verticalAlign: "middle", marginBottom: "5px", width: "147px"}}/>
-                </a>
+                </Link>
             </div>
             <div className='menuContainer'>
               <span className="menuItem" 
@@ -91,7 +93,7 @@ const TopHeader = () =>{
 
               <span className="menuItem" 
               >WOMEN
-              <div className='container menuDropdownWrpr'>
+              <div className='container menuDropdownWrpr'style={{width:"1050px"}}>
                 <div className='menuContents dropdownContent'>
                   <div className='dropDownMenu'>
                     <div className='col-xs-7 noPd navSeperator flex flex-wrap'>
@@ -142,17 +144,23 @@ const TopHeader = () =>{
                         </a>
                     </span>
                     <span className='actionMenu actionMenuInner' id='textHeaderCart'>
-                        <a href="/cart" className="cartIcon" style={{paddingRight: "0px", position: "relative"}}>
+                        {loggedIn?<Link to="/addtocart" className="cartIcon" style={{paddingRight: "0px", position: "relative"}}>
+                          <img src='../../../bag-icon-6.png' alt="cart"  style={{color: "grey",width:"20px",height:"20px", marginTop:"16px",opacity:"0.6"}}/>
+                        </Link>
+                        :<Link to="/login" className="cartIcon" style={{paddingRight: "0px", position: "relative"}}>
                         <img src='../../../bag-icon-6.png' alt="cart"  style={{color: "grey",width:"20px",height:"20px", marginTop:"16px",opacity:"0.6"}}/>
-                        </a>
+                      </Link>}
+                        {bagLength>0?<span className="bgLen">{bagLength}</span>:""}
                     </span>
                     <span className='actionMenu' id='testHeadWish' style={{padding: "0 5px",cursor: "pointer"}}>
                   
-                            <a className="icon_wishlist"><i className="fa-regular fa-heart" style={{color: "grey"}}></i></a>
+                    {loggedIn?<Link to={`/showWishList`} className="icon_wishlist"><i className="fa-regular fa-heart" style={{color: "grey"}}></i></Link>
+                    :<Link to={`/login`}  className="icon_wishlist"><i className="fa-regular fa-heart" style={{color: "grey"}}></i></Link>}
                         
                     </span>
                     <div className='actionMenu' style={{display: "flex",alignItems: "baseline",textAlign: "right"}}>
-                        <Link to={'/login'} id="loginLink" className="loginLink">Login</Link>
+                        {loggedIn===false?<Link to={'/login'} id="loginLink" className="loginLink">Login</Link>:
+                        <img src="../../../images/User_icon.png" onClick={()=>{handleLogout()}} style={{width:"50px",height:"46px"}}/>}
                     </div>
                 </div>
             </div>

@@ -11,8 +11,8 @@ const NoCart=()=> {
         style={{ height: 30, padding: 2 }}
         />
       </div>
-      <div style={{borderBottom:"1px solid grey"}}></div>
-      <div className="cartHolder" style={{ backgroundColor: "rgb(255, 255, 255)" }}>
+      {/* <div style={{borderBottom:"1px solid grey"}}></div> */}
+      <div className="cartHolder" style={{ backgroundColor: "rgb(255, 255, 255)",marginTop:"30px" }}>
   <div className="emptycartwish emptyPage" style={{ padding: "30px 0px 0px" }}>
     <img
       src="https://images.bewakoof.com/images/doodles/empty-cart-page-doodle.png"
