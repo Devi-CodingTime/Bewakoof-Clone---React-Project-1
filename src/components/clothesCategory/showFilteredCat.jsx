@@ -174,10 +174,10 @@ const ShowFilterdCat = (props)=>{
             <h3 className="absolute top-60 left-2 bg-white ml-0 pl-2">{parseFloat(i.ratings).toFixed(1)}
             <i className="fa-solid fa-star py-1" style={{color: "#eee044", fontSize:"10px" }}></i>
             </h3>
-            <h3 className="brand-name rvCardDetails undefined break-all">{i.brand}</h3>
+            <h3 className="brand-name rvCardDetails undefined break-all" style={{whiteSpace: "nowrap",width: "184px",overflow: "hidden",textOverflow: "ellipsis"}}>{i.brand}</h3>
             
             <section>
-                <h2 style={{fontSize:"10px"}}>{i.name}</h2>
+                <h2 style={{fontSize:"10px",whiteSpace: "nowrap",width: "184px",overflow: "hidden",textOverflow: "ellipsis"}}>{i.name}</h2>
                 <div onClick={()=>{addToWishList(i._id)}}>
                     {favArr.includes(i._id)?<img src="https://images.bewakoof.com/web/Wishlist-selected.svg" className="wishlist-icon"/>:
                     <img src="https://images.bewakoof.com/web/Wishlist.svg" className="wishlist-icon"/>}

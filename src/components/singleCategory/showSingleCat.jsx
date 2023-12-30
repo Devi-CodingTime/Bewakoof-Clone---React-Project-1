@@ -165,8 +165,8 @@ const ShowSingleCategory=()=> {
                         </section>
                         <span style={{ cursor:"pointer"}} onClick={openDesc}>+</span>
                     </div>
-                    
-                    {open?(<p className='py-1 descpara'>{singleProduct.description}</p>):""}
+                    {/* <div dangerouslySetInnerHTML={createMarkup()} */}
+                    {open?(<div className='py-1 descpara' dangerouslySetInnerHTML={{ __html: singleProduct.description }}></div>):""}
                 </div>
                 
                 <div className="flex justify-center items-center gap-3 pb-4">

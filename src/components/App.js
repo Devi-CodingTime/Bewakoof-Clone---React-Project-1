@@ -11,6 +11,7 @@ import ForgetPassword from "./forgetPassword/forgetPassword";
 import AddToCart from "./cart/addToCart";
 import { ContextProvider } from "./Context/provider";
 import ShowWishList from "./wishList/showWishList";
+import Checkout from "./checkout/checkout";
 function App() {
 
   return( <div className="App">
@@ -27,7 +28,7 @@ function App() {
       <Route path="/nocart" element={<NoCart/>}/>
       <Route path="/addtocart" element={<AddToCart/>}/>
       <Route path="/showWishList" element={<ShowWishList/>}/>
-      {/* <Route path="/payment" element={<Payment/>}/> */}
+      <Route path="/checkout" element={<Checkout/>}/>
 
       <Route path="/review/:id" element={<Review/>}/>
       </Routes>

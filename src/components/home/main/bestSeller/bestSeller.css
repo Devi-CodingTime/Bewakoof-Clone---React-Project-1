@@ -57,3 +57,7 @@ section
         opacity: 1;
     }
 }
+.brand-name
+{
+    text-overflow: ellipsis;
+}

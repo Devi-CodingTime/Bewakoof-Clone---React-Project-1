@@ -35,10 +35,10 @@ const SliderShow = (props) => {
         
       </Slider>
       <div className="iconContainer">
-            <i className="fa-solid fa-chevron-left prevIcon" onClick={goToPrev}></i>
-          </div>
-          <div className="iconContainerNext">
-            <i class="fa-solid fa-chevron-right nextIcon" onClick={goToNext}></i>
+        <i className="fa-solid fa-chevron-left prevIcon" onClick={goToPrev}></i>
+      </div>
+      <div className="iconContainerNext">
+        <i class="fa-solid fa-chevron-right nextIcon" onClick={goToNext}></i>
       </div>
     </>
   );

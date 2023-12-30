@@ -23,17 +23,17 @@ const NextSliderShow = (props) => {
     //     });
     // }, [scroll]);
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        window.addEventListener("scroll", scroll,true);
+    //     window.addEventListener("scroll", scroll,true);
         
-        return () => {
+    //     return () => {
         
-        window.removeEventListener("scroll", scroll, true);
+    //     window.removeEventListener("scroll", scroll, true);
         
-        };
+    //     };
         
-        }, []);
+    //     }, []);
 
     const { arrayImage } = props;
     const settings = {

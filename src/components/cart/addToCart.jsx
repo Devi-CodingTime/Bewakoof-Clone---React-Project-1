@@ -4,6 +4,10 @@ import { categoryContext } from '../Context/provider';
 import NoCart from './noCart';
 import { Link } from 'react-router-dom';
 
+import { render } from "react-dom";
+import "react-responsive-modal/styles.css";
+import { Modal } from "react-responsive-modal";
+
 const AddToCart =()=> {
   const [size, setSize] = React.useState('');
   const [quantity, setQuantity] = React.useState('');
@@ -15,6 +19,15 @@ const AddToCart =()=> {
     setQuantity(event.target.value);
   };
 
+  const[open,setOpen] = useState(false);
+
+  const openModal = () => {
+    setOpen(true);
+  };
+
+  const closeModal = () => {
+    setOpen(false);
+  };
   const [cartItem,setCartItem] = useState([]);
   const getCartItems = async() =>{
     try
@@ -165,10 +178,24 @@ useEffect(()=>{
         <div className="addsection">
             <span className='m-1'>total</span>
             <span className='mr-[50px]'>₹{totalPrice+100}</span>
-            <button id="web_continue_submit" style={{width:"width: 56%"}} type="button" className="loginSubmit">
+            {/* <Link to={`/checkout`}> */}
+            <button id="web_continue_submit" style={{width:"width: 56%"}} type="button" className="loginSubmit"
+            onClick={openModal}>
               ADD ADDRESS
             </button>
-            
+
+            <div>
+              <Modal open={open} onClose={closeModal}>
+                <h2>Add New Address</h2>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+                  pulvinar risus non risus hendrerit venenatis. Pellentesque sit amet
+                  hendrerit risus, sed porttitor quam.
+                </p>
+              </Modal>
+            </div>
+
+            {/* </Link> */}
             <div className="flex justify-center items-center gap-3 py-4 ">
                     <div className="flex flex-row  containerInner">
                         <div className="flex flex-col items-center">

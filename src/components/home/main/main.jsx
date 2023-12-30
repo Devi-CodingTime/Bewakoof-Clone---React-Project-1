@@ -19,7 +19,8 @@ const sliderArrayImage1 =
   {src:"https://images.bewakoof.com/uploads/grid/app/Joggers-buy-2-for-1299-Common-1x1-Banner-1702052630.jpg"},
   {src:"https://images.bewakoof.com/uploads/grid/app/NEW-1x1-BOJ-RMIK-GIF-1701613600.gif"},
   {src:"https://images.bewakoof.com/uploads/grid/app/OOFSale-1X1-IKRM-03-1702542830.gif"},
-  {src:"https://images.bewakoof.com/uploads/grid/app/NEW-1x1-HDflat60-common-1702381459.jpg"}
+  {src:"https://images.bewakoof.com/uploads/grid/app/NEW-1x1-HDflat60-common-1702381459.jpg"},
+  {src:"https://images.bewakoof.com/uploads/grid/app/Year-end-Sale-Common-1x1--Ends-Tomm-Banner-1703852639.gif"}
 ];
 
 const sliderArrayImage2 =

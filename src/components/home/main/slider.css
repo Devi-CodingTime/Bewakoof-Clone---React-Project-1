@@ -1,8 +1,8 @@
-/* .slider
-{
-    position: absolute;
+
+/* .slider{
+     position: absolute;
     top: 140px;
-    left: 0;
+    left: 0; 
 } */
 .card{
     padding: 6px;
@@ -19,7 +19,7 @@
     /* top: calc(50% - 25px); */
     top: 50%;
     right: 2%;
-    z-index: 5;
+    z-index: 3;
     position: absolute !important;
     background-color: rgba(255, 255, 255, 0.4);
     border-radius: 50%;
@@ -35,7 +35,7 @@
     /* top: calc(50% - 25px); */
     top: 50%;
     left: 2%;
-    z-index: 5;
+    z-index: 3;
     position: absolute !important;
     background-color: rgba(255, 255, 255, 0.4);
     border-radius: 50%;

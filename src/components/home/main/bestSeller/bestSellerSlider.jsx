@@ -56,7 +56,7 @@ const BestSellerSlider = () => {
             <h3 className="brand-name rvCardDetails undefined">{i.brand}</h3>
             
             <section>
-                <h2 style={{fontSize:"10px"}}>{i.name}</h2>
+                <h2 style={{fontSize:"10px",textOverflow: "ellipsis"}}>{i.name}</h2>
                 <img  src="https://images.bewakoof.com/web/Wishlist.svg"  alt="wishlist"  className="wishlist-icon"/>
                 <div className="PriceText">
                   <span>₹</span>{i.price}

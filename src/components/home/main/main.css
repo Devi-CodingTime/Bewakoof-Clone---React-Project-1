@@ -5,8 +5,9 @@
     position: relative;
 }
 .nextSlider{
-    margin: -40px 20px 10px;
+    margin: -40px 183px 40px;
     overflow:hidden ;
+    cursor: pointer;
     /* position: absolute;
     top: 10%;
     left: 5%; */

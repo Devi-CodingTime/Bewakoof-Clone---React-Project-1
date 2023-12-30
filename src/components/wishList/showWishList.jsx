@@ -48,7 +48,7 @@ const ShowWishList = ()=> {
               </h3> */}
             
               <section>
-                <h2 style={{fontSize:"10px"}}>{i.products.name}</h2>
+                <h2 style={{fontSize:"10px",whiteSpace: "nowrap",width: "184px",overflow: "hidden",textOverflow: "ellipsis"}}>{i.products.name}</h2>
                 <div>
                     <img src="https://images.bewakoof.com/web/Wishlist-selected.svg" className="my-wishList"/>
                 </div>

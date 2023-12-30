@@ -1,0 +1,129 @@
+.popup_backdrop .icon_close {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    font-size: 12px;
+    font-weight: 700;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    z-index: 1;
+    padding: 18px;
+}
+@media (min-width: 769px){
+.addressForms {
+    padding: 20px 56px;
+    margin-top: 0;
+}
+}
+.addressForms {
+    background: #fff;
+    height: 100%;
+}
+.addressForms .input-outline {
+    margin-bottom: 30px;
+}
+.input-outline {
+    width: 100%;
+    position: relative;
+    display: inline-block;
+}
+.input-outline input {
+    width: 100%;
+    font-size: 14px;
+    font-family: montserrat, sans-serif;
+    height: auto;
+    display: block;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.3);
+    border-image: initial;
+    border-radius: 5px;
+    padding: 14px;
+}
+label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+.addressForms .divider {
+    height: 1px;
+    background-color: rgba(0,0,0,.12);
+    margin-bottom: 1rem;
+}
+@media screen and (min-width: 769px)
+{
+.addressForms .divider {
+    margin-bottom: 2rem;
+}
+}
+.addressForms .formGroup {
+    width: 100%;
+    padding-bottom: 50px;
+}
+.addressForms .formGroup .addressTypeTitle {
+    color: rgba(0,0,0,.4);
+}
+.addressForms .formGroup .addressSubType {
+    cursor: pointer;
+    border: 1px solid rgba(0,0,0,.4);
+    border-radius: 15px;
+    margin: 9px 12px 0 0;
+}
+.addressForms .formGroup .addressSubType input[type=radio] {
+    display: none;
+}
+.addressForms .formGroup .addressSubType label {
+    padding: 9px 11px;
+    border-radius: 15px;
+    margin: 0;
+    font-size: 12px;
+    font-family: montserrat,sans-serif;
+    text-transform: uppercase;
+    color: rgba(0,0,0,.4);
+    cursor: pointer;
+}
+@media screen and (min-width: 769px){
+.addressForms .addEditSubmit {
+    text-align: center;
+    padding-bottom: 45px;
+}
+}
+@media screen and (min-width: 769px){
+.addressForms .addEditSubmit .maddAddressButton {
+    position: relative;
+    width: 238px;
+    border-radius: 5px;
+}
+}
+
+element.style {
+}
+@media screen and (min-width: 769px){
+.addressForms .addEditSubmit .maddAddressButton {
+    position: relative;
+    width: 238px;
+    border-radius: 5px;
+}}
+
+.addressForms .addEditSubmit .maddAddressButton {
+    background-color: #42a2a2;
+    border: 1px solid #42a2a2;
+    color: #fff;
+    font-size: 16px;
+    text-transform: uppercase;
+    bottom: 0;
+    left: 0;
+    height: 48px;
+}
+.addressForms .addEditSubmit .cancelAddButton {
+    background-color: #fff;
+    color: #42a2a2;
+    margin-left: 20px;
+}
+@media screen and (min-width: 769px){
+.addressForms .addEditSubmit .maddAddressButton {
+    position: relative;
+    width: 238px;
+    border-radius: 5px;
+}}
