@@ -1,5 +1,5 @@
 import React, { useState,useContext, useEffect } from "react";
-import './header';
+import './header.css';
 import { categoryContext } from "../../Context/provider";
 import { MenData,imgArray,WomenData,allMixed } from "../../Context/data";
 import { Link} from "react-router-dom";
@@ -8,7 +8,7 @@ const TopHeader = () =>{
   const [search,setSearch] = useState("");
   const [matchedProduct, setMatchedProducts] = useState([]);
 
-  const {loggedIn,handleLogout,handleLogin,cartItem,getCartItems,handleToken,userName} = useContext(categoryContext);
+  const {loggedIn,handleLogout,handleLogin,cartItem,getCartItems,handleToken,wishlist,userName} = useContext(categoryContext);
   // console.log("inside top header ,",loggedIn);
   const changeHandler = (event)=>{
     setSearch(event.target.value);
@@ -168,7 +168,7 @@ const TopHeader = () =>{
                     ||localStorage.getItem("token") */}
                     {loggedIn?<Link to={`/showWishList`} className="icon_wishlist"><i className="fa-regular fa-heart" style={{color: "grey"}}></i></Link>
                     :<Link to={`/login`}  className="icon_wishlist"><i className="fa-regular fa-heart" style={{color: "grey"}}></i></Link>}
-                        
+                      {wishlist.length>0?<span className="wishLen">{wishlist.length}</span>:""}
                     </span>
                     <div className='actionMenu userIconConatiner' style={{display: "flex",alignItems: "baseline",textAlign: "right"}}>
                         {loggedIn===false || localStorage.getItem("token")===null?<Link to={'/login'} id="loginLink" className="loginLink">Login</Link>:
@@ -193,10 +193,10 @@ const TopHeader = () =>{
             <div className='pull-right mainHeaderCols searchWrapper'>
                 <div className='icon-addon addon-sm'>
                     <form className='searchContainer' style={{position:"relative",borderBottom:"none",top:0}}>
-                    <input className="searchInput form-controls" placeholder="Search by product, category or collection" 
-                    type="text" autoComplete="off" onChange={debounceChange}
-                    style={{fontSize: "13px"}}/>
-                    <i className="fa-solid fa-magnifying-glass" style={{color: "grey",opacity: "0.6"}}></i>
+                      <input className="searchInput form-controls" placeholder="Search by product, category or collection" 
+                      type="text" autoComplete="off" onChange={debounceChange}
+                      style={{fontSize: "13px"}}/>
+                      <i className="fa-solid fa-magnifying-glass" style={{color: "grey",opacity: "0.6"}}></i>
                     </form>
                     <div className="seperator"></div>
                 </div>

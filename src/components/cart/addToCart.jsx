@@ -17,9 +17,9 @@ const AddToCart =()=> {
     totalPrice,email,loader} = useContext(categoryContext);
  
 
-  const handleChange = (event) => {
-    setSize(event.target.value);
+  const handleChange = (event,id) => {
     setQuantity(event.target.value);
+    addToBagItems({size:size,quantity:event.target.value},id);
   };
 
   const[open,setOpen] = useState(false);
@@ -43,7 +43,9 @@ const addToWishList = async(id)=>{
           });
           let data = await res.json();
           setAddWishList(data.data);
-          
+          removeFromCart(id);
+          getCartItems();
+          getWishListData();
           console.log("get setWishList -------",data.data);
       }
       catch(error)
@@ -70,6 +72,8 @@ const [bagItem,setBagItem] = useState({});
               let data = await res.json();
               setBagItem(data.data.items);
               removeFromWishList(id);
+              getWishListData();
+              getCartItems();
           }
           catch(error)
           {
@@ -88,6 +92,7 @@ useEffect(()=>{
   return (
     <>{cartItem.length==0?(<NoCart/>):  (<>
     <CartHeader email={email}/>
+    {console.log("cart",cartItem)}
     {loader?<Loader/>:""}
     <h1 style={{textAlign:"left"}} className='py-8 myBag'>My Bag {cartItem.length} item</h1>
     <div className='flex flex-1 py-4 px-4 gap-4' style={{margin:"-50px 176px"}}>
@@ -104,17 +109,29 @@ useEffect(()=>{
             <div className='leftside w-[80%]' style={{textAlign:"left"}}>
     
             <p>{i.product.name}</p>
+            {console.log("pro ",i.product)}
             <p className='pricepara'>₹{i.product.price*i.quantity}</p>
             <div className='flex gap-2'>
-              <select className='border' onChange={handleChange}>
+              <select className='border'>
                 <option value="">Size</option>
                 <option value={i.size} selected>{i.size}</option>
                 {/* <option value="1">L</option> */}
               </select>
-              <select className='border' onChange={handleChange}>
+              <select className='border' onChange={(e)=>{handleChange(e,i.product._id)}}>
                 <option value="">Qty</option>
                 <option value={i.quantity} selected>{i.quantity}</option>
-                {/* <option value="1">3</option> */}
+                <option value="1">1</option> 
+                <option value="2">2</option> 
+                <option value="3">3</option>
+                <option value="4">4</option> 
+                <option value="5">5</option> 
+                <option value="6">6</option>
+                <option value="7">7</option> 
+                <option value="8">8</option> 
+                <option value="9">9</option> 
+                <option value="10">10</option> 
+                {/* <option value={i.quantity} selected>{i.quantity}</option> */}
+               
               </select>
             </div>
 

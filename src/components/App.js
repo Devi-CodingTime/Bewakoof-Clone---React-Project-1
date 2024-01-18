@@ -51,7 +51,3 @@ function App() {
 
 export default App;
 
-
-// favicon icon -> https://images.bewakoof.com/web/favicon-1635856217.png
-// bewakoof logo -> https://images.bewakoof.com/lib/icon/app-logo.png
-//  api for filter specific data https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?filter={"gender":"Women"} 

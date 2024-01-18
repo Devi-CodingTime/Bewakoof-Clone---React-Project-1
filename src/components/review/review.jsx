@@ -42,7 +42,7 @@ import Typography from '@mui/material/Typography';
       <TopHeader/>
       <SideNavbar/>
 
-      <Card sx={{ minWidth: 275 }}>
+      <Card sx={{ minWidth: 275,marginTop:"75px" }}>
         <CardContent>
             <Typography sx={{ mb: 1.5 }} color="text.secondary">
             Customer Rating
@@ -57,7 +57,7 @@ import Typography from '@mui/material/Typography';
         </CardContent>
       </Card>
   
-        <div className="d-flex justify-content-between align-items-center mt-2">
+        <div className="d-flex justify-content-between align-items-center mt-2 px-36">
             <p className="usr-name">Bewakoof Fans</p>
             <div className="thumbsIcon d-flex">
             <p className="upVoteCount">(3471)</p>
