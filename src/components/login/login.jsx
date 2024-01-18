@@ -7,11 +7,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { categoryContext } from "../Context/provider";
 const Login = ()=>{
-  const {loggedIn,token,handleLogin,handleToken} = useContext(categoryContext);
-  console.log("initial loggerdIn value",loggedIn);
-  console.log("initial token value",token);
-  console.log("initial handleLogin value",handleLogin);
-  console.log("initial handleToken value",handleToken);
+  const {loggedIn,token,handleLogin,handleToken,setUserName,setEmail} = useContext(categoryContext);
+  // console.log("initial loggerdIn value",loggedIn);
+  // console.log("initial token value",token);
+  // console.log("initial handleLogin value",handleLogin);
+  // console.log("initial handleToken value",handleToken);
 
   const navigate = useNavigate();
 
@@ -19,7 +19,9 @@ const Login = ()=>{
     email: '', 
     password: '',
     "appType" : "ecommerce"
- })
+ });
+
+ const [errorMsg,setErrorMsg] = useState("");
 
 
  const handleChange = (e)=> {
@@ -36,23 +38,31 @@ const Login = ()=>{
         // headers: new Headers({projectID:'ctxjid7mj6o5' , 'Content-Type': 'application/json'} ),
         body: JSON.stringify(loginData)
     }
-    console.log("options",options);
+    // console.log("options",options);
     const res = await fetch('https://academics.newtonschool.co/api/v1/user/login' ,options);
     
     const resJson = await res.json();
-
-    console.log("token :",resJson.token);
-    // localStorage.setItem('token' , resJson.token)
+    
+    
+    // console.log("token :",resJson.token);
+    
+    // console.log(resJson.data.email);
+    
     if(resJson.status==="success")
     {
       handleLogin(true);
       handleToken(resJson.token);
+      setUserName(resJson.data.name);
+      setEmail(resJson.data.email);
+      localStorage.setItem('token' , resJson.token)
       navigate('/');
     }
     else
     {
       handleLogin(false);
+      setErrorMsg(resJson.message);
       navigate('/login');
+      // localStorage.removeItem('token');
     }
 
   }
@@ -88,18 +98,18 @@ const Login = ()=>{
             </div>
             <div className="form-body">
               <form name="loginForm" noValidate="" autoComplete="off" className="loginForm">
-               
+                  {errorMsg?<p style={{color:"red", fontSize:'20px'}}>{errorMsg}</p>:""}
                   <input className="email" onChange={handleChange} id="email" type="email" name="email" placeholder="Enter Your Email"/>
                   <input className="pass" onChange={handleChange} id="password" type="password" name="password" placeholder="Enter Your Password"/>
-                  <Link to="/forgetpassword" className="block mt-3">Forget Password</Link>
+                  {/* <Link to="/forgetpassword" className="block mt-3">Forget Password</Link> */}
                 
                 <button id="web_continue_submit" type="button" className="loginSubmit" onClick={handleContinue} >
                   Login
                 </button>
-                <section className='flex flex-row gap-2 w-[50%] ml-[177px] justify-center items-center'>
+                <section className='loginSection'>
                   <p>Don't have an account ?</p>
                   <Link to="/signup" style={{padding:"7px", width:"20%",color:"#42a2a2",cursor:"pointer"}}>Signup</Link>
-              </section>
+                </section>
               </form>
               
               <p className="termsAndConditions">

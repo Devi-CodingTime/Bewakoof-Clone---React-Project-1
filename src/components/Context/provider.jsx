@@ -1,63 +1,160 @@
 import { useContext,createContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { wishlisted } from "../utility/storagewishlist";
+
 const categoryContext = createContext();
 const ContextProvider = (props)=>{
+    const navigate = useNavigate();
     const [search, setSearch] = useState("");
     const [searchTerm,setsearchTerm] = useState("");
 
     const [loggedIn, setLoggedIn] = useState(false);
     const [token, setToken] = useState("");
-    const [bagLength,setBagLength] = useState(0);
-    const [wishlist,setWishlist] = useState([]);
+    const [userName,setUserName] = useState("");
+    const [email,setEmail] = useState("");
 
+    const [wishlist,setWishlist] = useState([]);
+    const [wishListedItem,setWishListedItem] = useState([]);
+    const [wishlistMsg,setWishlistMsg] = useState("");
+    const [loader,setLoader] = useState(false);
+    const[totalPrice,setTotalPrice] = useState(0);
+    const [cartItem,setCartItem] = useState([]);
     const getWishListData = async() =>{
         try
         {
+            setLoader(true);
             let res = await fetch("https://academics.newtonschool.co/api/v1/ecommerce/wishlist",{
                 method:"GET",
                 headers : {projectID:'ctxjid7mj6o5' , 'Content-Type': 'application/json',Authorization:`Bearer ${token}`},
             });
             let data = await res.json();
             setWishlist(data.data.items);
-           
+            // console.log("hello wishlist added  ",data.data.items[0].products);
+            for(var i=0;i<data.data.items.length;i++)
+            {
+                
+                let val = data.data.items[i].products._id;
+                // console.log("i value",val);
+                wishlisted.push(val);
+            }
+            // console.log("wishlisted arr ",wishlisted);
         }catch(error){
             console.log(error);
         }
+        finally{
+            setLoader(false);
+        }
     }
 
-    const [bagItem,setBagItem] = useState([]);
-    const addToBag = async(bagData,id) =>{
-        if(!loggedIn)
-            navigate("/login");
-        else
+    const addToWishList = async(id)=>{
+        if(loggedIn)
         {
-            try
+        try
             {
-                // let bagData = {size:'S',quantity:'1'}
-                let res = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/cart/${id}`,{
+                setLoader(true);
+                wishlisted.add(id);
+                // console.log("wishlisted.add(id);",wishlisted);
+                let bagData = { productId : id };
+                let res = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/wishlist`,{
                     method:"PATCH",
                     headers : {projectID:'ctxjid7mj6o5' , 'Content-Type': 'application/json',Authorization:`Bearer ${token}`},
-                    body: JSON.stringify(bagData)    
+                    body: JSON.stringify(bagData)
                 });
                 let data = await res.json();
-                setBagItem(data.data.items);
-                getBagLength(data.data.items.length);
                 
-                console.log("get setBagItem -------",data.data.items.length);
+                if(data.status==="fail")
+                    setWishlistMsg(data.message);
+                else
+                    setWishListedItem(data.data);
+            }
+            catch(error)
+            {
+                console.log("devi error",error);
+                // alert(data.data.message)
+            }
+            finally{
+                setLoader(false);
+            }
+        }
+        else{
+            navigate(`/login`);
+        }
+    }
+
+    const removeFromWishList = async(id)=>{
+        try
+            {
+                setLoader(true);
+                wishlisted.delete(id);
+            //   console.log("deleted :",wishlisted);
+                let res = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/wishlist/${id}`,{
+                    method:"DELETE",
+                    headers : {projectID:'ctxjid7mj6o5' , 'Content-Type': 'application/json',Authorization:`Bearer ${token}`}
+                    
+                });
+                let data = await res.json();
+                setWishlist(data.data.items);
+                
+                // console.log("wishlist item set done -------",data.data.items);
             }
             catch(error)
             {
                 console.log(error);
             }
+            finally{
+                setLoader(false);
+            }
+      }
+
+    const getCartItems = async() =>{
+        try
+        {
+            setLoader(true);
+          let res = await fetch("https://academics.newtonschool.co/api/v1/ecommerce/cart",{
+              method:"GET",
+              headers : {projectID:'ctxjid7mj6o5' , 'Content-Type': 'application/json',Authorization:`Bearer ${token}`},
+          });
+          let data = await res.json();
+          setCartItem(data.data.items);
+            // console.log("getCartItems---------",data);
+            setTotalPrice(data.data.totalPrice);
+    
+        }catch(error){
+            console.log(error);
         }
+        finally{setLoader(false);}
     }
-    const navigate = useNavigate();
+    
+    const removeFromCart = async(id)=>{
+        try
+            {
+                setLoader(true);
+                let res = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/cart/${id}`,{
+                    method:"DELETE",
+                    headers : {projectID:'ctxjid7mj6o5' , 'Content-Type': 'application/json',Authorization:`Bearer ${token}`}
+                    
+                });
+                let data = await res.json();
+                setCartItem(data.data.items);
+                
+                // console.log("cart item set done -------",data.data.items);
+            }
+            catch(error)
+            {
+                console.log(error);
+            }
+            finally{
+                setLoader(false)
+            }
+      }
+   
     const handleLogin=(loginvalue)=>{
         setLoggedIn(loginvalue);
     }
     const handleLogout=()=>{
         setLoggedIn(false);
         setToken("");
+        localStorage.removeItem("token");
         navigate("/login");
     }
 
@@ -68,12 +165,10 @@ const ContextProvider = (props)=>{
         setSearch(s);
         setsearchTerm(term);
     }
-    const getBagLength = (count) =>{
-        setBagLength(count);
-    }
-    
+
     return(<>
-        <categoryContext.Provider value={{search,searchTerm,loggedIn,token,bagLength,wishlist,handleSearch,handleLogin,handleToken,getBagLength,handleLogout,getWishListData,addToBag,setWishlist}}>
+        <categoryContext.Provider value={{search,searchTerm,loggedIn,token,wishlist,cartItem,totalPrice,wishlistMsg,userName,email,loader,
+            handleSearch,handleLogin,handleToken,handleLogout,getWishListData,getCartItems,removeFromCart,removeFromWishList,addToWishList,setUserName,setEmail}}>
             {props.children}
         </categoryContext.Provider>
     </>)

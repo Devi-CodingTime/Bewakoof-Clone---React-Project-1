@@ -1,15 +1,18 @@
 import React from 'react'
 import '../cart/noCart.css';
+import { Link } from 'react-router-dom';
 const NoCart=()=> {
   return (
     <div className='cardContainer'>
       <div className='Bewakoofimg'>
+        <Link to={`/`}>
       <img
         src="https://images.bewakoof.com/web/ic-desktop-bwkf-trademark-logo.svg"
         title="Bewakoof Logo"
         alt="bewakoof_logo"
         style={{ height: 30, padding: 2 }}
         />
+        </Link>
       </div>
       {/* <div style={{borderBottom:"1px solid grey"}}></div> */}
       <div className="cartHolder" style={{ backgroundColor: "rgb(255, 255, 255)",marginTop:"30px" }}>

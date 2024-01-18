@@ -12,6 +12,11 @@ import AddToCart from "./cart/addToCart";
 import { ContextProvider } from "./Context/provider";
 import ShowWishList from "./wishList/showWishList";
 import Checkout from "./checkout/checkout";
+import Payment from "./payment/payment";
+import Orderplaced from "./orderplaced/orderplaced";
+import Myorder from "./orderList/myorder";
+import SingleOrder from "./singleorder/singleOrder";
+// import Loader from "./loader/loader";
 function App() {
 
   return( <div className="App">
@@ -29,6 +34,10 @@ function App() {
       <Route path="/addtocart" element={<AddToCart/>}/>
       <Route path="/showWishList" element={<ShowWishList/>}/>
       <Route path="/checkout" element={<Checkout/>}/>
+      <Route path="/payment" element={<Payment/>}/>
+      <Route path="/orderplaced" element={<Orderplaced/>}/>
+      <Route path="/myorder" element={<Myorder/>}/>
+      <Route path="/singleorder/:id" element={<SingleOrder/>}/>
 
       <Route path="/review/:id" element={<Review/>}/>
       </Routes>

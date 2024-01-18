@@ -1,0 +1,50 @@
+.holdOrders{
+    margin-top: 80px;
+}
+/* .cartItems{
+   border: 1px solid rgb(212, 212, 212);
+} */
+.orderConatiner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    margin: 0 auto 40px;
+    border: 1px solid rgb(212, 212, 212);
+}
+.leftpart{
+    object-fit: cover;
+    width: 30%;
+}
+.rightpart
+{
+    width: 70%;
+    height: 311px;
+}
+.orderHeading{
+    width: 49%;
+    font-size: 28px;
+    font-weight: 600;
+}
+.orderSpan{
+    width: 93px;
+    background-color: #ffbe00;
+    height: 2px;
+    margin-left: 277px;
+    margin-top: -4px;
+    margin-bottom: 14px;
+}
+.viewMoreOrder
+{
+    border: 1px solid #42a2a2;
+    color: #42a2a2;
+    border-radius: 5px;
+    width: 246px;
+    height: 53px;
+    padding: 5px;
+    cursor: pointer;
+    margin-top: 236px;
+    margin-right: 10px;
+    font-size: 18px;
+    font-weight: 600;
+}

@@ -84,5 +84,28 @@
     margin-top: 5px;
     text-align: center;
     cursor: pointer;
-
+}
+.loginSection
+{
+    display: flex;
+    gap: 2;
+    flex-direction: row;
+    width: 50%;
+    margin-left: 177px;
+    justify-content: center;
+    align-items: center;
+}
+@media (max-width:991px) {
+    .loginSection{
+        margin-left: 20%;
+        font-size: 15px;
+    }
+}
+@media (max-width:768px){
+    .log-sign-desk-wrap{
+        flex-direction: column;
+    }
+    .welcome{
+        width: 100%;
+    }
 }

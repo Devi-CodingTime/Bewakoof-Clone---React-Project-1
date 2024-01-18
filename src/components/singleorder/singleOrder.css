@@ -1,0 +1,130 @@
+.backtoListing {
+    float: left;
+    width: 100%;
+    margin: 89px -35% 10px;
+}
+.sigleOrderdata
+{
+    /* margin-top: 80px; */
+    width: 80%;
+    height: fit-content;
+    margin: 163px auto;
+    display: flex;
+    gap: 5px;
+}
+.leftScreen
+{
+    width: 65%;
+    /* height: 313px; */
+    /* background-color: aqua;
+    border: 1px solid blue; */
+}
+.singleOrderItem{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: -31px;
+    border: 1px solid rgb(212, 212, 212);
+}
+.imgpart
+{
+    object-fit: cover;
+    width: 18%;
+    margin-left: -46px;
+}
+.descpart
+{
+    width: 70%;
+    height: 188px;
+    line-height: 0.6;
+}
+.rightScreen
+{
+    width: 35%;
+    /* background-color: azure; */
+    height: 288px;
+    /* border: 1px solid springgreen; */
+}
+.pricedetail{
+    font-size: 16px;
+    padding: 10px;
+    background-color: white;
+}
+
+.addressPaymentWrapper {
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    background: #fff;
+    width: 100%;
+    margin: 6px 0 15px;
+    padding: 16px;
+    position: relative;
+}
+.shippingAddress--wrapper-new {
+    background: #fff;
+}
+.shippingAddress--wrapper-new .shippingAddressType label {
+    font-family: montserrat-regular,sans-serif!important;
+    font-size: 8px!important;
+    line-height: 16px!important;
+    color: #fe8f00;
+    background: #fff9f2;
+    border-radius: 2px;
+    padding: 0 5px;
+    text-transform: uppercase;
+    border: .5px solid #fe8f00;
+    margin-bottom: 8px;
+    width: -webkit-fit-content;
+    width: fit-content;
+}
+.shippingAddress--wrapper-new .userDetails {
+    color: #292d35;
+    margin-bottom: 4px;
+    font-family: montserrat,sans-serif!important;
+    font-size: 12px!important;
+    line-height: 14px!important;
+}
+.shippingAddress--wrapper-new .shippingaddressData {
+    font-family: montserrat-regular,sans-serif!important;
+    font-size: 12px!important;
+    line-height: 14px!important;
+    color: #4e5664;
+}
+.shippingAddress--wrapper-new .returnProductBar {
+    border-bottom: 1px solid #e3e5e9;
+    margin-top: 12px;
+}
+.orderHelpWrapper {
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+.orderHelpWrapper--heading {
+    font-size: 12px;
+    color: rgba(0,0,0,.38);
+    /* padding: 17px 14px 8px; */
+}
+.orderHelpWrapper--buttons {
+    padding: 1px 0 2px;
+}
+.orderHelpWrapper--buttons .orderHelp--buttonWrapper {
+    width: 100%;
+    margin-right: 12px;
+}
+@media only screen and (min-width: 769px){
+.addressPaymentWrapper .viewAddressPayemnt-wrpr {
+    display: none;
+}
+}
+@media only screen and (min-width: 769px){
+.orderHelpWrapper {
+    padding: 20px 14px;
+}
+}
+
+@media only screen and (min-width: 769px){
+.orderHelpWrapper .orderHelpWrapper--heading {
+    padding: 0;
+}
+}

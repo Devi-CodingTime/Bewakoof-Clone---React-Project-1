@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./category.css";
 import {categoryContext } from "../Context/provider";
-import { Link, NavLink, useNavigate,useSearchParams } from "react-router-dom";
+import { useNavigate,useSearchParams } from "react-router-dom";
+import { wishlisted } from "../utility/storagewishlist";
+import Loader from "../loader/loader";
 
 const ShowFilterdCat = (props)=>{
-    const {data,filterdata}=props;
-    
+    // const {data,filterdata}=props;
+    const [loader,setLoader] = useState(false);
     const[searchParams, setSearhcParams]= useSearchParams();
     const [searcheddata,setSearcheddata] = useSearchParams();
     console.log("-----------------------------------------");
@@ -15,22 +17,18 @@ const ShowFilterdCat = (props)=>{
     // console.log("searchfilter",searchfilter.get("searchfilter"));
     console.log("------------------------------------------");
 
-    const {search,searchTerm,token} = useContext(categoryContext);
+    const {search,searchTerm,addToWishList,wishlistMsg} = useContext(categoryContext);
     const navigate = useNavigate();
 
     const [product,setProduct] = useState([]);
-    const [searchWithFilter, setSearchWillFilter] = useState("");
-
-    const [favArr,setFavArr] = useState([]);
-    const [wishList,setWishList] = useState([]);
+    // const [searchWithFilter, setSearchWillFilter] = useState("");
+    // const [wishList,setWishList] = useState([]);
     // api call here
     async function getBestSellerProducts()
     {
         try
         {
-            console.log("ghaaas ",typeof data);
-            console.log("rthuyruyrtr ",typeof filterdata);
-
+            setLoader(true);
             const res = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?filter={"${searchParams.get("data")}":"${searchParams.get("filterdata")}"}&limit=50`,{
                
             method: "GET", // *GET, POST, PUT, DELETE, etc.                        
@@ -38,7 +36,7 @@ const ShowFilterdCat = (props)=>{
                     "Content-Type": "application/json",
                     'projectId': 'ctxjid7mj6o5',
                 }});
-                console.log("res from design of the week",res);
+                // console.log("res from design of the week",res);
             const result = await res.json();
             // console.log("result.data : ",result);  https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?limit=1597"
             setProduct(result.data);
@@ -46,13 +44,15 @@ const ShowFilterdCat = (props)=>{
         }catch (error) {
             console.log(error);
         }
+        finally{
+            setLoader(false);
+        }
     }
     
     async function getsearchedProductsByCategory()
     {
-    // https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?search={"name":"Oversized"}&filter={"subCategory":"tshirt"} working for 
-
         try{
+            setLoader(true);
             var api;
             if(searchTerm==="price")
             {
@@ -69,7 +69,7 @@ const ShowFilterdCat = (props)=>{
                     "Content-Type": "application/json",
                     'projectId': 'ctxjid7mj6o5',
                 }});
-                console.log("inside filter ",res);
+                // console.log("inside filter ",res);
             const res = await data.json();
             setProduct(res.data);
         }                                                                                                          
@@ -77,15 +77,16 @@ const ShowFilterdCat = (props)=>{
         catch (error) {
             console.log(error);
         }
+        finally{
+            setLoader(false);
+        }
     }
 
     async function getproductBySearchAndFilter()
     {
         try
         {
-            // console.log("ghaaas ",typeof data);
-            // console.log("rthuyruyrtr ",typeof filterdata);
-
+            setLoader(true);
             const res = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?search=${searcheddata.get("searcheddata")}&filter=${searcheddata.get("filtereddata")}&limit=50`,{
                
             method: "GET", // *GET, POST, PUT, DELETE, etc.                        
@@ -93,7 +94,7 @@ const ShowFilterdCat = (props)=>{
                     "Content-Type": "application/json",
                     'projectId': 'ctxjid7mj6o5',
                 }});
-                console.log("*****************",res);
+                // console.log("*****************",res);
             const result = await res.json();
             // console.log("result.data : ",result);  https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?limit=1597"
             setProduct(result.data);
@@ -101,37 +102,18 @@ const ShowFilterdCat = (props)=>{
         }catch (error) {
             console.log(error);
         }
+        finally{
+            setLoader(false);
+        }
     }
 
-    const addToWishList = async(id)=>{
-        try
-            {
-                setFavArr([...favArr,id]);
-
-                let bagData = { productId : id };
-                let res = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/wishlist`,{
-                    method:"PATCH",
-                    headers : {projectID:'ctxjid7mj6o5' , 'Content-Type': 'application/json',Authorization:`Bearer ${token}`},
-                    body: JSON.stringify(bagData)
-                });
-                let data = await res.json();
-                setWishList(data.data);
-                
-                console.log("get setWishList -------",data.data);
-            }
-            catch(error)
-            {
-                console.log(error);
-            }
+    const handlemsgPopUp = ()=>{
+        alert(wishlistMsg);
     }
     
     const cardClick = (id)=>{
         navigate(`/allCategory/${id}`)
       }
-
-    //   const clickHeart = (id)=>{
-    //     setFavArr([...favArr,id]);
-    //   }
 
 
     useEffect(()=>{
@@ -145,7 +127,6 @@ const ShowFilterdCat = (props)=>{
     },[searchParams])
     
     useEffect(()=>{
-        console.log("search here ",search);
         if(search)
             {
              getsearchedProductsByCategory();
@@ -157,6 +138,7 @@ const ShowFilterdCat = (props)=>{
     <div className="filtered">
         <img src="https://images.bewakoof.com/uploads/category/desktop/Oversize-cargo-Joggers_RM_Inside-Desktop-banner_(1)-1702821926.jpg"/>
         <div className="flex flex-wrap">
+        {loader?<Loader/>:""}
         {product?.map((i,index)=>{
           return(<div className="card relative" style={{padding:"10px"}}>
             <div className="border-solid border-2 border-gray-200 w-56 rounded-md" style={{height:"370px"}}
@@ -179,8 +161,8 @@ const ShowFilterdCat = (props)=>{
             <section>
                 <h2 style={{fontSize:"10px",whiteSpace: "nowrap",width: "184px",overflow: "hidden",textOverflow: "ellipsis"}}>{i.name}</h2>
                 <div onClick={()=>{addToWishList(i._id)}}>
-                    {favArr.includes(i._id)?<img src="https://images.bewakoof.com/web/Wishlist-selected.svg" className="wishlist-icon"/>:
-                    <img src="https://images.bewakoof.com/web/Wishlist.svg" className="wishlist-icon"/>}
+                    {wishlisted.has(i._id)?(<img src="https://images.bewakoof.com/web/Wishlist-selected.svg" className="wishlist-iconCat" onClick={handlemsgPopUp}/>):
+                    (<img src="https://images.bewakoof.com/web/Wishlist.svg" className="wishlist-iconCat"/>)}
                 </div>
                 <div className="PriceText">
                   <span>₹</span>{i.price}

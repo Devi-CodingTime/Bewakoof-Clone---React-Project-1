@@ -248,10 +248,16 @@ ul {
     max-width: 300px;
 }
 .footCategoryList {
-    margin-top: 20px;
+    margin: 20px 13px;
+    width: 95%;
     border-top: 2px solid rgb(151, 151, 151);
 }
-.fcWhite {
+.fcWhite{
+    width: 260px;
+    white-space: nowrap;
+    color: rgb(255, 255, 255);
+}
+.fcwhiteee {
     color: rgb(255, 255, 255);
 }
 .footerDiv h1, .footerDiv h2, .footerDiv h3, .footerDiv h4, .footerDiv h5, .footerDiv strong {

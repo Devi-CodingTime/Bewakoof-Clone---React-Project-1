@@ -2,18 +2,21 @@ import React, { useEffect, useState,useContext } from 'react'
 import "./addToCart.css";
 import { categoryContext } from '../Context/provider';
 import NoCart from './noCart';
-import { Link } from 'react-router-dom';
-
-import { render } from "react-dom";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
+import Checkout from '../checkout/checkout';
+import CartHeader from './cartHeader';
+import Loader from '../loader/loader';
 
 const AddToCart =()=> {
   const [size, setSize] = React.useState('');
   const [quantity, setQuantity] = React.useState('');
   const [addwishList,setAddWishList] = useState([]);
-  const {token,wishlist,getWishListData,addToBag} = useContext(categoryContext);
-  const[totalPrice,setTotalPrice] = useState(0);
+  // const [loader,setLoader] = useState(false);
+  const {token,wishlist,getWishListData,getCartItems,cartItem,removeFromCart,removeFromWishList,
+    totalPrice,email,loader} = useContext(categoryContext);
+ 
+
   const handleChange = (event) => {
     setSize(event.target.value);
     setQuantity(event.target.value);
@@ -28,23 +31,6 @@ const AddToCart =()=> {
   const closeModal = () => {
     setOpen(false);
   };
-  const [cartItem,setCartItem] = useState([]);
-  const getCartItems = async() =>{
-    try
-    {
-      let res = await fetch("https://academics.newtonschool.co/api/v1/ecommerce/cart",{
-          method:"GET",
-          headers : {projectID:'ctxjid7mj6o5' , 'Content-Type': 'application/json',Authorization:`Bearer ${token}`},
-      });
-      let data = await res.json();
-      setCartItem(data.data.items);
-        console.log("getCartItems---------",data);
-        setTotalPrice(data.data.totalPrice)
-
-    }catch(error){
-        console.log(error);
-    }
-}
 
 const addToWishList = async(id)=>{
   try
@@ -64,26 +50,36 @@ const addToWishList = async(id)=>{
       {
           console.log(error);
       }
+      // finally{
+      //   setLoader(false);
+      // }
 }
 
-const removeFromCart = async(id)=>{
-  try
-      {
-          let res = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/cart/${id}`,{
-              method:"DELETE",
-              headers : {projectID:'ctxjid7mj6o5' , 'Content-Type': 'application/json',Authorization:`Bearer ${token}`}
-              
-          });
-          let data = await res.json();
-          setCartItem(data.data.items);
-          
-          console.log("cart item set done -------",data.data.items);
-      }
-      catch(error)
-      {
-          console.log(error);
-      }
-}
+const [bagItem,setBagItem] = useState({});
+    const addToBagItems = async(bagData,id) =>{
+      
+          try
+          {
+            // setLoader(true);
+              // let bagData = {size:'S',quantity:'1'}
+              let res = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/cart/${id}`,{
+                  method:"PATCH",
+                  headers : {projectID:'ctxjid7mj6o5' , 'Content-Type': 'application/json',Authorization:`Bearer ${token}`},
+                  body: JSON.stringify(bagData)    
+              });
+              let data = await res.json();
+              setBagItem(data.data.items);
+              removeFromWishList(id);
+          }
+          catch(error)
+          {
+              console.log(error);
+          }
+          // finally{
+          //   setLoader(false);
+          // }
+  }
+
 useEffect(()=>{
   getCartItems();
   getWishListData();
@@ -91,17 +87,8 @@ useEffect(()=>{
 
   return (
     <>{cartItem.length==0?(<NoCart/>):  (<>
-    <div className='Bewakoofimg'>
-      <Link to="/">
-      <img
-        src="https://images.bewakoof.com/web/ic-desktop-bwkf-trademark-logo.svg"
-        title="Bewakoof Logo"
-        alt="bewakoof_logo"
-        style={{ height: 30, padding: 2 ,margin:"0 176px"}}
-        /></Link>
-      </div>
-      <div style={{borderBottom:"1px solid grey"}}></div>
-    
+    <CartHeader email={email}/>
+    {loader?<Loader/>:""}
     <h1 style={{textAlign:"left"}} className='py-8 myBag'>My Bag {cartItem.length} item</h1>
     <div className='flex flex-1 py-4 px-4 gap-4' style={{margin:"-50px 176px"}}>
       <div className='leftCart'>
@@ -114,7 +101,8 @@ useEffect(()=>{
             return(<>
             <div className='CART flex gap-[1.5rem]'>
           
-            <div className='leftside'>
+            <div className='leftside w-[80%]' style={{textAlign:"left"}}>
+    
             <p>{i.product.name}</p>
             <p className='pricepara'>₹{i.product.price*i.quantity}</p>
             <div className='flex gap-2'>
@@ -156,7 +144,7 @@ useEffect(()=>{
             Whistles! Get extra 15% cashback on prepaid orders above Rs.699. Coupon code - YEAREND
             
         </div>
-        <div className='priceSummary'>
+        <div className='priceSummary' style={{fontSize:"20px"}}>
         <h1 style={{background: "#eae8e8",padding: "10px",textAlign:"left"}}>Price Summary</h1>
             <div className="divprice flex flex-1">
                 <span className='span1'>Total MRP (Incl. of taxes) </span>
@@ -184,14 +172,9 @@ useEffect(()=>{
               ADD ADDRESS
             </button>
 
-            <div>
-              <Modal open={open} onClose={closeModal}>
-                <h2>Add New Address</h2>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                  pulvinar risus non risus hendrerit venenatis. Pellentesque sit amet
-                  hendrerit risus, sed porttitor quam.
-                </p>
+            <div className='mt-[-0.8rem]'>
+              <Modal open={open} onClose={closeModal} style={{margin:"0",padding:"0"}}>
+                <Checkout closeModal={closeModal}/>
               </Modal>
             </div>
 
@@ -241,7 +224,7 @@ useEffect(()=>{
             </h3> */}
             
             <section>
-                <h2 style={{fontSize:"10px"}}>{i.products.name}</h2>
+                <h2 style={{fontSize:"10px",whiteSpace: "nowrap",width: "184px",overflow: "hidden",textOverflow: "ellipsis"}}>{i.products.name}</h2>
                 <div>
                     <img src="https://images.bewakoof.com/web/Wishlist-selected.svg" className="my-wishList"/>
                 </div>
@@ -249,10 +232,10 @@ useEffect(()=>{
                   <span>₹</span>{i.products.price}
                 </div>
             </section>
-            <div className='flex gap-1 justify-center items-center cursor-pointer' style={{borderTop:"1px solid #e8e5e5", }}>
-            <img src="https://images.bewakoof.com/web/ic-web-head-cart.svg" alt="bag"
-              className="bag-icon"/>
-              <span style={{fontSize:"14px",wordBreak:"break-all"}} onClick={()=>addToBag({size:'S',quantity:'1'},i.products._id)}>Move To Bag</span>
+            <div className='flex gap-1 justify-center items-center cursor-pointer mt-[6px]' style={{borderTop:"1px solid #e8e5e5", }}>
+              <img src="https://images.bewakoof.com/web/ic-web-head-cart.svg" alt="bag"
+                className="bag-icon"/>
+              <span style={{fontSize:"14px",wordBreak:"break-all"}} onClick={()=>addToBagItems({size:'S',quantity:'1'},i.products._id)}>Move To Bag</span>
               </div>
             </div>
         </div>)
@@ -264,6 +247,21 @@ useEffect(()=>{
       </div>
     </>
     )}
+      <div
+        style={{
+          marginTop: 0,
+          textAlign: "center",
+          background: "rgb(251, 251, 251)"
+        }}
+      >
+        <img
+          src="https://images.bewakoof.com/web/secure-payments-image.png"
+          title="Secure Payments"
+          alt="Secure Payments"
+          style={{ maxWidth: 257, width: "100%", margin: "10px auto" }}
+        />
+      </div>
+
     </>
   )
 }

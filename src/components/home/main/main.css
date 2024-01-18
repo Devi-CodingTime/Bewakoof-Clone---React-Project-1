@@ -24,8 +24,9 @@
 {
     margin: -90px 20px 10px;
     overflow:hidden ;
-    position: relative;
+    position: relative;   
 }
+
 .designHeading
 {
     font-family: montserrat, sans-serif;
@@ -38,9 +39,9 @@
 .designContainer
 {
     display: flex;
-    height: 197px;
+    /* height: 197px; */
     width: 100%;
-    margin-bottom: 206px;
+    /* margin-bottom: 206px; */
 }
 .bewakoofOriginalSlider {
     margin-top: -52px;
@@ -58,4 +59,42 @@
     color:#42a2a2;
     text-decoration:underline;
     cursor: pointer;
+    text-align: left;
+    margin-left: 20px;
+}
+.All-Eyes{
+    display: block;
+    width: 100%;
+    padding-top: 10.4167%;
+    position: relative;
+    /* top: ; */
+}
+@media (max-width:991px) {
+    .nextSlider{
+        margin: -40px 0 40px;
+        overflow:hidden ;
+        cursor: pointer;
+    }
+    .sellerHeadeing{
+        text-align: left;
+        padding-left: 15px;
+    }
+}
+
+@media (max-width:768px) {
+    .nextSlider {
+        margin: 0;
+    }
+.All-Eyes{
+    position: relative;
+}
+.bestSlider{
+    margin: 0;
+}
+.bewakoofOriginalSlider{
+    height: 175px;
+}
+.thirdSlider{
+    margin: 0;
+}
 }

@@ -1,4 +1,4 @@
-import React, { useState,useContext } from "react";
+import React, { useState,useContext, useEffect } from "react";
 import './header';
 import { categoryContext } from "../../Context/provider";
 import { MenData,imgArray,WomenData,allMixed } from "../../Context/data";
@@ -8,8 +8,8 @@ const TopHeader = () =>{
   const [search,setSearch] = useState("");
   const [matchedProduct, setMatchedProducts] = useState([]);
 
-  const {loggedIn,handleLogout,bagLength} = useContext(categoryContext);
-  console.log("inside top header ,",loggedIn);
+  const {loggedIn,handleLogout,handleLogin,cartItem,getCartItems,handleToken,userName} = useContext(categoryContext);
+  // console.log("inside top header ,",loggedIn);
   const changeHandler = (event)=>{
     setSearch(event.target.value);
     let userInput = event.target.value;
@@ -21,6 +21,17 @@ const TopHeader = () =>{
 
   }
   const debounceChange = debounce(changeHandler,500);
+
+  useEffect(()=>{
+    let storedToken = localStorage.getItem("token");
+        // console.log("storedToken :",storedToken);
+        if(storedToken)
+        { 
+          handleLogin(true);
+          handleToken(storedToken);
+        }
+    getCartItems();
+  },[]);
     return (<>
     <div className='upperHeader'>
         <div className='leftheader'>
@@ -150,18 +161,33 @@ const TopHeader = () =>{
                         :<Link to="/login" className="cartIcon" style={{paddingRight: "0px", position: "relative"}}>
                         <img src='../../../bag-icon-6.png' alt="cart"  style={{color: "grey",width:"20px",height:"20px", marginTop:"16px",opacity:"0.6"}}/>
                       </Link>}
-                        {bagLength>0?<span className="bgLen">{bagLength}</span>:""}
+                        {cartItem.length>0?<span className="bgLen">{cartItem.length}</span>:""}
                     </span>
                     <span className='actionMenu' id='testHeadWish' style={{padding: "0 5px",cursor: "pointer"}}>
-                  
+                    {/* ||localStorage.getItem("token")
+                    ||localStorage.getItem("token") */}
                     {loggedIn?<Link to={`/showWishList`} className="icon_wishlist"><i className="fa-regular fa-heart" style={{color: "grey"}}></i></Link>
                     :<Link to={`/login`}  className="icon_wishlist"><i className="fa-regular fa-heart" style={{color: "grey"}}></i></Link>}
                         
                     </span>
-                    <div className='actionMenu' style={{display: "flex",alignItems: "baseline",textAlign: "right"}}>
-                        {loggedIn===false?<Link to={'/login'} id="loginLink" className="loginLink">Login</Link>:
-                        <img src="../../../images/User_Icon.png" onClick={()=>{handleLogout()}} style={{width:"50px",height:"46px"}}/>}
+                    <div className='actionMenu userIconConatiner' style={{display: "flex",alignItems: "baseline",textAlign: "right"}}>
+                        {loggedIn===false || localStorage.getItem("token")===null?<Link to={'/login'} id="loginLink" className="loginLink">Login</Link>:
+                        <img src="../../../images/User_Icon.png" onClick={()=>{handleLogout()}} style={{width:"50px",height:"46px"}}
+                        />}
+                        {loggedIn?
+                        <div className="userContainer">
+                          <div className="child2" style={{paddingLeft: "4px"}}>Hi, {userName}</div>
+                          
+                          <div className="child2"><Link to={`/showWishList`}>My Wishlist
+                          </Link></div>
+                          <div className="child2"><Link to={`/myorder`}>My Order
+                          </Link></div>
+                          <div className="child2" onClick={()=>{handleLogout()}} style={{paddingLeft: "4px"}}>
+                            Logout</div>
+                      </div>
+                      :null}
                     </div>
+                    
                 </div>
             </div>
             <div className='pull-right mainHeaderCols searchWrapper'>

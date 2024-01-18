@@ -45,3 +45,9 @@
     font-size: 10px;
     word-wrap: break-all;
 }
+@media(max-width:768px)
+{
+    .iconContainerNext, .iconContainer{
+        top: 35%;
+    }
+}

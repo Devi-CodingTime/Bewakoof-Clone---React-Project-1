@@ -6,6 +6,7 @@ import TopHeader from "../home/header/topHeader";
 import SideNavbar from "../home/header/sideNavbar";
 // import { ContextProvider,categoryContext } from "../Context/provider";
 import { useLocation, useSearchParams ,useParams} from "react-router-dom";
+import FooterWithoutAbout from "../home/footer/footerWithoutAbout";
 
 const ShowAllCategory = () =>{
     const {search} = useLocation();
@@ -46,7 +47,7 @@ const ShowAllCategory = () =>{
 
             </div>
         </div>
-        
+        <FooterWithoutAbout/>
     </div>)
 }
 export default ShowAllCategory;

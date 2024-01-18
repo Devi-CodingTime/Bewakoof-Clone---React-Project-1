@@ -10,26 +10,39 @@ import Typography from '@mui/material/Typography';
 import {Link, useNavigate, useParams } from 'react-router-dom';
 import { categoryContext } from '../Context/provider';
 
+import { Modal } from "react-responsive-modal";
+import 'react-responsive-modal/styles.css';
+import FooterWithoutAbout from '../home/footer/footerWithoutAbout';
+import { addedtobag, wishlisted } from '../utility/storagewishlist';
+import Loader from '../loader/loader';
+
 const ShowSingleCategory=()=> {
     const {id} = useParams();
-    console.log("id is : ",id);
 
-  const {loggedIn,addToBag} = useContext(categoryContext);
-    console.log("inside single cate",loggedIn);
+    const {loggedIn,token,getCartItems,addToWishList,wishlistMsg} = useContext(categoryContext);
+   
     const navigate = useNavigate();
+
     const [singleProduct,setSingleProduct] = useState({});
     const [review,setReview] = useState([]);
+    const [bagItem,setBagItem] = useState([]);
+
     const[src,setSrc] = useState("");
     const[selected,setSelected] = useState(false);
     const[open,setOpen] = useState(false);
     const [size,setSize] = useState("");
+    const [Modalopen,setModalopen] = useState(false);
+    const [loader,setLoader] = useState(true);
+    // const [ModalopenMsg,setModalopenMsg] = useState(false);
 
-    
-    const [clickCount,setClickCount] = useState(0);
+    const [clickedButtons, setClickedButtons] = useState("");
+    const [clickedButtonsModal,setClickedButtonsModal] = useState("");
     const api = `https://academics.newtonschool.co/api/v1/ecommerce/product/${id}`;
     const reviewApi = `https://academics.newtonschool.co/api/v1/ecommerce/review/${id}`;
+
     async function getSingleProduct()
     {
+        setLoader(true);
         try
         {
             const res = await fetch(api,{
@@ -39,9 +52,9 @@ const ShowSingleCategory=()=> {
                     'projectId': 'ctxjid7mj6o5',
                 }});
             const result = await res.json();
-            console.log("single.data : ",result.data);  https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?limit=1597"
+            // console.log("single.data : ",result.data);  https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?limit=1597"
             setSingleProduct(result.data);
-        
+            setLoader(false);
         }catch (error) {
             console.log(error);
         }
@@ -58,7 +71,7 @@ const ShowSingleCategory=()=> {
                     'projectId': 'ctxjid7mj6o5',
                 }});
             const result = await res.json();
-            console.log("review.data : ",result.data);  
+            // console.log("review.data : ",result.data);  
             setReview(result.data);
         
         }catch (error) {
@@ -66,12 +79,54 @@ const ShowSingleCategory=()=> {
         }
     }
     
+    const addToBag = async(bagData,id) =>{
+        if(!loggedIn)
+            navigate("/login");
+        else
+        {
+            try
+            {
+                addedtobag.push(id);
+                console.log("checking id is included or not ",bagItem);
+                // let bagData = {size:'S',quantity:'1'}
+                let res = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/cart/${id}`,{
+                    method:"PATCH",
+                    headers : {projectID:'ctxjid7mj6o5' , 'Content-Type': 'application/json',Authorization:`Bearer ${token}`},
+                    body: JSON.stringify(bagData)    
+                });
+                let data = await res.json();
+                setBagItem(data.data.items);
+                getCartItems();
+            }
+            catch(error)
+            {
+                console.log(error);
+            }
+        }
+    }
 
+    const openModal = () => {
+        setModalopen(true);
+      };
+    
+    const handlePopUp = ()=>{
+        alert(wishlistMsg);
+    }
+      const closeModal = () => {
+        setModalopen(false);
+      };
     const openDesc = ()=>{
         setOpen(!open);
     }
-    const getSize = (sizevalue)=>{
+    const getSize = (sizevalue,index)=>{
+        setClickedButtons(index);
        setSize(sizevalue);
+    //    console.log(sizevalue);
+    }
+    const getSizeinsidemodal = (sizevalue,index)=>{
+        setClickedButtonsModal(index);
+       setSize(sizevalue);
+    //    console.log(sizevalue);
     }
     const selectImg= (src)=>{
         setSrc(src);
@@ -88,6 +143,7 @@ const ShowSingleCategory=()=> {
     <div className='MainWrpr'>
         <TopHeader/>
         <SideNavbar/>
+        {loader?<Loader/>:(<> 
         <div className="topheadContainer px-20">
             <span className="tophead">Home </span>
             <span className="tophead">Women Clothing </span>
@@ -113,8 +169,10 @@ const ShowSingleCategory=()=> {
                 <div className='flex gap-1 rating'>
                     <i className="fa-solid fa-star py-1" style={{color: "#eee044", fontSize:"10px" }}></i>
                     <span style={{fontSize:"13px",fontFamily:"montserrat-semibold,sans-serif"}}>{parseFloat(singleProduct.ratings).toFixed(1)}</span></div>
-                <div>₹<span style={{fontSize:"20px",color:"#0f0f0f"}}>{singleProduct.price}</span></div>
-                <div style={{fontSize:"12px",color:"#949494"}}>inclusive of all taxes</div>
+                <div style={{textAlign:"left"}}>
+                    <span style={{fontSize:"20px"}}>₹</span>
+                    <span style={{fontSize:"20px",color:"#0f0f0f"}}>{singleProduct.price}</span></div>
+                <div style={{fontSize:"12px",color:"#949494",textAlign:"left"}}>inclusive of all taxes</div>
                 
                 <div className='tribeContainer'>TriBe members get an extra discount of ₹50 and FREE shipping.<span style={{marginLeft: "3px",color: "#42a2a2"}}>Learn more</span></div>
                 
@@ -128,16 +186,13 @@ const ShowSingleCategory=()=> {
                 </div>
 
                 <div className='flex gap-6 py-4'>
-                    <h4 className='selectSize'>SELECT SIZE</h4><span style={{color: "#42a2a2"}}>Size guide</span>
+                    <h4 className='selectSize'>SELECT SIZE</h4><span style={{color: "#42a2a2",marginLeft:"50%"}}>Size guide</span>
                 </div>
                 <div className='flex gap-2'>
 
-                    {singleProduct.size?.map((i)=>{
+                    {singleProduct.size?.map((i,index)=>{
                         return(
-                            
-                            <Button style={{border:"1px solid grey", padding:"10px 0",color:"grey"}} 
-                            onClick={()=>{getSize(i)}}>{i}</Button>
-                            
+                            <button className={index===clickedButtons?"change_background":"change_backgroundPrev"} onClick={()=>{getSize(i,index)}}>{i}</button>
                         )
                     })}
                 
@@ -148,15 +203,58 @@ const ShowSingleCategory=()=> {
                         <img src="https://images.bewakoof.com/web/ic-web-head-cart.svg" alt="bag"
                             className="bag-icon"/>
                           
-                        {/* <Link to={`/addtocart`}> */}
-                            <span onClick={()=>addToBag({size:size,quantity:'1'},id)}>ADD TO BAG</span>
+                        {/* <Link to={`/addtocart`}> ()=>addToBag({size:size,quantity:'1'},id) */}
+                        {addedtobag.includes(id)?(<Link to={`/addtocart`}><span>GO TO BAG</span></Link>)
+                        :
+                        <span onClick={size?(()=>addToBag({size:size,quantity:'1'},id)):openModal}>ADD TO BAG</span>
+                        }
                         {/* </Link> */}
                     </div>
-                    <div className="p-add-bag flex" style={{backgroundColor:"white",border:"1px solid grey"}}>
-                        <i className="fa-regular fa-heart" style={{color: "grey"}}></i>
-                        <span>WISHLIST</span>
+                    
+                   <Modal open={Modalopen} onClose={closeModal} center styles={{ modal: { borderRadius: '10px', width: '500px', /* other custom styles */ } }}>
+                    <div className="popupBody" style={{ width: "100%"}}>
+                    <div className='seperatefirst'></div>
+                    <div className="selectSizePopupContainer">
+                        <div className="header d-flex flex-column align-items-center">
+                            <div className="bar"/>
+                            <div className="titleIconContainer d-flex justify-content-between align-items-center">
+                                <h1 className="title undefined">Choose your perfect fit!</h1>
+                                
+                            </div>
+                            
+                        </div><div className='seperate'></div>
+                        <div className="sizeWrprContainer">
+                            <div className="sizeBtnContainer">
+                            <div className='flex gap-2'>
+
+                                {singleProduct.size?.map((i,index)=>{
+                                    return(
+                                        <button className={index===clickedButtonsModal?"change_background":"change_backgroundPrev"} onClick={()=>{getSizeinsidemodal(i,index)}}>{i}</button>
+                                    )
+                                })}
+
+                            </div>
+                            <div className="sizebutton" onClick={closeModal}>DONE</div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                    </Modal>
+                    
+                    <div className="p-add-bag flex" style={{backgroundColor:"white",border:"1px solid grey"}} 
+                    onClick={wishlistMsg?handlePopUp:(()=>{addToWishList(id)}) }>
+                        {/* <i className="fa-regular fa-heart" style={{color: "grey"}}></i> */}
+                                {console.log("wishet set ",wishlisted)}
+                            {wishlisted.has(id)?<img src="https://images.bewakoof.com/web/Wishlist-selected.svg" />:
+                            <img src="https://images.bewakoof.com/web/Wishlist.svg" />}
+                            <span>WISHLIST</span>
+                   {/* <Modal open={handleOpenMsg} onClose={handleCloseMsg} center styles={{ modal: { borderRadius: '10px', width: '500px'}}}>
+                    <p>{wishlistMsg}</p>
+                    </Modal> */}
                     </div>
+                    
                 </div>
+                
                 <div className='desc'>
                     <div className='descChild' >
                        <section className='flex'>
@@ -224,6 +322,8 @@ const ShowSingleCategory=()=> {
             </div>
 
         </div>
+        </>)}
+        <FooterWithoutAbout/>
     </div>
     </>
   )

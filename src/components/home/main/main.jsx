@@ -50,11 +50,11 @@ const BewakoofOriginals = [{src:"	https://images.bewakoof.com/uploads/grid/app/p
 {src:"https://images.bewakoof.com/uploads/grid/app/Banner-PC-Size-480x457.jpg"}];
 
 const trendingCategoryMen = [{src:"https://images.bewakoof.com/uploads/grid/app/category-box-new-D-240x350-printed-tees-m-1685445850.jpg"},
-          {src:"https://images.bewakoof.com/uploads/grid/app/category-box-oversized-tees-m-1685086219.jpg"},
+          {src:"https://images.bewakoof.com/uploads/grid/app/trending-category-icons-Hoodies-and-Sweatshirts-1704181404.jpg"},
           {src:"https://images.bewakoof.com/uploads/grid/app/category-box-new-240x350-men-shorts-1686063035.jpg"},
           {src:"https://images.bewakoof.com/uploads/grid/app/category-box-joggers-m-1684997505.jpg"},
-          {src:"https://images.bewakoof.com/uploads/grid/app/category-box-new-240x350-men-vests-1686063036.jpg"},
-          {src:"https://images.bewakoof.com/uploads/grid/app/category-box-new-240x350-men-fullsleeve-1686063034.jpg"}];
+          {src:"https://images.bewakoof.com/uploads/grid/app/trending-category-icons-Jeans-1704181405.jpg"},
+          {src:"https://images.bewakoof.com/uploads/grid/app/trending-category-icons-Sweaters-1704181406.jpg"}];
 
 const trendingCategoryWomen = [{src:"https://images.bewakoof.com/uploads/grid/app/category-box-new-D-240x350-printed-tees-w-1685445851.jpg"},
 {src:"https://images.bewakoof.com/uploads/grid/app/category-box-Oversized-tshirts-Women-1682055634.png"},
@@ -95,12 +95,12 @@ return (
         <NextSliderShow arrayImage = {sliderArrayImage2}/>
       </div>
       <div className='mb-4'>
-        <a title="" style={{display: "block", width: "100%", paddingTop: "10.4167%", position: "relative"}}>
+        <a title="" className='All-Eyes'>
           <img src="https://images.bewakoof.com/uploads/grid/app/desktop-strip-rm-1702276007.jpg" alt="" style={{position: "absolute", width: "100%", top: "0px"}}/>
         </a>
       </div>
-      <div className='mb-1'>
-        <a title=""style={{display: "block",width: "100%",paddingTop: "10.4167%",position: "relative"}}>
+      <div className='mb-0'>
+        <a title=""  className='All-Eyes'>
           <img src="https://images.bewakoof.com/uploads/grid/app/Blockbuster-deal-thin-strip-Desktop-Sweatshirts-under-799-1702562384.jpg"
             alt="" style={{ position: "absolute", width: "100%", top: 0 }}/>
         </a>
@@ -113,14 +113,14 @@ return (
         <CategoryWithSixImage categoryImg={trendingCategoryMen}/>
         <CategoryWithSixImage categoryImg={trendingCategoryWomen}/>
       </div>
-      <div className='designHeading'>Bewakoof Originals</div>
-      <div className='bewakoofOriginalSlider'>
+      <div className='designHeading md:mt-[-6px]'>Bewakoof Originals</div>
+      <div className='bewakoofOriginalSlider md:mt-[-53px] h-[223px]'>
         <SliderShow arrayImage={BewakoofOriginals} slidesToShow={4}/>
       </div>
-      <div className='designHeading mt-4'>TOO HOT TO BE MISSED</div>
+      <div className='designHeading mt-4 md:mt-3'>TOO HOT TO BE MISSED</div>
       
       <DoubleImgContainer doubleImg={doubleImgTooHot} margin={5}/>
-      <DoubleImgContainer doubleImg={offSale} margin={0}/>
+      <DoubleImgContainer doubleImg={offSale} margin={0} className='md:mt-[-44px]'/>
 
       <div className='designHeading pt-1'>CATEGORIES TO BAG</div>
       <CategoryWithSixImage categoryImg={categoriesToBag}/>
@@ -128,14 +128,14 @@ return (
         <SliderShow arrayImage = {sliderArrayImage3} slidesToShow ={3}/>
       </div>
 
-      <div className='sellerHeadeing pt-8' style={{marginBottom:"40px",color: "rgb(0, 0, 0)"}} >BESTSELLERS</div>
+      <div className='sellerHeadeing pt-8 md:pt-0' style={{marginBottom:"40px",color: "rgb(0, 0, 0)"}} >BESTSELLERS</div>
       <div className='bestSlider'>
         <BestSellerSlider/>
       </div>
       
       {/* <Link to={"/allCategory"} className='explore'>Explore All</Link> */}
       {/* <NavLink to = {(`/allCategory?search=${JSON.stringify(i.search)}&filter=${JSON.stringify(i.filter)}`)}> */}
-      <Link to={`/allCategory?data=sellerTag&filterdata=best seller`} >
+      <Link to={`/allCategory?data=sellerTag&filterdata=best seller`} className='explore'>
         Explore All
       </Link>
       {/* </NavLink> */}
@@ -143,7 +143,7 @@ return (
       <DoubleImgContainer doubleImg={bestPics} margin={5}/>
       <DoubleImgContainer doubleImg={customizedTShirt} margin={0}/>
       
-      <div className='mt-56'>
+      <div className='mt-3'>
         <a title="" style={{display: "block", width: "100%", paddingTop: "10.4167%", position: "relative"}}>
           <img src="https://images.bewakoof.com/uploads/grid/app/Desktop-Strip-3-1672040129.jpg" alt="" style={{position: "absolute", width: "100%", top: "0px"}}/>
         </a>

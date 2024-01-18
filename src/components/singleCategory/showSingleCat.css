@@ -24,6 +24,7 @@
     font-size: 18px!important;
     line-height: 17px!important;
     color: #4f5362;
+    text-align: left;
 }
 .prodName
 {
@@ -33,7 +34,7 @@
     line-height: 20px;
     color: rgba(0,0,0,.7);
     font-weight: 500;
-    
+    text-align: left;
 }
 .rating{
     width: 40px;
@@ -175,4 +176,51 @@
     } */
     .pageView{
         margin-top: -53px;
+    }
+
+    /* popup body */
+    .sizebutton 
+    {
+        background-color: rgb(66, 162, 162);
+        padding: 19px;
+        display: inline-flex;
+        color: rgb(255, 255, 255);
+        cursor: pointer;
+        width: 100%;
+        font-size: 0.9rem;
+        line-height: 0;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid rgb(66, 162, 162);
+        zoom: 1;
+        user-select: none;
+        border-radius: 4;
+        margin-top: 10px;
+    }
+    .seperate{
+        width: 100%;
+        border: 1px solid rgb(236, 233, 233);
+        margin: 10px 0 20px;
+    }
+    .seperatefirst{
+        width: 8%;
+        border: 1.2px solid rgb(69, 69, 69);
+        margin: 0 auto;
+    }
+    .change_background{
+        background-color:black;
+        color:white;
+        padding: 10px 0;
+        border:1px solid grey;
+        border-radius: 5px;
+        width: 48px;
+    }
+    .change_backgroundPrev{
+        border:1px solid grey;
+        color:grey;
+        background-color: white;
+        padding:10px 0;
+        border-radius: 5px;
+        width: 48px;
     }

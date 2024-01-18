@@ -12,7 +12,7 @@ import Typography from '@mui/material/Typography';
  const Review=()=> {
     const [review,setReview] = useState([]);
     const {id} = useParams();
-    console.log("inside review",id)
+    // console.log("inside review",id)
     const reviewApi = `https://academics.newtonschool.co/api/v1/ecommerce/review/${id}`;
    
     async function getSingleProductReview()
@@ -26,7 +26,7 @@ import Typography from '@mui/material/Typography';
                     'projectId': 'ctxjid7mj6o5',
                 }});
             const result = await res.json();
-            console.log("review.data : ",result.data);  
+            // console.log("review.data : ",result.data);  
             setReview(result.data);
         
         }catch (error) {

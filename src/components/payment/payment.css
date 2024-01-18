@@ -1,0 +1,312 @@
+.cartcontainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    gap:10px;
+    margin-top: 75px;
+}
+.leftcart{
+    width: 54%;
+    height: 664px;
+}
+.separater{
+    height: 100vh;
+    border: 1px solid rgb(215, 214, 214);
+}
+
+.paymentContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.paymentHeading{
+    font-size: 16px ;
+    font-family: montserrat-bold, sans-serif !important;
+    line-height: 24px;
+    font-weight: 600;
+}
+.paymentImg{
+    width: 20px;
+    height: 20px;
+    display: inline;
+    margin-right: 10px;
+    opacity: 0.3;
+}
+.activeImg
+{
+    width: 20px;
+    height: 20px;
+    display: inline;
+    margin-right: 10px;
+    opacity: 1;
+}
+
+#payment-mode{
+    border: 1px solid #eee;
+    display: flex;
+    width: 100%;
+    border-radius: 2px;
+    height: 411px;
+}
+#left-payment-mode{
+    min-width: 40%;
+    height: 100%;
+    background-color: whitesmoke;
+}
+#left-payment-mode>button{
+    display: block;
+    width: 100%;
+    margin: auto;
+    padding: 20px 15px;
+    border: none;
+    border-bottom: 1px solid #e0e0e0;
+    font-weight: 600;
+    text-align: left;
+}
+/* #left-payment-mode>button:nth-child(1){ */
+    .active{
+    border-left: 5px solid #42a2a2;
+    background-color: white;
+}
+#payment-debit{
+    /* border: 1px solid gainsboro; */
+    width: 100%;
+    /* margin: 20px auto; */
+    text-align: center;
+    border-radius: 5px;
+    display: block;
+}
+#payment-debit>div{
+    display: flex;
+    /* border: 1px solid black; */
+    align-items: center;
+    padding: 0 20px;
+}
+
+#payment-debit>div>img{
+    width: 20px;
+    height: 20px;
+    margin: 0 3% 0 10%;
+}
+.myinput{
+    display: block;
+    width: 90%;
+    font-size: 10px;
+    margin: auto;
+    padding: 10px 5px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid gray
+}
+#payment-debit>input:nth-child(4){
+    width: 40%;
+    display: inline;
+    margin: 0 2%;
+}
+#payment-debit>input:nth-child(5){
+    width: 40%;
+    display: inline;
+    margin: 0 2% 10px;
+}
+#card-payment-div2{
+    display: flex;
+    align-items: center;
+}
+#optionlabel{
+    width: 95%;
+    padding: 0 180px 0 0;
+    color: grey;
+    font-weight: 500;
+    text-align: left;
+}
+#optionlabelUpi{
+    width: 475%;
+    padding: 0 35px 0 0;
+    color: grey;
+    font-weight: 500;
+    text-align: left;
+}
+#card-payment-div2>input{
+    width: 30px;
+}
+#payment-debit>p{
+    padding: 0 20px;
+    color: #aba9a9;
+    text-align: left;
+    font-size: 13px;
+}
+#card-pay-now-button{
+    width: 100%;
+    padding: 15px 20px;
+    background-color: #42a2a2;
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+#payment-wallet{
+    display: block;
+}
+
+.paymentRadio {
+    display: flex;
+    border: 2px solid #eee;
+    width: 100%;
+    margin: auto;
+    align-items: center;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+#payment-wallet>div>img{
+    height: 30px;
+    margin: 0px 20px;
+}
+#payment-wallet>div>p{
+width: 280px;
+}
+#payment-wallet>div>input{
+    height: 20px;
+    margin-top: 10px;
+    margin-left: 20%;
+}
+
+#payment-net-banking{
+    display: block;
+}
+
+#payment-net-banking>div>img{
+    height: 30px;
+    margin: 0px 20px;
+}
+#payment-net-banking>div>p{
+width: 280px;
+}
+#payment-net-banking>div>input{
+    height: 20px;
+    margin-top: 10px;
+    margin-left: 20%;
+}
+#payment-net-other-arrow{
+    border-radius: 50%;
+    height: 20px;
+    margin-left: 50%;
+    background-color: transparent;
+    border: 0;
+    transform: rotate(225deg);
+}
+#payment-net-banking>p{
+    font-size: 10px;
+    color: gray;
+    padding: 0 20px;
+}
+#payment-upi{
+    border: 1px solid #eee;
+    border-radius: 5px;
+    margin: 10px;
+    text-align: center;
+    display: block;
+}
+.upiDiv{
+    display: flex;
+    width: 85%;
+    gap: 20px;
+    margin: auto;
+    align-items: center;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+#payment_upi{
+    display: flex;
+    width: 85%;
+    margin: auto;
+    align-items: center;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-left: 25px;
+}
+#payment-upi>div>img{
+    height: 15px;
+    width: 40px;
+}
+
+#payment-upi>div:nth-child(1)>p:nth-child(2){
+    width: 200px;
+    margin-left: 5%;
+}
+#payment-upi>div:nth-child(1)>input{
+    height: 20px;
+    margin-top: 10px;
+    margin-left: 20%;
+}
+#payment-upi>input{
+    width: 85%;
+}
+#payment-upi>p{
+    padding: 0 32px;
+    color: gray;
+    text-align: left;
+    font-size: 11px;
+}
+#payment-upi>div:nth-child(2){
+   margin-left: 20%;
+   border: 1px solid green;
+}
+/* #payment-upi>button */
+.showPayBtn
+{
+    width: 90%;
+    padding: 8px 20px;
+    background-color: #42a2a2;
+    color: white;
+    font-size: 15px;
+    border: none;
+    display: block;
+    margin-left:19px ;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+#payment-cod-button>p:nth-child(1){
+    text-decoration: line-through;
+    color: gray;
+    font-size: 10px;
+}
+#payment-cod-button>p:nth-child(2){
+    color: #d29389;
+    font-size: 10px;
+}
+.rightcart{
+    width: 27%;
+    height: 664px;
+    z-index: -1;
+}
+.shipmentinner {
+    position: relative;
+    margin-bottom: 5px;
+}
+.shipmentinner .count {
+    width: 16px;
+    height: 16px;
+    opacity: .7;
+    position: absolute;
+    bottom: -10px;
+    left: 20px;
+    text-align: center;
+    border-radius: 30px;
+    background: black;
+    color: white;
+    font-size: 11px;
+
+}
+.shipmentinner img {
+    width: 36px;
+}
+.shipmentWrapper{
+    border-bottom: 1px solid grey;
+}

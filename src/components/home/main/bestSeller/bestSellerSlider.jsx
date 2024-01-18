@@ -1,14 +1,18 @@
-import react, { useRef,useEffect,useState } from "react";
+import react, { useRef,useEffect,useState, useContext } from "react";
 import "../slider.css";
 import '../bestSeller/bestSeller.css';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useNavigate } from "react-router-dom";
+import { categoryContext } from "../../../Context/provider";
+import { wishlisted } from "../../../utility/storagewishlist";
 
 const BestSellerSlider = () => {
   const sliderRef = useRef();
   const navigate = useNavigate();
+  const {addToWishList,wishlistMsg} = useContext(categoryContext);
+
   const [bestSeller,setBestSeller] = useState();
 
   async function getbestSellerProduct()
@@ -20,9 +24,14 @@ const BestSellerSlider = () => {
         'projectId': 'ctxjid7mj6o5',
       }});
       let data = await res.json();
-      console.log("getting best seller data ", data);
+      // console.log("getting best seller data ", data);
       setBestSeller(data.data);
   }
+
+  const handlemsgPopUp = ()=>{
+    alert(wishlistMsg);
+  }
+
   useEffect(()=>{
     getbestSellerProduct();
   },[]);
@@ -46,20 +55,24 @@ const BestSellerSlider = () => {
     navigate(`/allCategory/${id}`)
   }
   return (<>
-  {console.log(bestSeller)}
       <Slider {...settings} className="slider" ref={sliderRef}>
         {bestSeller?.map((i)=>{
           return(<div className="card" style={{padding:"20px"}} 
-          onClick={()=>{cardClick(i._id)}}>
-            <div className="border-solid border-2 border-gray-200 w-56 rounded-md">
-            <img src={i.displayImage} height={250} className="Imagetag"/>
+          >
+            <div className="border-solid border-2 border-gray-200 w-56 rounded-md maincard">
+            <img src={i.displayImage} height={250} className="Imagetag" onClick={()=>{cardClick(i._id)}}/>
             <h3 className="brand-name rvCardDetails undefined">{i.brand}</h3>
             
             <section>
-                <h2 style={{fontSize:"10px",textOverflow: "ellipsis"}}>{i.name}</h2>
-                <img  src="https://images.bewakoof.com/web/Wishlist.svg"  alt="wishlist"  className="wishlist-icon"/>
+                <h2 className="sectionHeading">{i.name}</h2>
+                {/* <img  src="https://images.bewakoof.com/web/Wishlist.svg"  alt="wishlist"  
+                className="wishlist-icon sellerIcon"/> */}
+                <div onClick={()=>{addToWishList(i._id)}}>
+                    {wishlisted.has(i._id)?(<img src="https://images.bewakoof.com/web/Wishlist-selected.svg" className="wishlist-iconCat" onClick={handlemsgPopUp}/>):
+                    (<img src="https://images.bewakoof.com/web/Wishlist.svg" className="wishlist-iconCat"/>)}
+                </div>
                 <div className="PriceText">
-                  <span>₹</span>{i.price}
+                  <span style={{fontSize:"15px"}}>₹</span>{i.price}
                 </div>
             </section>
             </div>

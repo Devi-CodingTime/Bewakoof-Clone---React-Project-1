@@ -24,7 +24,7 @@ section
     top: 0;
     left: 0;
 }
-.wishlist-icon
+.wishlist-iconCat
 {
     position: absolute;
     top: -26px;
@@ -100,7 +100,7 @@ section
 {
     width: 25%;
     float:right;
-    position: fixed;
+    position: absolute;
     left: 163px;
     top: 240px;
 }

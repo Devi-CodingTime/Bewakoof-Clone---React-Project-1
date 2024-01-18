@@ -1,11 +1,13 @@
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
 import '../login/login.css';
 import TopHeader from '../home/header/topHeader';
 import SideNavbar from '../home/header/sideNavbar';
 import { Link, useNavigate } from 'react-router-dom';
+import { categoryContext } from '../Context/provider';
 
 const Signup =()=> {
   const navigate = useNavigate();
+  const {setUserName} = useContext(categoryContext);
     const  [signUpData , setSignUpData] = useState({
         name: '' ,
         email: '', 
@@ -17,7 +19,7 @@ const Signup =()=> {
 
      const handleContinue= async(e)=> {
       e.preventDefault();
-      console.log("signUpData ",signUpData);
+      // console.log("signUpData ",signUpData);
       try{
           const options = {
             method: 'POST',
@@ -26,9 +28,11 @@ const Signup =()=> {
         }
         const res = await fetch('https://academics.newtonschool.co/api/v1/user/signup' ,options);
         const resJson = await res.json();
-        console.log(resJson , 'signup');
+        // console.log(resJson , 'signup');
         if(resJson.status==="success")
         {
+          // console.log("signUpData.name",signUpData.name);
+          setUserName(signUpData.name);
           navigate('/login');
         }
         else{

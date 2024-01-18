@@ -138,7 +138,7 @@ const FooterAboutUs = ()=>{
                   <a
                     title="Official Merchandise Store Online India at Bewakoof.com"
                     href="https://www.bewakoof.com/official-collaborations-collection"
-                  >
+                    style={{color:"rgb(81, 204, 204)"}}>
                     {" "}
                     official merchandise.
                   </a>{" "}
@@ -192,7 +192,7 @@ const FooterAboutUs = ()=>{
                   bewakoof.com. Avail exciting online shopping offers like{" "}
                   <a
                     title="Buy Latest T Shirt Designs at Lowest Price at Bewakoof.com"
-                    href="https://www.bewakoof.com/design-of-the-day"
+                    href="https://www.bewakoof.com/design-of-the-day" style={{color:"rgb(81, 204, 204)"}}
                   >
                     {" "}
                     designs of the day{" "}
@@ -227,7 +227,7 @@ const FooterAboutUs = ()=>{
                   with impeccable quality materials. Our{" "}
                   <a
                     title="Buy Mobile Back Covers & Cases Online India - Bewakoof.com"
-                    href="https://www.bewakoof.com/mobile-covers-india"
+                    href="https://www.bewakoof.com/mobile-covers-india" style={{color:"rgb(81, 204, 204)"}}
                   >
                     mobile covers
                   </a>{" "}
@@ -261,7 +261,7 @@ const FooterAboutUs = ()=>{
                   cool quotient. From an extensive range of plus size clothing,{" "}
                   <a
                     title="Buy Mens Shirts Online at Bewakoof.com"
-                    href="https://www.bewakoof.com/men-shirts"
+                    href="https://www.bewakoof.com/men-shirts" style={{color:"rgb(81, 204, 204)"}}
                   >
                     casual shirts for men
                   </a>{" "}
@@ -270,7 +270,7 @@ const FooterAboutUs = ()=>{
                   umbrella. The range of apparels like{" "}
                   <a
                     title="Buy T Shirt for Men Online at Bewakoof.com"
-                    href="https://www.bewakoof.com/men-t-shirts"
+                    href="https://www.bewakoof.com/men-t-shirts" style={{color:"rgb(81, 204, 204)"}}
                   >
                     men t-shirts
                   </a>

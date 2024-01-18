@@ -9,7 +9,7 @@ const FixedHeaderContainer = ()=>{
         <Link to={`/allCategory?data=sellerTag&filterdata=top rated`}>
           <div className="fixedHeader">SALE</div>
         </Link>
-          <Link to ="/"><div className="fixedHeader">LIVE NOW</div></Link>
+          <Link to ="/allCategory?data=sellerTag&filterdata=new arrival"><div className="fixedHeader">LIVE NOW</div></Link>
           <Link to={`/allCategory?data=subCategory&filterdata=sweater`}>
             <div className="fixedHeader">WINTERWEAR</div>
           </Link>

@@ -1,30 +1,41 @@
 import React, { useEffect,useState,useContext } from 'react'
 import TopHeader from '../home/header/topHeader';
 import SideNavbar from '../home/header/sideNavbar';
+import FooterWithoutAbout from '../home/footer/footerWithoutAbout';
 import './showWishList.css';
 import { categoryContext } from '../Context/provider';
-const ShowWishList = ()=> {
-    const {wishlist,getWishListData,addToBag,setWishlist,token} = useContext(categoryContext);
 
-    const removeFromWishList = async(id)=>{
-      try
+import { Link } from 'react-router-dom';
+import { wishlisted } from '../utility/storagewishlist';
+import Loader from '../loader/loader';
+
+const ShowWishList = ()=> {
+    const {wishlist,getWishListData,removeFromWishList,token} = useContext(categoryContext);
+    const [loader,setLoader] = useState(false);
+    const [bagItem,setBagItem] = useState({});
+    const addItemToBag = async(bagData,id) =>{
+      
+          try
           {
-              let res = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/wishlist/${id}`,{
-                  method:"DELETE",
-                  headers : {projectID:'ctxjid7mj6o5' , 'Content-Type': 'application/json',Authorization:`Bearer ${token}`}
-                  
+            setLoader(true);
+              // let bagData = {size:'S',quantity:'1'}
+              let res = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/cart/${id}`,{
+                  method:"PATCH",
+                  headers : {projectID:'ctxjid7mj6o5' , 'Content-Type': 'application/json',Authorization:`Bearer ${token}`},
+                  body: JSON.stringify(bagData)    
               });
               let data = await res.json();
-              setWishlist(data.data.items);
-              
-              console.log("wishlist item set done -------",data.data.items);
+              setBagItem(data.data.items);
+              removeFromWishList(id);
           }
           catch(error)
           {
               console.log(error);
           }
-    }
-
+          finally{
+            setLoader(false);
+          }
+  }
     useEffect(()=>{
         getWishListData();
     },[]);
@@ -33,6 +44,7 @@ const ShowWishList = ()=> {
     <div>
       <TopHeader/>
       <SideNavbar/>
+      {loader?<Loader/>:""}
         <div className="flex flex-wrap px-14 showWishList">
         {wishlist?.map((i)=>{
           return(<div className="card" style={{padding:"10px"}}>
@@ -56,10 +68,10 @@ const ShowWishList = ()=> {
                   <span>₹</span>{i.products.price}
                 </div>
               </section>
-              <div className='flex gap-1 justify-center items-center cursor-pointer' style={{borderTop:"1px solid #e8e5e5",marginTop:"3px"}}>
+              <div className='flex gap-1 justify-center items-center cursor-pointer mt-[6px]' style={{borderTop:"1px solid #e8e5e5",marginTop:"3px"}}>
                 <img src="https://images.bewakoof.com/web/ic-web-head-cart.svg" alt="bag"
                 className="bag-icon w-[19px]"/>
-                <span style={{fontSize:"14px",wordBreak:"break-all"}} onClick={()=>addToBag({size:'S',quantity:'1'},i.products._id)}>Add To Bag</span>
+                <span style={{fontSize:"14px",wordBreak:"break-all"}} onClick={()=>addItemToBag({size:'S',quantity:'1'},i.products._id)}>Add To Bag</span>
               </div>
             </div>
             <span className='cross' onClick={()=>{removeFromWishList(i.products._id)}}>X</span>
@@ -67,6 +79,7 @@ const ShowWishList = ()=> {
         })}
         
         </div>
+      <FooterWithoutAbout/>
       
     </div>
   )

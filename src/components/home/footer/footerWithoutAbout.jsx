@@ -1,7 +1,6 @@
 import React from 'react'
 import "./footer.css";
-import FooterAboutUs from '../footer/footerAboutUs';
- const Footer=()=> {
+ const FooterWithoutAbout=()=> {
   return (<>
    <div style={{ marginBottom: 0 ,zIndex:"9999"}}>
     <div className="footerToBottom footerForMobile">
@@ -776,7 +775,6 @@ import FooterAboutUs from '../footer/footerAboutUs';
             </ul>
             
           </div>
-          <FooterAboutUs/>
         </section>
       </div>
     </div>
@@ -785,4 +783,4 @@ import FooterAboutUs from '../footer/footerAboutUs';
 </>
   )
 }
-export default Footer
+export default FooterWithoutAbout

@@ -1,0 +1,41 @@
+#container2 {
+    width: 100%;
+    display: grid;
+    grid-template-rows: auto auto;
+  }
+  .con {
+    width: 500px;
+    height: 300px;
+    margin: 80px auto;
+    /* border: 1px solid red; */
+  }
+  .con > img {
+    width:100%;
+  }
+  #h1tag, #tq {
+    font-size: 40px;
+    text-align: center;
+  }
+ 
+  
+  #sc {
+    text-align: center;
+    font-size: 40px;
+    background-color: yellow;
+    color: rgb(0, 0, 0);
+    /* border: 1px solid red; */
+    width: 70%;
+    height: 80%;
+  }
+  .bicon {
+    /* border: 1px solid red; */
+    width: 15%;
+    height: 100%;
+  }
+  #tq {
+    text-align: center;
+  }
+  #h1tag {
+    text-align: center;
+  }
+  

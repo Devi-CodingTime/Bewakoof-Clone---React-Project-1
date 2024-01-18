@@ -1,0 +1,1 @@
+export const GET_ORDERLIST = "https://academics.newtonschool.co/api/v1/ecommerce/order/";
