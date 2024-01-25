@@ -59,7 +59,10 @@ const ContextProvider = (props)=>{
                 if(data.status==="fail")
                     setWishlistMsg(data.message);
                 else
+                {
                     setWishListedItem(data.data);
+                    getWishListData();
+                }
             }
             catch(error)
             {
