@@ -4,10 +4,10 @@ import SideNavbar from "../home/header/sideNavbar";
 import "../login/login.css"
 
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState ,useEffect} from "react";
 import { categoryContext } from "../Context/provider";
 const Login = ()=>{
-  const {loggedIn,token,handleLogin,handleToken,setUserName,setEmail} = useContext(categoryContext);
+  const {loggedIn,token,handleLogin,handleToken} = useContext(categoryContext);
   // console.log("initial loggerdIn value",loggedIn);
   // console.log("initial token value",token);
   // console.log("initial handleLogin value",handleLogin);
@@ -52,9 +52,12 @@ const Login = ()=>{
     {
       handleLogin(true);
       handleToken(resJson.token);
-      setUserName(resJson.data.name);
-      setEmail(resJson.data.email);
-      localStorage.setItem('token' , resJson.token)
+      // setUserName(resJson.data.name);
+      // setEmail(resJson.data.email);
+      localStorage.setItem('token' , resJson.token);
+      localStorage.setItem('userName' , resJson.data.name);
+      localStorage.setItem('email' , resJson.data.email);
+
       navigate('/');
     }
     else
@@ -66,6 +69,9 @@ const Login = ()=>{
     }
 
   }
+  useEffect(()=>{
+    window.scrollTo(0, 0);
+},[]);
     return(<>
     <TopHeader/>
     <SideNavbar/>

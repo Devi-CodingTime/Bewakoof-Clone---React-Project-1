@@ -6,8 +6,6 @@ import { categoryContext } from '../Context/provider';
 
 const Checkout =({closeModal})=> {
   const navigate = useNavigate();
-  const {userName} = useContext(categoryContext);
-  console.log("userName : ",userName);
  
   const [selectedradio,setSelectedRadio] = useState("");
 
@@ -50,8 +48,8 @@ const Checkout =({closeModal})=> {
         <TextField className='w-[500px]'
           label="Full Name"
           id="outlined-size-small"
-          defaultValue={userName}
-          size="small" value={userName} aria-readonly 
+          defaultValue={localStorage.getItem("userName")}
+          size="small" value={localStorage.getItem("userName")} aria-readonly 
         />
         
         <div className="divider"></div>

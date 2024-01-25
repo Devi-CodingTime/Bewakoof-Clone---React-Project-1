@@ -10,9 +10,6 @@ const ContextProvider = (props)=>{
 
     const [loggedIn, setLoggedIn] = useState(false);
     const [token, setToken] = useState("");
-    const [userName,setUserName] = useState("");
-    const [email,setEmail] = useState("");
-
     const [wishlist,setWishlist] = useState([]);
     const [wishListedItem,setWishListedItem] = useState([]);
     const [wishlistMsg,setWishlistMsg] = useState("");
@@ -22,22 +19,20 @@ const ContextProvider = (props)=>{
     const getWishListData = async() =>{
         try
         {
+            console.log("getWishListData");
             setLoader(true);
             let res = await fetch("https://academics.newtonschool.co/api/v1/ecommerce/wishlist",{
                 method:"GET",
-                headers : {projectID:'ctxjid7mj6o5' , 'Content-Type': 'application/json',Authorization:`Bearer ${token}`},
+                headers : {projectID:'ctxjid7mj6o5' , 'Content-Type': 'application/json',Authorization:`Bearer ${token || localStorage.getItem("token")}`},
             });
             let data = await res.json();
             setWishlist(data.data.items);
-            // console.log("hello wishlist added  ",data.data.items[0].products);
             for(var i=0;i<data.data.items.length;i++)
             {
                 
                 let val = data.data.items[i].products._id;
-                // console.log("i value",val);
-                wishlisted.push(val);
+                wishlisted.add(val);
             }
-            // console.log("wishlisted arr ",wishlisted);
         }catch(error){
             console.log(error);
         }
@@ -53,7 +48,6 @@ const ContextProvider = (props)=>{
             {
                 setLoader(true);
                 wishlisted.add(id);
-                // console.log("wishlisted.add(id);",wishlisted);
                 let bagData = { productId : id };
                 let res = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/wishlist`,{
                     method:"PATCH",
@@ -70,7 +64,6 @@ const ContextProvider = (props)=>{
             catch(error)
             {
                 console.log("devi error",error);
-                // alert(data.data.message)
             }
             finally{
                 setLoader(false);
@@ -112,7 +105,7 @@ const ContextProvider = (props)=>{
             setLoader(true);
           let res = await fetch("https://academics.newtonschool.co/api/v1/ecommerce/cart",{
               method:"GET",
-              headers : {projectID:'ctxjid7mj6o5' , 'Content-Type': 'application/json',Authorization:`Bearer ${token}`},
+              headers : {projectID:'ctxjid7mj6o5' , 'Content-Type': 'application/json',Authorization:`Bearer ${token || localStorage.getItem("token")}`},
           });
           let data = await res.json();
           setCartItem(data.data.items);
@@ -153,8 +146,13 @@ const ContextProvider = (props)=>{
     }
     const handleLogout=()=>{
         setLoggedIn(false);
+        getCartItems();
+        getWishListData();
         setToken("");
         localStorage.removeItem("token");
+        localStorage.removeItem("userName");
+        localStorage.removeItem("email");
+        
         navigate("/login");
     }
 
@@ -167,8 +165,9 @@ const ContextProvider = (props)=>{
     }
 
     return(<>
-        <categoryContext.Provider value={{search,searchTerm,loggedIn,token,wishlist,cartItem,totalPrice,wishlistMsg,userName,email,loader,
-            handleSearch,handleLogin,handleToken,handleLogout,getWishListData,getCartItems,removeFromCart,removeFromWishList,addToWishList,setUserName,setEmail}}>
+        <categoryContext.Provider value={{search,searchTerm,loggedIn,token,wishlist,cartItem,totalPrice,wishlistMsg,loader,
+            handleSearch,handleLogin,handleToken,handleLogout,getWishListData,getCartItems,removeFromCart,removeFromWishList,addToWishList,
+            setCartItem}}>
             {props.children}
         </categoryContext.Provider>
     </>)

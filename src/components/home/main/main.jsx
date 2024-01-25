@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useEffect, useContext} from 'react'
 import Header from '../header/header';
 import SliderShow from './slider';
 import Footer from '../footer/footer';
@@ -8,14 +8,15 @@ import DoubleImgContainer from './doubleImgContainer';
 import CategoryWithSixImage from './categoyWithSixImg';
 import BestSellerSlider from './bestSeller/bestSellerSlider';
 import { Link ,NavLink} from 'react-router-dom';
+import { categoryContext } from '../../Context/provider';
 
 const Main=()=> {
+  const {getCartItems,getWishListData} = useContext(categoryContext);
 const sliderArrayImage1 =
 [
   {src:"https://images.bewakoof.com/uploads/grid/app/NEW-1x1-CosySweaters4060off-common-1702097055.jpg"},
   {src:"https://images.bewakoof.com/uploads/grid/app/OOFSale-1X1-RM-Common-1701957479.gif"},
   {src:"https://images.bewakoof.com/uploads/grid/app/NEW-1X1-Nov-SlumberPJ-common-1702023453.jpg"},
-  {src:"https://images.bewakoof.com/uploads/grid/app/NEW-1x1-edgyJackets5070OFF-common-1702219707.jpg"},
   {src:"https://images.bewakoof.com/uploads/grid/app/Joggers-buy-2-for-1299-Common-1x1-Banner-1702052630.jpg"},
   {src:"https://images.bewakoof.com/uploads/grid/app/NEW-1x1-BOJ-RMIK-GIF-1701613600.gif"},
   {src:"https://images.bewakoof.com/uploads/grid/app/OOFSale-1X1-IKRM-03-1702542830.gif"},
@@ -42,7 +43,7 @@ const sliderArrayImage3 = [{src:"https://images.bewakoof.com/uploads/grid/app/Bu
   {src:"https://images.bewakoof.com/uploads/grid/app/NEW-1x1-BOJ70OFF-common-1702012964.gif"},
   {src:"https://images.bewakoof.com/uploads/grid/app/NEW-1x1-cargo-common--2--1701959177.jpg"}];
 
-const BewakoofOriginals = [{src:"	https://images.bewakoof.com/uploads/grid/app/pima-pc-1701237703.jpg"},
+const BewakoofOriginals = [{src:"https://images.bewakoof.com/uploads/grid/app/pima-pc-1701237703.jpg"},
 {src:"https://images.bewakoof.com/uploads/grid/app/windcheater-pc-1701237705.jpg"},
 {src:"https://images.bewakoof.com/uploads/grid/app/Banner-PC-Size-480x457.jpg"},
 {src:"https://images.bewakoof.com/uploads/grid/app/pima-pc-1701237703.jpg"},
@@ -67,8 +68,8 @@ const categoriesToBag = [{src:"https://images.bewakoof.com/uploads/grid/app/cate
   {src:"https://images.bewakoof.com/uploads/grid/app/category-box-boxers-1685086219.jpg"},
   {src:"https://images.bewakoof.com/uploads/grid/app/category-box--m-pyjama-1685086220.jpg"},
   {src:"https://images.bewakoof.com/uploads/grid/app/category-box-new-240x350-women-cords-1686063032.jpg"},
-  {src:"https://images.bewakoof.com/uploads/grid/app/category-box-new-240x350-women-pjs-1686063033.jpg"},
-  {src:"https://images.bewakoof.com/uploads/grid/app/category-box-new-240x350-women-shorts-1686063034.jpg"}];
+  {src:"https://images.bewakoof.com/uploads/grid/app/3rd-Jan-2024-Cargos--1--1704272089.jpg"},
+  {src:"https://images.bewakoof.com/uploads/grid/app/trending-category-icons-Jeans-Women-1704181913.jpg"}];
 
 const doubleImgTooHot = [{src:"https://images.bewakoof.com/uploads/grid/app/deskop-mid-size-winter-common-1702097269.jpg"},
 {src:"https://images.bewakoof.com/uploads/grid/app/B1G1-OOF-Sale-Midsize-desktop-banner-1702109804.jpg"}]
@@ -85,11 +86,15 @@ const bestPics = [{src:"https://images.bewakoof.com/uploads/grid/app/720x420-Mid
 const customizedTShirt = [{src:"https://images.bewakoof.com/uploads/grid/app/Customise-Desktop-midsize-Banner-1699360277.jpg"},
 {src:"https://images.bewakoof.com/uploads/grid/app/Plus-Size-Desktop-midsize-Banner--1--1699360278.jpg"}];
 
+useEffect(()=>{
+  getCartItems();
+  getWishListData();
+},[]);
 return (
     <div>
       <Header/>
       <div className='slider' >
-        <SliderShow arrayImage = {sliderArrayImage1} slidesToShow={3}/>
+        <SliderShow arrayImage = {sliderArrayImage1} slidesToShow={3} slide="1"/>
       </div>
       <div className='nextSlider'>
         <NextSliderShow arrayImage = {sliderArrayImage2}/>
@@ -110,12 +115,12 @@ return (
 
       <div className='designHeading'>TRENDING CATEGORIES</div>
       <div className="categoryContainer">
-        <CategoryWithSixImage categoryImg={trendingCategoryMen}/>
-        <CategoryWithSixImage categoryImg={trendingCategoryWomen}/>
+        <CategoryWithSixImage categoryImg={trendingCategoryMen} gender="Men" count="1"/>
+        <CategoryWithSixImage categoryImg={trendingCategoryWomen} gender="Women" count="2"/>
       </div>
       <div className='designHeading md:mt-[-6px]'>Bewakoof Originals</div>
       <div className='bewakoofOriginalSlider md:mt-[-53px] h-[223px]'>
-        <SliderShow arrayImage={BewakoofOriginals} slidesToShow={4}/>
+        <SliderShow arrayImage={BewakoofOriginals} slidesToShow={4} slide="2"/>
       </div>
       <div className='designHeading mt-4 md:mt-3'>TOO HOT TO BE MISSED</div>
       
@@ -123,9 +128,9 @@ return (
       <DoubleImgContainer doubleImg={offSale} margin={0} className='md:mt-[-44px]'/>
 
       <div className='designHeading pt-1'>CATEGORIES TO BAG</div>
-      <CategoryWithSixImage categoryImg={categoriesToBag}/>
+      <CategoryWithSixImage categoryImg={categoriesToBag} gender="Men" count="3"/>
       <div className='thirdSlider'>
-        <SliderShow arrayImage = {sliderArrayImage3} slidesToShow ={3}/>
+        <SliderShow arrayImage = {sliderArrayImage3} slidesToShow ={3} slide="3"/>
       </div>
 
       <div className='sellerHeadeing pt-8 md:pt-0' style={{marginBottom:"40px",color: "rgb(0, 0, 0)"}} >BESTSELLERS</div>

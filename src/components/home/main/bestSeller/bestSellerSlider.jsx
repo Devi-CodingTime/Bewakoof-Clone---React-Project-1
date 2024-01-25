@@ -68,8 +68,8 @@ const BestSellerSlider = () => {
                 {/* <img  src="https://images.bewakoof.com/web/Wishlist.svg"  alt="wishlist"  
                 className="wishlist-icon sellerIcon"/> */}
                 <div onClick={()=>{addToWishList(i._id)}}>
-                    {wishlisted.has(i._id)?(<img src="https://images.bewakoof.com/web/Wishlist-selected.svg" className="wishlist-iconCat" onClick={handlemsgPopUp}/>):
-                    (<img src="https://images.bewakoof.com/web/Wishlist.svg" className="wishlist-iconCat"/>)}
+                    {wishlisted.has(i._id)?(<img src="https://images.bewakoof.com/web/Wishlist-selected.svg" className="wishlist-icon" onClick={handlemsgPopUp}/>):
+                    (<img src="https://images.bewakoof.com/web/Wishlist.svg" className="wishlist-icon"/>)}
                 </div>
                 <div className="PriceText">
                   <span style={{fontSize:"15px"}}>₹</span>{i.price}

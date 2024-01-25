@@ -85,16 +85,19 @@
     .nextSlider {
         margin: 0;
     }
-.All-Eyes{
-    position: relative;
-}
-.bestSlider{
-    margin: 0;
-}
-.bewakoofOriginalSlider{
-    height: 175px;
-}
-.thirdSlider{
-    margin: 0;
-}
+    .All-Eyes{
+        position: relative;
+    }
+    .bestSlider{
+        margin: 0;
+    }
+    .bewakoofOriginalSlider{
+        height: 175px;
+    }
+    .thirdSlider{
+        margin: 0;
+    }
+    .sellerHeadeing{
+        height: 2rem;
+    }
 }

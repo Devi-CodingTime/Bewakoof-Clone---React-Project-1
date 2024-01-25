@@ -43,11 +43,12 @@
     width: 35%;
     /* background-color: azure; */
     height: 288px;
+    text-align: left;
     /* border: 1px solid springgreen; */
 }
 .pricedetail{
     font-size: 16px;
-    padding: 10px;
+    /* padding: 10px; */
     background-color: white;
 }
 
@@ -112,19 +113,66 @@
     width: 100%;
     margin-right: 12px;
 }
+/* 
 @media only screen and (min-width: 769px){
-.addressPaymentWrapper .viewAddressPayemnt-wrpr {
-    display: none;
-}
-}
-@media only screen and (min-width: 769px){
-.orderHelpWrapper {
-    padding: 20px 14px;
-}
-}
-
-@media only screen and (min-width: 769px){
-.orderHelpWrapper .orderHelpWrapper--heading {
-    padding: 0;
-}
-}
+    .addressPaymentWrapper .viewAddressPayemnt-wrpr {
+        display: none;
+    }
+    }
+    
+    } */
+    /*     display: flex;
+    gap: 21%;
+    position: absolute;
+    top: 46px;
+    width: 100%;
+    padding-left: 155px;
+    margin-top: 21px; */
+    @media (max-width: 992px){
+    .singleOrderWrpr {
+        overflow-x: hidden;
+    }
+    
+    .backtoListing{
+        display: none;
+        text-align: left;
+        margin: 75px 0px 0 10px;
+    }
+    .sigleOrderdata{
+        width: 100%;
+        margin-top: 75px;
+    }
+    }
+    @media(max-width: 769px){
+        .sigleOrderdata {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+        }
+        .backtoListing{
+            display: none;
+        }
+        .imgpart {
+            margin-left: 0;
+            min-width: 23%;
+        }
+        .leftScreen{
+            width: 86%;
+            margin-top: 75px;
+        }
+        .orderHelp--buttonWrapper
+        {
+            display: flex;
+            justify-content: space-between;
+        }
+        .orderHelpWrapper--buttons {
+            padding: 1px 18px 2px;
+        }
+        .fa-solid1{
+            margin-left: 651px;
+        }
+        .rightScreen {
+            width: 86%;
+        }
+    }

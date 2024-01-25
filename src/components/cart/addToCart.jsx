@@ -14,7 +14,7 @@ const AddToCart =()=> {
   const [addwishList,setAddWishList] = useState([]);
   // const [loader,setLoader] = useState(false);
   const {token,wishlist,getWishListData,getCartItems,cartItem,removeFromCart,removeFromWishList,
-    totalPrice,email,loader} = useContext(categoryContext);
+    totalPrice,loader} = useContext(categoryContext);
  
 
   const handleChange = (event,id) => {
@@ -87,11 +87,12 @@ const [bagItem,setBagItem] = useState({});
 useEffect(()=>{
   getCartItems();
   getWishListData();
+    // window.scrollTo(0, 0);
 },[]);
 
   return (
     <>{cartItem.length==0?(<NoCart/>):  (<>
-    <CartHeader email={email}/>
+    <CartHeader email={localStorage.getItem("email")}/>
     {console.log("cart",cartItem)}
     {loader?<Loader/>:""}
     <h1 style={{textAlign:"left"}} className='py-8 myBag'>My Bag {cartItem.length} item</h1>
@@ -222,7 +223,7 @@ useEffect(()=>{
       </div>
     </div>
     <div className='wishListHolder' >
-    <h2 className='favheading'>My Wishlist</h2>
+    {wishlist.length>0?<h2 className='favheading'>My Wishlist</h2>:""}
     
         <div className="flex flex-wrap">
         {wishlist?.map((i)=>{

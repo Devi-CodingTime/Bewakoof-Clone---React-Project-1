@@ -6,23 +6,15 @@ import { wishlisted } from "../utility/storagewishlist";
 import Loader from "../loader/loader";
 
 const ShowFilterdCat = (props)=>{
-    // const {data,filterdata}=props;
     const [loader,setLoader] = useState(false);
     const[searchParams, setSearhcParams]= useSearchParams();
     const [searcheddata,setSearcheddata] = useSearchParams();
-    console.log("-----------------------------------------");
-    // console.log("searchParams",searchParams.get("data"));
-    // console.log("setSearhcParams",setSearhcParams.get("filterdata"));
-    // console.log("setsearchfilter",setsearchfilter.get("setsearchfilter"));
-    // console.log("searchfilter",searchfilter.get("searchfilter"));
-    console.log("------------------------------------------");
 
     const {search,searchTerm,addToWishList,wishlistMsg} = useContext(categoryContext);
     const navigate = useNavigate();
 
     const [product,setProduct] = useState([]);
-    // const [searchWithFilter, setSearchWillFilter] = useState("");
-    // const [wishList,setWishList] = useState([]);
+    
     // api call here
     async function getBestSellerProducts()
     {
@@ -36,10 +28,9 @@ const ShowFilterdCat = (props)=>{
                     "Content-Type": "application/json",
                     'projectId': 'ctxjid7mj6o5',
                 }});
-                // console.log("res from design of the week",res);
+               
             const result = await res.json();
-            // console.log("result.data : ",result);  https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?limit=1597"
-            setProduct(result.data);
+             setProduct(result.data);
         
         }catch (error) {
             console.log(error);
@@ -63,7 +54,7 @@ const ShowFilterdCat = (props)=>{
                 api = `https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?filter={"${searchTerm}":"${search}"}&limit=50`;
             }
                 console.log("api ",api);
-            const data = await fetch(api,{
+                const data = await fetch(api,{
                 method: "GET", // *GET, POST, PUT, DELETE, etc.                        
                 headers: {
                     "Content-Type": "application/json",
@@ -117,7 +108,8 @@ const ShowFilterdCat = (props)=>{
 
 
     useEffect(()=>{
-        if(searchParams.get("data")=="sellerTag" || searchParams.get("data")=="subCategory" || searchParams.get("data")=="gender"){
+        if(searchParams.get("data")=="sellerTag" || searchParams.get("data")=="subCategory" || searchParams.get("data")=="gender"
+        ||searchParams.get("data")=="size" || searchParams.get("data")=="brand" ){
             getBestSellerProducts();
         }
         else
@@ -140,7 +132,7 @@ const ShowFilterdCat = (props)=>{
         <div className="flex flex-wrap">
         {loader?<Loader/>:""}
         {product?.map((i,index)=>{
-          return(<div className="card relative" style={{padding:"10px"}}>
+          return(<div className="categorycard relative" style={{padding:"10px"}} key={index}>
             <div className="border-solid border-2 border-gray-200 w-56 rounded-md" style={{height:"370px"}}
             >
                 

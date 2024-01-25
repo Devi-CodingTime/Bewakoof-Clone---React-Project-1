@@ -14,8 +14,9 @@
 }
 .imageView
 {
-    min-width: 18rem;
-    min-height: 9rem;
+    width: 30rem;
+    /* min-width: 18rem; */
+    /* min-height: 9rem; */
 }
 .brandName
 {
@@ -177,7 +178,27 @@
     .pageView{
         margin-top: -53px;
     }
-
+    .usp-wrapper{
+        display: flex;
+        gap: 30px;
+        display: none;
+    }
+    .usp2-wrapper{
+        display: flex;
+        gap: 30px;
+    }
+    .usp-box{
+        display: flex;
+        flex-direction: column;
+        width: 15rem;
+        background: rgb(250, 249, 249);
+        align-items: center;
+        height: 7rem;
+    }
+    .usp_img{
+        width: 66px;
+    }
+    
     /* popup body */
     .sizebutton 
     {
@@ -223,4 +244,68 @@
         padding:10px 0;
         border-radius: 5px;
         width: 48px;
+    }
+    @media(max-width:992px){
+        .MainWrpr{
+            overflow-x: hidden;
+        }
+        .pageView{
+            padding-left: 1rem;
+            padding-right: 0;
+        }
+        .imageView{
+            width: 50%;
+            height: 9rem;
+        }
+    }
+    @media(max-width:769px){
+        .usp-wrapper{
+            display: -webkit-inline-box;
+            gap: 10px;
+        }
+        .MainWrpr{
+            overflow-x: hidden;
+        }
+        .imgSlider {
+            display:none
+        }
+        .pageView{
+            padding: 0;
+            flex-direction:column ;
+            gap: 27rem;
+        }
+        .imageView{
+            width: 100%;
+            margin-top: 90px;
+        }
+        .aboutProduct{
+            margin: 7px 12px;
+        }
+        .imageViewimg{
+            height: 36rem;
+            width: 100%;
+        }
+        .topheadContainer{
+            display: none;
+        }
+        .p-add-bag{
+            width: 49%;
+            height: 40px;
+        }
+        .desc{
+            width: 100%;
+        }
+        .descChild{
+            gap: 75%;
+        }
+        .descpara{
+            text-align: left;
+        }
+        .cardCode{
+            gap: 21%;
+            border-bottom: 1px solid #e3dfdf;
+        }
+        .sizeguide{
+            gap: 29%;
+        }
     }

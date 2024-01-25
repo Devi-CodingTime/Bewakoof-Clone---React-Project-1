@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react'
+import React, {useContext, useState, useEffect} from 'react'
 import '../login/login.css';
 import TopHeader from '../home/header/topHeader';
 import SideNavbar from '../home/header/sideNavbar';
@@ -55,7 +55,9 @@ const Signup =()=> {
             console.log("updatedData,",updatedData);
             setSignUpData(updatedData);
      }
-
+     useEffect(()=>{
+      window.scrollTo(0, 0);
+  },[]);
   return (<>
     <TopHeader/>
     <SideNavbar/>

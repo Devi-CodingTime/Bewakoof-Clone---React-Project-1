@@ -5,37 +5,41 @@ import FooterWithoutAbout from '../home/footer/footerWithoutAbout';
 import './showWishList.css';
 import { categoryContext } from '../Context/provider';
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { wishlisted } from '../utility/storagewishlist';
 import Loader from '../loader/loader';
 
 const ShowWishList = ()=> {
-    const {wishlist,getWishListData,removeFromWishList,token} = useContext(categoryContext);
+    const {wishlist,getWishListData,removeFromWishList,getCartItems,token} = useContext(categoryContext);
     const [loader,setLoader] = useState(false);
     const [bagItem,setBagItem] = useState({});
-    const addItemToBag = async(bagData,id) =>{
-      
-          try
-          {
-            setLoader(true);
-              // let bagData = {size:'S',quantity:'1'}
-              let res = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/cart/${id}`,{
-                  method:"PATCH",
-                  headers : {projectID:'ctxjid7mj6o5' , 'Content-Type': 'application/json',Authorization:`Bearer ${token}`},
-                  body: JSON.stringify(bagData)    
-              });
-              let data = await res.json();
-              setBagItem(data.data.items);
-              removeFromWishList(id);
-          }
-          catch(error)
-          {
-              console.log(error);
-          }
-          finally{
-            setLoader(false);
-          }
+    const navigate = useNavigate();
+    const addItemToBag = async(bagData,id) =>{     
+    try
+    {
+      setLoader(true);
+        // let bagData = {size:'S',quantity:'1'}
+        let res = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/cart/${id}`,{
+            method:"PATCH",
+            headers : {projectID:'ctxjid7mj6o5' , 'Content-Type': 'application/json',Authorization:`Bearer ${token}`},
+            body: JSON.stringify(bagData)    
+        });
+        let data = await res.json();
+        setBagItem(data.data.items);
+        removeFromWishList(id);
+        getCartItems();
+    }
+    catch(error)
+    {
+        console.log(error);
+    }
+    finally{
+      setLoader(false);
+    }
   }
+  // const imgClick = (id)=>{
+  //   navigate(`/allCategory/${id}`)
+  // }
     useEffect(()=>{
         getWishListData();
     },[]);
@@ -46,15 +50,16 @@ const ShowWishList = ()=> {
       <SideNavbar/>
       {loader?<Loader/>:""}
         <div className="flex flex-wrap px-14 showWishList">
-        {wishlist?.map((i)=>{
-          return(<div className="card" style={{padding:"10px"}}>
+          
+        {wishlist?.map((i,index)=>{
+          return(<div className="card" style={{padding:"10px"}} key={index}>
             <div className="border-solid border-2 border-gray-200 w-56 rounded-md" style={{height:"380px"}}>
                 
               <img src={i.products.displayImage} style={{height:"278px"}} className="Imagetag relative cursor-default"
               onError={({ currentTarget }) => {
               currentTarget.onerror = null; // prevents looping
               currentTarget.src="../../../../images/notAvailableimages.jpg"}}/>
-                
+                 {/* onClick={()=>{imgClick(i._id)}} */}
               {/* <h3 className="brand-name rvCardDetails undefined absolute top-60 left-2 bg-white ml-0 pl-[3.5rem]">{i.products.ratings}
               <i className="fa-solid fa-star py-1" style={{color: "#eee044", fontSize:"10px" }}></i>
               </h3> */}

@@ -4,14 +4,18 @@ import FilterByCategory from "./filterByCategory";
 import ShowFilterdCat from "./showFilteredCat";
 import TopHeader from "../home/header/topHeader";
 import SideNavbar from "../home/header/sideNavbar";
+
 // import { ContextProvider,categoryContext } from "../Context/provider";
-import { useLocation, useSearchParams ,useParams} from "react-router-dom";
+import { useLocation, useSearchParams ,useParams, Link} from "react-router-dom";
 import FooterWithoutAbout from "../home/footer/footerWithoutAbout";
 
 const ShowAllCategory = () =>{
     const {search} = useLocation();
     let query = new URLSearchParams(search);
 
+    useEffect(()=>{
+        window.scrollTo(0, 0);
+    },[]);
 
     return (
     <div className="parent">
@@ -19,26 +23,26 @@ const ShowAllCategory = () =>{
             <TopHeader/>
             <SideNavbar/>
         </div>
-        <div className="mainwrapper px-20 z-0">
-            <div className="topheadContainer">
-                <span className="tophead">Home </span>
-                <span className="tophead">Women Clothing </span>
-                <span className="tophead">Joggers for Women</span>
+        <div className="mainwrapper z-0">
+            <div className="topheaderContainer">
+                <Link to={`/`}><span className="tophead">Home </span></Link>
+                <span className="tophead">{query.get("filterdata")?.toUpperCase()}</span>
+                <span className="tophead">{query.get("filterdata")?.toUpperCase()}</span>
 
             </div>
             <div class="mainHeading">
-                    <div class="topheadContainer" style={{marginLeft:"55px",marginTop: "-38px",padding: "0 31px",height:"0"}}>
+                    <div class="NameContainer">
                    
-                        <h1 class="searchResults">Joggers for Women</h1>
-                        <span class="totalProductCount">(143)</span>
+                        <h1 class="searchResults">{query.get("filterdata")?query.get("filterdata")?.toUpperCase():"Results For"}</h1>
+                        <span class="totalProductCount">(50)</span>
                     <div>
                         <div style={{width: "117px", height: "2px", backgroundColor: "#fbd139", display: "block", margin: "6px 0 0 2px"}}></div>
                 </div>
                 </div>
             </div>
             <div className="categoryHolder flex justify-center">
-                <div style={{position: "absolute",top: "218px",left: "180px", fontSize:"12px" ,color:"grey"}}>FILTERS</div>
-                <div style={{position: "absolute",top: "223px",right: "200px",fontSize:"12px" ,color:"grey"}}>SORT BY</div>
+                <div className="filterText">FILTERS</div>
+                {/* <div style={{position: "absolute",top: "223px",right: "200px",fontSize:"12px" ,color:"grey"}}>SORT BY</div> */}
                 
                 {/* <ContextProvider> */}
                     <FilterByCategory/>

@@ -16,6 +16,9 @@ import Payment from "./payment/payment";
 import Orderplaced from "./orderplaced/orderplaced";
 import Myorder from "./orderList/myorder";
 import SingleOrder from "./singleorder/singleOrder";
+import Comingsoon from "./comingSoon/comingsoon";
+import PageNotFound from "./pageNotFound/pageNotFound";
+import ViewCategoriezedItem from "./clothesCategory/categoriezedItem";
 // import Loader from "./loader/loader";
 function App() {
 
@@ -38,8 +41,11 @@ function App() {
       <Route path="/orderplaced" element={<Orderplaced/>}/>
       <Route path="/myorder" element={<Myorder/>}/>
       <Route path="/singleorder/:id" element={<SingleOrder/>}/>
-
+      <Route path="/comingsoon" element={<Comingsoon/>}/>
       <Route path="/review/:id" element={<Review/>}/>
+      <Route exact path="/*" element={<PageNotFound/>}/>
+      <Route path="/categorizeItem" element={<ViewCategoriezedItem/>}/>
+
       </Routes>
       </ContextProvider>
 

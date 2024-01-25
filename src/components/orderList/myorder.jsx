@@ -43,6 +43,7 @@ function Myorder() {
     }
     useEffect(()=>{
       fetchOrderList();
+        window.scrollTo(0, 0);
     },[]);
   return (
     <>
@@ -55,8 +56,10 @@ function Myorder() {
                 return (<div className='orderConatiner'>
                     <img src={cartitem.order.items[0].product.displayImage} className='leftpart'/>
                     <div className='rightpart'>
-                        <p>{cartitem.order.items[0].product.name}</p>
-                        <p>PRICE : {cartitem.order.items[0].product.price}</p>
+                        <p style={{lineHeight:"15px"}}>{cartitem.order.items[0].product.name}</p>
+                        <p>Price : {cartitem.order.items[0].product.price}</p>
+                        <p>Order# : {cartitem.order.items[0].product._id}</p>
+                        <p>Ratings : {cartitem.order.items[0].product.ratings}</p>
                     </div>
                     <button className='viewMoreOrder' onClick={()=>{ViewClicked(cartitem.order._id)}}>Order Info</button>
                     </div>)

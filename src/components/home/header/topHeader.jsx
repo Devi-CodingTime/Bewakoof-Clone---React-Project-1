@@ -2,36 +2,44 @@ import React, { useState,useContext, useEffect } from "react";
 import './header.css';
 import { categoryContext } from "../../Context/provider";
 import { MenData,imgArray,WomenData,allMixed } from "../../Context/data";
-import { Link} from "react-router-dom";
+import { Link, useLocation} from "react-router-dom";
 import { debounce } from "../../Context/debounce";
 const TopHeader = () =>{
   const [search,setSearch] = useState("");
   const [matchedProduct, setMatchedProducts] = useState([]);
-
-  const {loggedIn,handleLogout,handleLogin,cartItem,getCartItems,handleToken,wishlist,userName} = useContext(categoryContext);
+  const location = useLocation();
+  const { pathname } = location;
+  console.log("ophan ",pathname);
+  const {loggedIn,handleLogout,handleLogin,cartItem,getCartItems,handleToken,wishlist,getWishListData} = useContext(categoryContext);
   // console.log("inside top header ,",loggedIn);
   const changeHandler = (event)=>{
     setSearch(event.target.value);
     let userInput = event.target.value;
 
     let filteredData = allMixed.filter((value)=>{
-      return value.name.toUpperCase().includes(userInput.toUpperCase());
+      // console.log("a",value?.name?.toUpperCase());
+      return value?.name?.toUpperCase().includes(userInput.toUpperCase());
     });
     setMatchedProducts(filteredData);
 
+  }
+  const clearSearch = ()=>{
+    setSearch("");
   }
   const debounceChange = debounce(changeHandler,500);
 
   useEffect(()=>{
     let storedToken = localStorage.getItem("token");
-        // console.log("storedToken :",storedToken);
+        console.log("storedToken :",storedToken);
         if(storedToken)
         { 
           handleLogin(true);
           handleToken(storedToken);
         }
-    getCartItems();
+        console.log("1st effect",pathname);
+
   },[]);
+
     return (<>
     <div className='upperHeader'>
         <div className='leftheader'>
@@ -91,10 +99,10 @@ const TopHeader = () =>{
                     <div className="col-xs-3" style={{width: "calc(25% - 40px)"}}>
                       <span className="singleEntry headings specials">SPECIALS</span>
                       {imgArray.map((i)=>{
-                        return(<a className="singleEntry false" href="/campaign/oof-sale-for-men">
+                        return(<Link to={`/comingsoon`} className="singleEntry false" href="/campaign/oof-sale-for-men">
                         <img className="pull-left navBall" width={"40px"} height={"40px"} src={i.src} title="OOF Sale" alt="OOF Sale"/>
                         <span className="navBallTitle">{i.imgName}</span>
-                      </a>)
+                      </Link>)
                       })}
                     </div>
                   </div>
@@ -134,10 +142,10 @@ const TopHeader = () =>{
                     <div className="col-xs-3" style={{width: "calc(25% - 40px)"}}>
                       <span className="singleEntry headings specials">SPECIALS</span>
                       {imgArray.map((i)=>{
-                        return(<a className="singleEntry false" href="/campaign/oof-sale-for-men">
+                        return(<Link to={`/comingsoon`} className="singleEntry false" >
                         <img className="pull-left navBall" width={"40px"} height={"40px"} src={i.src} title="OOF Sale" alt="OOF Sale"/>
                         <span className="navBallTitle">{i.imgName}</span>
-                      </a>)
+                      </Link>)
                       })}
                     </div>
                   </div>
@@ -150,9 +158,9 @@ const TopHeader = () =>{
             <div className='pull-right mainHeaderCols activemenuwrp' style={{paddingRight:"0px"}}>
                 <div className='actionMenu'>
                     <span className='actionMenu'>
-                        <a>
+                        <Link to={`/`}>
                             <img src="https://images.bewakoof.com/web/india-flag-round-1639566913.png"  alt="country" className="countryIcon" height="30px" width="30px"/>
-                        </a>
+                        </Link>
                     </span>
                     <span className='actionMenu actionMenuInner' id='textHeaderCart'>
                         {loggedIn?<Link to="/addtocart" className="cartIcon" style={{paddingRight: "0px", position: "relative"}}>
@@ -164,19 +172,18 @@ const TopHeader = () =>{
                         {cartItem.length>0?<span className="bgLen">{cartItem.length}</span>:""}
                     </span>
                     <span className='actionMenu' id='testHeadWish' style={{padding: "0 5px",cursor: "pointer"}}>
-                    {/* ||localStorage.getItem("token")
-                    ||localStorage.getItem("token") */}
+                    
                     {loggedIn?<Link to={`/showWishList`} className="icon_wishlist"><i className="fa-regular fa-heart" style={{color: "grey"}}></i></Link>
                     :<Link to={`/login`}  className="icon_wishlist"><i className="fa-regular fa-heart" style={{color: "grey"}}></i></Link>}
                       {wishlist.length>0?<span className="wishLen">{wishlist.length}</span>:""}
                     </span>
                     <div className='actionMenu userIconConatiner' style={{display: "flex",alignItems: "baseline",textAlign: "right"}}>
                         {loggedIn===false || localStorage.getItem("token")===null?<Link to={'/login'} id="loginLink" className="loginLink">Login</Link>:
-                        <img src="../../../images/User_Icon.png" onClick={()=>{handleLogout()}} style={{width:"50px",height:"46px"}}
+                        <img src="../../../images/User_Icon.png" style={{width:"50px",height:"46px"}}
                         />}
                         {loggedIn?
                         <div className="userContainer">
-                          <div className="child2" style={{paddingLeft: "4px"}}>Hi, {userName}</div>
+                          <div className="child2" style={{paddingLeft: "4px"}}>Hi, {localStorage.getItem("userName")}</div>
                           
                           <div className="child2"><Link to={`/showWishList`}>My Wishlist
                           </Link></div>
@@ -209,7 +216,7 @@ const TopHeader = () =>{
         {matchedProduct?.map((i)=>{
           return(<>
           <Link to={`/allCategory?searcheddata=${JSON.stringify(i.search)}&filtereddata=${JSON.stringify(i.filter)}`}>
-            <div className="child1">{i.name}</div>
+            <div className="child1" onClick={clearSearch}>{i.name}</div>
           </Link></>)
         })}
       </div>:""}

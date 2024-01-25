@@ -10,10 +10,9 @@ const CashOndelivery=()=> {
         <p className="ml-5">
             Cash handling charges of ₹ 20 are applicable
         </p>
-        <Link to={`/orderplaced`}><button className="showPayBtn" type="button" style={{ width: "100%" }}>
+        <button className="showPayBtn" type="button" style={{ width: "100%" }}>
             Pay ₹{totalPrice}
         </button>
-        </Link>
     </div>
   )
 }

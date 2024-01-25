@@ -31,7 +31,7 @@ section
 {
     position: absolute;
     top: -26px;
-    left: 190px;
+    left: 86%;
 }
 .PriceText{
     text-align: left;
@@ -75,13 +75,16 @@ section
 @media(max-width:991px){
     .maincard{
         width: 90%;
-        height: 270px;
+        /* height: 270px; */
     }
     .sellerIcon{
         top: -26px;
         left: 314px;
         position: absolute;
     }
+    /* .wishlist-icon{
+        right: 57%;
+    } */
 }
 @media(max-width:768px)
 {
@@ -89,7 +92,8 @@ section
         margin-top: 0px;
     }
     .maincard{
-        height: 234px;
+        /* height: 234px; */
+        height: 190%;
     }
     .sellerHeadeing 
     {
@@ -98,5 +102,8 @@ section
     }
     .sellerIcon{
         left: 400px;
+    }
+    .wishlist-icon{
+        left: 77%;
     }
 }

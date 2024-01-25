@@ -11,9 +11,9 @@ import { categoryContext } from '../Context/provider';
 import Loader from '../loader/loader';
 
 const Payment =()=> {
-  const {cartItem,token,email,userName,totalPrice} = useContext(categoryContext);
+  const {cartItem,token,totalPrice,setCartItem} = useContext(categoryContext);
   const [addressdata,setAddressdata] = useSearchParams();
-  const [msg,setMsg] = useState("");
+  
   const [payment,setPayment] = useState(1);
   const [loader,setLoader] = useState(false);
   const navigate = useNavigate();
@@ -38,6 +38,24 @@ const Payment =()=> {
     }
     
   }
+  async function clearCart(){
+    try
+    {
+      let res = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/cart`,{
+          method:"DELETE",
+          headers : {projectID:'ctxjid7mj6o5' , 'Content-Type': 'application/json',Authorization:`Bearer ${token}`}
+          
+      });
+      let data = await res.json();
+      console.log("data.status",data.status);
+      if(data.status==="success")
+        setCartItem(data.data.items);
+    }
+    catch(error)
+    {
+        console.log(error);
+    }
+  }
   let formValue = {
     productId:"",
     quantity:"",
@@ -59,17 +77,17 @@ const Payment =()=> {
   }
   
   setLoader(false);
+  clearCart();
   navigate(`/orderplaced`);
 };
-
-// useEffect(()=>{
-//   fetchAllOrders();
-// },[]);
-  
+useEffect(()=>{
+  window.scrollTo(0, 0);
+},[]);
   return (
     <>
-      <CartHeader email={email}/>
+      <CartHeader email={localStorage.getItem("email")}/>
       {loader?<Loader/>:""}
+      
       <div className='cartcontainer'>
         <div className='leftcart'>
           <h3 className='paymentHeading'>Choose Your Payment option</h3>
@@ -108,7 +126,7 @@ const Payment =()=> {
         <div className='rightcart'>
           <div>
             <span className="f-b3-r clr-shade1 ml-[-237px]" style={{fontSize: "13px"}}>Delivering order to </span>{" "}
-            <span className="f-b3-s clr-shade1">{userName} </span>
+            <span className="f-b3-s clr-shade1">{localStorage.getItem("userName")} </span>
             <div className="d-flex align-items-center ml-1" style={{borderBottom:"1px solid grey"}}>
               <p className="f-b2-r clr-shade3 bkf-ellipsis mt-0" style={{ maxWidth: "85%",fontSize: "13px" }}>
                 {JSON.parse(addressdata.get("address")).city},

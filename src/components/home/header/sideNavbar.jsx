@@ -1,12 +1,15 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {useState} from "react";
 import './header';
 import { categoryContext } from "../../Context/provider";
+import { wishlisted } from "../../utility/storagewishlist";
 const SideNavbar = () =>{
-  const {loggedIn,userName,handleLogout,cartItem} = useContext(categoryContext);
+  const {loggedIn,handleLogout,cartItem,wishlist} = useContext(categoryContext);
   const [checked,setChecked] = useState(false);  
-  
+  const location = useLocation();
+  const { pathname } = location;
+  console.log("location is :",pathname);
   const getchecked = ()=>{
     setChecked(!checked);
     // console.log(checked," check");
@@ -15,9 +18,13 @@ const SideNavbar = () =>{
     <div className='sideNavBox' style={{ width:"100%", height:"20px"}}>
         <header id="" className="mHeaderDiv mHeaderSticky" style={{zIndex: "1"}}>
           <div className="noMg mHeader">
-            <label for="hambu" className="mLogoDiv">
+            {pathname==="/"?<label for="hambu" className="mLogoDiv">
               <img src="https://images.bewakoof.com/web/ic-web-head-hamburger.svg" className="mMenuBtn" onClick={getchecked}/>
-            </label>
+            </label>:
+            // <Link to={`/`}>
+            <i className="fa-solid fa-chevron-left prevIcon ml-5 text-xl cursor-pointer" onClick={()=>{window.history.back()}}></i>
+            // {/* </Link> */}
+            }
 
             {/* show if user click side bar hambu */}
             {checked?(<>
@@ -26,7 +33,7 @@ const SideNavbar = () =>{
                 <label for="hambu" className="sideMenuHolder">
                   <div className="mMenuHead clearfix">
                     <div className="welcomeHeader">
-                      {loggedIn?<h5 className="welcomeGuest">Hello {userName}</h5>:
+                      {loggedIn?<h5 className="welcomeGuest">Hello {localStorage.getItem("userName")}</h5>:
                       <h5 className="welcomeGuest">Welcome Guest
                         <div className="register">
                         <a>Login / Sign Up</a>
@@ -145,12 +152,13 @@ const SideNavbar = () =>{
               </div>
             </span>
             </Link>
+            {wishlist.length>0?<div className="cartCountWish">{wishlist.length}</div>:""}
             <Link to={`${loggedIn?"/addtocart":"/login"}`}>
               <span>
                 <img src="https://images.bewakoof.com/web/ic-web-head-cart.svg" className="header-icon" alt="shopping-bag"/> 
               </span>
             </Link>
-            <div className="cartCount">{cartItem.length}</div>
+            {cartItem.length>0?<div className="cartCount">{cartItem.length}</div>:""}
           </div></>)}
               {/* show if user not click side bar */}
           </div>

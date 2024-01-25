@@ -22,8 +22,8 @@ const FixedHeaderContainer = ()=>{
           <Link to={`/allCategory?data=brand&filterdata=THE DAILY OUTFITS`}>  
             <div className="fixedHeader">THE DAILY OUTFITS</div>
           </Link>
-          <Link to={`/allCategory?data=brand&filterdata=Bewakoof Air® 1.0`}>  
-            <div className="fixedHeader">BEWAKOOF AIR</div>
+          <Link to={`/allCategory?data=brand&filterdata=CHIMPAAANZEE`}>  
+            <div className="fixedHeader">CHIMPAAANZEE</div>
           </Link>
           <Link to={`/allCategory?data=brand&filterdata=TISTABENE`}>  
             <div className="fixedHeader">TISTABENE</div>
