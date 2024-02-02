@@ -13,29 +13,27 @@ import { categoryContext } from '../Context/provider';
 import { Modal } from "react-responsive-modal";
 import 'react-responsive-modal/styles.css';
 import FooterWithoutAbout from '../home/footer/footerWithoutAbout';
-import { addedtobag, wishlisted } from '../utility/storagewishlist';
+import { wishlisted } from '../utility/storagewishlist';
 import Loader from '../loader/loader';
 
 const ShowSingleCategory = () => {
     const { id } = useParams();
-    const { loggedIn, token, getCartItems, addToWishList, wishlistMsg } = useContext(categoryContext);
+    const { loggedIn, token,cartItem,wishlist, getCartItems,getWishListData, addToWishList} = useContext(categoryContext);
 
     const navigate = useNavigate();
 
     const [singleProduct, setSingleProduct] = useState({});
     const [review, setReview] = useState([]);
     const [bagItem, setBagItem] = useState([]);
-
     const [src, setSrc] = useState("");
     const [selected, setSelected] = useState(false);
     const [open, setOpen] = useState(false);
     const [size, setSize] = useState("");
     const [Modalopen, setModalopen] = useState(false);
     const [loader, setLoader] = useState(true);
-    // const [ModalopenMsg,setModalopenMsg] = useState(false);
-
     const [clickedButtons, setClickedButtons] = useState("");
     const [clickedButtonsModal, setClickedButtonsModal] = useState("");
+
     const api = `https://academics.newtonschool.co/api/v1/ecommerce/product/${id}`;
     const reviewApi = `https://academics.newtonschool.co/api/v1/ecommerce/review/${id}`;
 
@@ -78,13 +76,7 @@ const ShowSingleCategory = () => {
     }
 
     const addToBag = async (bagData, id) => {
-        
-        console.log("addedtobag", addedtobag);
         try {
-            addedtobag.push(id);
-            // let tokenAuth = localStorage.getItem("token");
-            // tokenAuth = tokenAuth.substring(0, tokenAuth.length - 1);
-            
             let res = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/cart/${id}`, {
                 method: "PATCH",
                 headers: { projectId: 'ctxjid7mj6o5', 
@@ -107,7 +99,7 @@ const ShowSingleCategory = () => {
     };
 
     const handlePopUp = () => {
-        alert(wishlistMsg);
+        alert("Product already exists in the wishlist.");
     }
     const closeModal = () => {
         setModalopen(false);
@@ -130,9 +122,10 @@ const ShowSingleCategory = () => {
         setSelected(true);
     }
     useEffect(() => {
-        
         getSingleProduct();
         getSingleProductReview();
+        getCartItems();
+        getWishListData();
         window.scrollTo(0, 0);
     }, []);
 
@@ -204,7 +197,7 @@ const ShowSingleCategory = () => {
                                     className="bag-icon" />
 
                                 {/* <Link to={`/addtocart`}> ()=>addToBag({size:size,quantity:'1'},id) */}
-                                {addedtobag.includes(id) ? (<Link to={`/addtocart`}><span>GO TO BAG</span></Link>)
+                                {cartItem.some((item)=>{return item.product._id===id}) ? (<Link to={`/addtocart`}><span>GO TO BAG</span></Link>)
                                     :
                                     <span onClick={size ? (() => addToBag({ size: size, quantity: '1' }, id)) : openModal}>ADD TO BAG</span>
                                 }
@@ -242,15 +235,13 @@ const ShowSingleCategory = () => {
                             </Modal>
 
                             <div className="p-add-bag flex" style={{ backgroundColor: "white", border: "1px solid grey" }}
-                                onClick={wishlistMsg ? handlePopUp : (() => { addToWishList(id) })}>
+                                onClick={wishlisted.has(id) ? handlePopUp : (() => { addToWishList(id) })}>
                                 {/* <i className="fa-regular fa-heart" style={{color: "grey"}}></i> */}
                                 {console.log("wishet set ", wishlisted)}
                                 {wishlisted.has(id) ? <img src="https://images.bewakoof.com/web/Wishlist-selected.svg" /> :
                                     <img src="https://images.bewakoof.com/web/Wishlist.svg" />}
                                 <span>WISHLIST</span>
-                                {/* <Modal open={handleOpenMsg} onClose={handleCloseMsg} center styles={{ modal: { borderRadius: '10px', width: '500px'}}}>
-                    <p>{wishlistMsg}</p>
-                    </Modal> */}
+                                
                             </div>
 
                         </div>

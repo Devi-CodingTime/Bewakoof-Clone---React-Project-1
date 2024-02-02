@@ -85,6 +85,8 @@ const [bagItem,setBagItem] = useState({});
   }
 
 useEffect(()=>{
+  console.log("--------------------");
+        console.log(cartItem);
   getCartItems();
   getWishListData();
     // window.scrollTo(0, 0);

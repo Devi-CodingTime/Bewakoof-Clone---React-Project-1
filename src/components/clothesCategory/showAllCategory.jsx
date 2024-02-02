@@ -5,15 +5,18 @@ import ShowFilterdCat from "./showFilteredCat";
 import TopHeader from "../home/header/topHeader";
 import SideNavbar from "../home/header/sideNavbar";
 
-// import { ContextProvider,categoryContext } from "../Context/provider";
+import { categoryContext } from "../Context/provider";
 import { useLocation, useSearchParams ,useParams, Link} from "react-router-dom";
 import FooterWithoutAbout from "../home/footer/footerWithoutAbout";
 
 const ShowAllCategory = () =>{
     const {search} = useLocation();
     let query = new URLSearchParams(search);
-
+    const{getWishListData,getCartItems} = useContext(categoryContext);
+    
     useEffect(()=>{
+        getWishListData();
+        getCartItems();
         window.scrollTo(0, 0);
     },[]);
 
@@ -34,7 +37,7 @@ const ShowAllCategory = () =>{
                     <div class="NameContainer">
                    
                         <h1 class="searchResults">{query.get("filterdata")?query.get("filterdata")?.toUpperCase():"Results For"}</h1>
-                        <span class="totalProductCount">(50)</span>
+                        <span class="totalProductCount">(20)</span>
                     <div>
                         <div style={{width: "117px", height: "2px", backgroundColor: "#fbd139", display: "block", margin: "6px 0 0 2px"}}></div>
                 </div>

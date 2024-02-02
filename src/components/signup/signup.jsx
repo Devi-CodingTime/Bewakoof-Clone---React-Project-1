@@ -1,13 +1,12 @@
-import React, {useContext, useState, useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import '../login/login.css';
 import TopHeader from '../home/header/topHeader';
 import SideNavbar from '../home/header/sideNavbar';
 import { Link, useNavigate } from 'react-router-dom';
-import { categoryContext } from '../Context/provider';
 
 const Signup =()=> {
   const navigate = useNavigate();
-  const {setUserName} = useContext(categoryContext);
+  cons
     const  [signUpData , setSignUpData] = useState({
         name: '' ,
         email: '', 
@@ -15,38 +14,46 @@ const Signup =()=> {
         "appType" : "ecommerce"
      })
      const[msg,setMsg] = useState("");
-    //  const[error,setError] = useState("");
+     const[error,setError] = useState("");
 
      const handleContinue= async(e)=> {
       e.preventDefault();
-      // console.log("signUpData ",signUpData);
-      try{
-          const options = {
-            method: 'POST',
-            headers: new Headers({projectID:'ctxjid7mj6o5' , 'Content-Type': 'application/json'} ),
-            body: JSON.stringify(signUpData)
-        }
-        const res = await fetch('https://academics.newtonschool.co/api/v1/user/signup' ,options);
-        const resJson = await res.json();
-        // console.log(resJson , 'signup');
-        if(resJson.status==="success")
+      if(!signUpData.name || !signUpData.email || !signUpData.password)
         {
-          // console.log("signUpData.name",signUpData.name);
-          setUserName(signUpData.name);
-          navigate('/login');
+          setError("All fields must be required!");
+          setTimeout(()=>{
+            setError("");
+          },2000);
         }
-        else{
-          navigate('/signup');
+      else
+      {
+        try{
+            const options = {
+              method: 'POST',
+              headers: new Headers({projectID:'ctxjid7mj6o5' , 'Content-Type': 'application/json'} ),
+              body: JSON.stringify(signUpData)
+          }
+          const res = await fetch('https://academics.newtonschool.co/api/v1/user/signup' ,options);
+          const resJson = await res.json();
+          console.log("resJson.status",resJson.status);
+          if(resJson.status=="success")
+          {
+            setMsg("Registered Successfully !");
+            navigate(`/login`);
+            // Invalid input data. Please provide a valid email
+          }
+          else
+          {
+            setMsg(resJson.message);
+            
+          }
+          setTimeout(()=>{setMsg("");},2000);
         }
-        // setMsg("Registered Successfully !");
+        catch (error) {
+          console.log(error);
+          // setMsg("User already exists");
+        }
       }
-      catch (error) {
-        console.log(error);
-        setMsg("User already exists");
-      }
-        
-      //   login // token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ODdkYTZkZTY1N2IwZTFkZjBmZjZhMyIsImlhdCI6MTcwMzQwNTYyNCwiZXhwIjoxNzM0OTQxNjI0fQ.WAWQTmfOhITi6MlbdrlQS-9QSbD5CGigK6t6bLcYDa0
-      // signup  // "token ": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ODdkYTZkZTY1N2IwZTFkZjBmZjZhMyIsImlhdCI6MTcwMzQwMjA5MywiZXhwIjoxNzM0OTM4MDkzfQ.AzV7cVVWwZ4s5X7poX8eLPK_GN_lC69G6jDbyj67bk4"
     }
 
      const handleChange = (e)=> {
@@ -86,11 +93,16 @@ const Signup =()=> {
                 <span className="tradeMark">®</span>!
               </p>
             </div>
+            {error?<div style={{color:"red",fontSize:"20px",fontFamily:"montserrat,sans-serif"}}>{error}</div>:null}
             <div className="form-body">
+              {msg?
+              <div style={{color:"red",fontSize:"20px"}}>{msg}</div>
+              :null
+              }
             <form name="loginForm" noValidate="" autoComplete="off" className="loginForm">
-            <input onChange = {handleChange} name = 'name' placeholder = 'Enter UserName' type= 'text' className='name'/>      
-            <input onChange = {handleChange} className="email" id="email" type="email" name="email" placeholder="Enter Email"/>
-            <input onChange = {handleChange} className="pass" id="password" type="password" name="password" placeholder="Enter Password"/>
+            <input onChange = {handleChange} name = 'name' placeholder = 'Enter UserName' type= 'text' className='name' required/>      
+            <input onChange = {handleChange} className="email" id="email" type="email" name="email" placeholder="Enter Email" required/>
+            <input onChange = {handleChange} className="pass" id="password" type="password" name="password" placeholder="Enter Password" required/>
 
         
             <button id="web_continue_submit" className="loginSubmit"
@@ -101,10 +113,7 @@ const Signup =()=> {
               <p>Already have an account ?</p>
               <Link to="/login" style={{padding:"7px", width:"20%",color:"#42a2a2",cursor:"pointer"}}>Log in</Link>
             </section>
-            {msg==="Registered Successfully !"?<div style={{color:"green"}}>Registered Successfully !</div>:""}
-            {msg==="User already exists"?(<div style={{color:"red"}}>User already exists</div>):""}
-    </form>
-              
+          </form>
               <p className="termsAndConditions">
                 By creating an account or logging in, you agree with Bewakoof
                 <span className="tradeMark">®</span>'s{" "}

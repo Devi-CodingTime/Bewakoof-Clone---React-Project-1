@@ -113,7 +113,7 @@ const NoCart=()=> {
     </div>
   </div>
 </div>
-<div
+{/* <div
   style={{
     marginTop: 0,
     textAlign: "center",
@@ -126,7 +126,7 @@ const NoCart=()=> {
     alt="Secure Payments"
     style={{ maxWidth: 257, width: "100%", margin: "10px auto", padding:"20px"}}
   />
-</div>
+</div> */}
     </div>
   )
 }

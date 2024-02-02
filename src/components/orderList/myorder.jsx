@@ -9,7 +9,7 @@ import { GET_ORDERLIST } from '../utility/api';
 import FooterWithoutAbout from '../home/footer/footerWithoutAbout';
 
 function Myorder() {
-    const{cartItem,loggedIn,token} = useContext(categoryContext);
+    const{cartItem,loggedIn,token,getWishListData,getCartItems} = useContext(categoryContext);
     const [orderItem,setOrderItem]= useState([]);
     const navigate = useNavigate();
     async function fetchOrderList()
@@ -24,7 +24,7 @@ function Myorder() {
                 headers: {
                     "Content-Type": "application/json",
                     projectId: 'ctxjid7mj6o5',
-                    Authorization:`Bearer ${token}`
+                    Authorization:`Bearer ${token||localStorage.getItem("token")}`
                 }});
             const result = await res.json();
             console.log("order.data : ",result.data[0].order.items[0].product); 
@@ -42,9 +42,15 @@ function Myorder() {
       navigate(`/singleorder/${id}`);
     }
     useEffect(()=>{
+      
       fetchOrderList();
         window.scrollTo(0, 0);
+
+          getWishListData();
+          getCartItems();
+      
     },[]);
+    
   return (
     <>
       <TopHeader/>

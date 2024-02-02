@@ -4,62 +4,56 @@ export const MenData = {
             {
                 name:"Printed T-shirt",
                 search: {name: 'Printed', description: 'Printed'},
-                filter:{subCategory:'tshirt'}
+                filter:{subCategory:'tshirt',gender:'Men'}
             },
 
             {
                 name:"Oversized T-Shirt",
-                search: {name: 'Oversize', description: 'Oversize'},
-                filter:{subCategory:'tshirt'}
+                search: {name: 'Oversized', description: 'Oversized'},
+                filter:{subCategory:'tshirt',gender:'Men'}
             },
 
             {
-                name:"plain T-shirt",
-                search: {name: 'plain', description: 'plain'},
-                filter:{subCategory:'tshirt'}
+                name:"Plain T-shirt",
+                search: {name: 'Plain', description: 'Plain'},
+                filter:{subCategory:'tshirt',gender:'Men'}
             },
 
             {
                 name:"Polo T-Shirts",
                 search: {name: 'Polo', description: 'Polo'},
-                filter:{subCategory:'tshirt'}
+                filter:{subCategory:'tshirt',gender:'Men'}
             },
 
             {
                 name:"Full Sleeve T Shirt",
                 search: {name: 'Full Sleeve', description: 'Full Sleeve'},
-                filter:{subCategory:'tshirt'}
+                filter:{subCategory:'tshirt',gender:'Men'}
             },
 
             {
                 name:"Half Sleeve T Shirt",
                 search: {name: 'Half Sleeve', description: 'Half Sleeve'},
-                filter:{subCategory:'tshirt'}
+                filter:{subCategory:'tshirt',gender:'Men'}
             },
 
             {
                 name:"Shirt",
                 search: {name: 'Shirt', description: 'Shirt'},
-                filter:{subCategory:'shirt'}
+                filter:{subCategory:'shirt',gender:'Men'}
             },
 
             {
                 name:"Hoodie",
                 search: {name: 'Hoodie', description: 'Hoodie'},
-                filter:{subCategory:'hoodie'}
+                filter:{subCategory:'hoodie',gender:'Men'}
             },
             
             {
                 name:"Kurta",
                 search: {name: 'Kurta', description: 'Kurta'},
-                filter:{subCategory:'kurta'}
-            },
-            
-            {
-                name:"Kurti",
-                search: {name: 'Kurti', description: 'Kurti'},
-                filter:{subCategory:'kurti'}
-            },
+                filter:{subCategory:'kurta',gender:'Men'}
+            }
         ]
     },
 
@@ -68,42 +62,42 @@ export const MenData = {
             {
                 name:"Jogger",
                 search: {name: 'Jogger', description: 'Jogger'},
-                filter:{subCategory:'jogger'}
+                filter:{subCategory:'jogger',gender:'Men'}
             },
 
             {
                 name:"Jeans",
                 search: {name: 'Jeans', description: 'Jeans'},
-                filter:{subCategory:'jeans'}
+                filter:{subCategory:'jeans',gender:'Men'}
             },
 
             {
                 name:"Pyjama",
                 search: {name: 'Pyjama', description: 'Pyjama'},
-                filter:{subCategory:'pyjamas'}
+                filter:{subCategory:'pyjamas',gender:'Men'}
             },
 
             {
                 name:"Shorts",
                 search: {name: 'Shorts', description: 'Shorts'},
-                filter:{subCategory:'shorts'}
+                filter:{subCategory:'shorts',gender:'Men'}
             },
 
             {
                 name:"Trouser",
                 search: {name: 'Trouser', description: 'Trouser'},
-                filter:{subCategory:'trouser'}
+                filter:{subCategory:'trouser',gender:'Men'}
             },
 
             {
                 name:"Jumpsuit",
                 search: {name: 'Jumpsuit', description: 'Jumpsuit'},
-                filter:{subCategory:'jumpsuit'}
+                filter:{subCategory:'jumpsuit',gender:'Men'}
             },
             {
                 name:"Tracksuit",
                 search: {name: 'Tracksuit', description: 'Tracksuit'},
-                filter:{subCategory:'tracksuit'}
+                filter:{subCategory:'tracksuit',gender:'Men'}
             },
         ]
     },
@@ -114,25 +108,25 @@ export const MenData = {
             {
                 name:"Sweater",
                 search: {name: 'Sweater', description: 'Sweater'},
-                filter:{subCategory:'sweater'}
+                filter:{subCategory:'sweater',gender:'Men'}
             },
 
             {
                 name:"Jogger",
                 search: {name: 'Jogger', description: 'Jogger'},
-                filter:{subCategory:'jogger'}
+                filter:{subCategory:'jogger',gender:'Men'}
             },
 
             {
                 name:"Hoodie",
                 search: {name: 'Hoodie', description: 'Hoodie'},
-                filter:{subCategory:'hoodie'}
+                filter:{subCategory:'hoodie',gender:'Men'}
             },
 
             {
                 name:"Full Sleeve T Shirt",
                 search: {name: 'Full Sleeve', description: 'Full Sleeve'},
-                filter:{subCategory:'tshirt'}
+                filter:{subCategory:'tshirt',gender:'Men'}
             }
         ]
     }
@@ -144,60 +138,54 @@ export const WomenData = {
             {
                 name:"Fashion Top",
                 search: {name: 'Top', description: 'Top'},
-                filter:{subCategory:'shirt'}
+                filter:{subCategory:'shirt',gender:'Women'}
             },
             {
                 name:"Printed T-shirt",
                 search: {name: 'Printed', description: 'Printed'},
-                filter:{subCategory:'tshirt'}
+                filter:{subCategory:'tshirt',gender:'Women'}
             },
 
             {
                 name:"Oversized T-Shirt",
-                search: {name: 'Oversize', description: 'Oversize'},
-                filter:{subCategory:'tshirt'}
+                search: {name: 'Oversized', description: 'Oversized'},
+                filter:{subCategory:'tshirt',gender:'Women'}
             },
 
             {
-                name:"plain T-shirt",
-                search: {name: 'plain', description: 'plain'},
-                filter:{subCategory:'tshirt'}
+                name:"Plain T-shirt",
+                search: {name: 'Plain', description: 'Plain'},
+                filter:{subCategory:'tshirt',gender:'Women'}
             },
 
             {
                 name:"Polo T-Shirts",
                 search: {name: 'Polo', description: 'Polo'},
-                filter:{subCategory:'tshirt'}
+                filter:{subCategory:'tshirt',gender:'Women'}
             },
 
             {
                 name:"Full Sleeve T Shirt",
                 search: {name: 'Full Sleeve', description: 'Full Sleeve'},
-                filter:{subCategory:'tshirt'}
+                filter:{subCategory:'tshirt',gender:'Women'}
             },
 
             {
                 name:"Half Sleeve T Shirt",
                 search: {name: 'Half Sleeve', description: 'Half Sleeve'},
-                filter:{subCategory:'tshirt'}
+                filter:{subCategory:'tshirt',gender:'Women'}
             },
 
             {
                 name:"Shirt",
                 search: {name: 'Shirt', description: 'Shirt'},
-                filter:{subCategory:'shirt'}
-            },
-
-            {
-                name:"Hoodie",
-                search: {name: 'Hoodie', description: 'Hoodie'},
-                filter:{subCategory:'hoodie'}
+                filter:{subCategory:'shirt',gender:'Women'}
             },
             
             {
                 name:"Kurti",
                 search: {name: 'Kurti', description: 'Kurti'},
-                filter:{subCategory:'kurti'}
+                filter:{subCategory:'kurti',gender:'Women'}
             }
         ]
     },
@@ -207,42 +195,42 @@ export const WomenData = {
             {
                 name:"Jogger",
                 search: {name: 'Jogger', description: 'Jogger'},
-                filter:{subCategory:'jogger'}
+                filter:{subCategory:'jogger',gender:'Women'}
             },
 
             {
                 name:"Jeans",
                 search: {name: 'Jeans', description: 'Jeans'},
-                filter:{subCategory:'jeans'}
+                filter:{subCategory:'jeans',gender:'Women'}
             },
 
             {
                 name:"Pyjama",
                 search: {name: 'Pyjama', description: 'Pyjama'},
-                filter:{subCategory:'pyjamas'}
+                filter:{subCategory:'pyjamas',gender:'Women'}
             },
 
             {
                 name:"Shorts",
                 search: {name: 'Shorts', description: 'Shorts'},
-                filter:{subCategory:'shorts'}
+                filter:{subCategory:'shorts',gender:'Women'}
             },
 
             {
                 name:"Trouser",
                 search: {name: 'Trouser', description: 'Trouser'},
-                filter:{subCategory:'trouser'}
+                filter:{subCategory:'trouser',gender:'Women'}
             },
 
             {
                 name:"Jumpsuit",
                 search: {name: 'Jumpsuit', description: 'Jumpsuit'},
-                filter:{subCategory:'jumpsuit'}
+                filter:{subCategory:'jumpsuit',gender:'Women'}
             },
             {
                 name:"Tracksuit",
                 search: {name: 'Tracksuit', description: 'Tracksuit'},
-                filter:{subCategory:'tracksuit'}
+                filter:{subCategory:'tracksuit',gender:'Women'}
             },
         ]
     },
@@ -253,25 +241,19 @@ export const WomenData = {
             {
                 name:"Sweater",
                 search: {name: 'Sweater', description: 'Sweater'},
-                filter:{subCategory:'sweater'}
+                filter:{subCategory:'sweater',gender:'Women'}
             },
 
             {
                 name:"Jogger",
                 search: {name: 'Jogger', description: 'Jogger'},
-                filter:{subCategory:'jogger'}
-            },
-
-            {
-                name:"Hoodie",
-                search: {name: 'Hoodie', description: 'Hoodie'},
-                filter:{subCategory:'hoodie'}
+                filter:{subCategory:'jogger',gender:'Women'}
             },
 
             {
                 name:"Full Sleeve T Shirt",
                 search: {name: 'Full Sleeve', description: 'Full Sleeve'},
-                filter:{subCategory:'tshirt'}
+                filter:{subCategory:'tshirt',gender:'Women'}
             }
         ]
     }
@@ -539,3 +521,88 @@ export const allMixed = [
         filter:{subCategory:'trouser',gender:'Women'}
     },
 ]
+
+export const colors = ["GREEN","CREAM","ORANGE","BLUE","BROWN","GREY","RED","YELLOW","WHITE","BLACK","OLIVE",
+"MAROON","PURPLE","BEIGE","PINK","MULTICOLOR","CHARCOAL","SILVER"];
+
+export const size= ["S","M","L","XL","XXL"];
+
+export const brand = ["Bewakoof®","TISTABENE","7 Shores","Campus Sutra",
+"Style Quotient","Breakbounce","Chkokko","XYXX","Rigo","Alstyle",
+"Brown Mocha","Hubberholme","CHIMPAAANZEE","Smugglerz","Blue Tyga",
+"TALES and STORIES","Belliskey","ANGEL FAB","Kotty","Belliskey",
+"Thomas Scott","Old Grey","BLANCK","Urban Scottish","THE DAILY OUTFITS",
+"TrueBuyWorld","INDICLUB","OFFICIAL TOM & JERRY MERCHANDISE","Bewakoof Air® 1.0",
+"OFFICIAL CARTOON NETWORK MERCHANDISE","Mad Over Print","Lounge Dreams"];
+
+export const sliderArrayImage1 =
+[
+  {src:"https://images.bewakoof.com/uploads/grid/app/NEW-1x1-CosySweaters4060off-common-1702097055.jpg"},
+  {src:"https://images.bewakoof.com/uploads/grid/app/OOFSale-1X1-RM-Common-1701957479.gif"},
+  {src:"https://images.bewakoof.com/uploads/grid/app/NEW-1X1-Nov-SlumberPJ-common-1702023453.jpg"},
+  {src:"https://images.bewakoof.com/uploads/grid/app/Joggers-buy-2-for-1299-Common-1x1-Banner-1702052630.jpg"},
+  {src:"https://images.bewakoof.com/uploads/grid/app/NEW-1x1-BOJ-RMIK-GIF-1701613600.gif"},
+  {src:"https://images.bewakoof.com/uploads/grid/app/OOFSale-1X1-IKRM-03-1702542830.gif"},
+  {src:"https://images.bewakoof.com/uploads/grid/app/NEW-1x1-HDflat60-common-1702381459.jpg"},
+  {src:"https://images.bewakoof.com/uploads/grid/app/Year-end-Sale-Common-1x1--Ends-Tomm-Banner-1703852639.gif"}
+];
+
+export const sliderArrayImage2 =
+[
+  {src:"https://images.bewakoof.com/uploads/grid/app/category-icon-for-Desktop-Winterwear-1698217139.jpg",category:"Winterwaer"},
+  {src:"https://images.bewakoof.com/uploads/grid/app/thumbnails-Revamp-Combos-1693212865.gif",category:"Comobos"},
+  {src:"https://images.bewakoof.com/uploads/grid/app/category-icon-for-Desktop--1--1697613232.jpg",category:"Official Collaborations"},
+  {src:"https://images.bewakoof.com/uploads/grid/app/category-icon-for-msite-Desktop-1697613234.jpg",category:"New Arrival"},
+  {src:"https://images.bewakoof.com/uploads/grid/app/category-icon-for-Desktop---1--1697613231.jpg",category:"Best Sellers"},
+  {src:"https://images.bewakoof.com/uploads/grid/app/Thumbnails-Msite-Plus-size--2--1697714054.jpg",category:"plusSize"},
+  {src:"https://images.bewakoof.com/uploads/grid/app/thumbnails-Revamp-Customization--1--1693212866.jpg",category:"customization"},
+  {src:"https://images.bewakoof.com/uploads/grid/app/thumbnails-Revamp-Vote-1693212866.jpg",category:"vote for design"}
+];
+
+export const sliderArrayImage3 = [{src:"https://images.bewakoof.com/uploads/grid/app/Buy3at1199-OOF-Sale-1x1-banner--2--1702538976.jpg"},
+  {src:"https://images.bewakoof.com/uploads/grid/app/NEW-1X1-Nov-CasualPants60-1702617653.jpg"},
+  {src:"https://images.bewakoof.com/uploads/grid/app/NEW-1x1-BOJ70OFF-common-1702012964.gif"},
+  {src:"https://images.bewakoof.com/uploads/grid/app/NEW-1x1-cargo-common--2--1701959177.jpg"}];
+
+export const BewakoofOriginals = [{src:"https://images.bewakoof.com/uploads/grid/app/pima-pc-1701237703.jpg"},
+{src:"https://images.bewakoof.com/uploads/grid/app/windcheater-pc-1701237705.jpg"},
+{src:"https://images.bewakoof.com/uploads/grid/app/Banner-PC-Size-480x457.jpg"},
+{src:"https://images.bewakoof.com/uploads/grid/app/pima-pc-1701237703.jpg"},
+{src:"https://images.bewakoof.com/uploads/grid/app/windcheater-pc-1701237705.jpg"},
+{src:"https://images.bewakoof.com/uploads/grid/app/Banner-PC-Size-480x457.jpg"}];
+
+export const trendingCategoryMen = [{src:"https://images.bewakoof.com/uploads/grid/app/category-box-new-D-240x350-printed-tees-m-1685445850.jpg"},
+{src:"https://images.bewakoof.com/uploads/grid/app/trending-category-icons-Hoodies-and-Sweatshirts-1704181404.jpg"},
+{src:"https://images.bewakoof.com/uploads/grid/app/category-box-new-240x350-men-shorts-1686063035.jpg"},
+{src:"https://images.bewakoof.com/uploads/grid/app/category-box-joggers-m-1684997505.jpg"},
+{src:"https://images.bewakoof.com/uploads/grid/app/trending-category-icons-Jeans-1704181405.jpg"},
+{src:"https://images.bewakoof.com/uploads/grid/app/trending-category-icons-Sweaters-1704181406.jpg"}];
+
+export const trendingCategoryWomen = [{src:"https://images.bewakoof.com/uploads/grid/app/category-box-new-D-240x350-printed-tees-w-1685445851.jpg"},
+{src:"https://images.bewakoof.com/uploads/grid/app/category-box-Oversized-tshirts-Women-1682055634.png"},
+{src:"https://images.bewakoof.com/uploads/grid/app/category-box-new-D-240x350-fashion-tops-1686305660.jpg"},
+{src:"https://images.bewakoof.com/uploads/grid/app/category-box-Joggers-Women-1682055633.png"},
+{src:"https://images.bewakoof.com/uploads/grid/app/category-box-new-D-240x350-WOMEN-Dresses-1681725004.jpg"},
+{src:"https://images.bewakoof.com/uploads/grid/app/category-box-new-D-240x350-WOMEN-BoyfriendTeess-1681730084.jpg"}];
+
+export const categoriesToBag = [{src:"https://images.bewakoof.com/uploads/grid/app/category-box-new-240x350-men-sshirts-1686063036.jpg"},
+{src:"https://images.bewakoof.com/uploads/grid/app/category-box-boxers-1685086219.jpg"},
+{src:"https://images.bewakoof.com/uploads/grid/app/category-box--m-pyjama-1685086220.jpg"},
+{src:"https://images.bewakoof.com/uploads/grid/app/category-box-new-240x350-women-cords-1686063032.jpg"},
+{src:"https://images.bewakoof.com/uploads/grid/app/3rd-Jan-2024-Cargos--1--1704272089.jpg"},
+{src:"https://images.bewakoof.com/uploads/grid/app/trending-category-icons-Jeans-Women-1704181913.jpg"}];
+
+export const doubleImgTooHot = [{src:"https://images.bewakoof.com/uploads/grid/app/deskop-mid-size-winter-common-1702097269.jpg"},
+{src:"https://images.bewakoof.com/uploads/grid/app/B1G1-OOF-Sale-Midsize-desktop-banner-1702109804.jpg"}];
+
+export const ImgDesignOfWeek = [{src:"https://images.bewakoof.com/uploads/grid/app/DOTW-Split-banner-Desktop-Slice-1--1--1702362885.jpg"},
+{src:"https://images.bewakoof.com/uploads/grid/app/DOTW-Split-banner-Desktop-Slice-2--1--1702362886.jpg"}];
+
+export const offSale = [{src:"https://images.bewakoof.com/uploads/grid/app/style-twice-buy-2-for-1299-midsize-Desktop-Banner--1--1702634720.jpg"},
+{src:"https://images.bewakoof.com/uploads/grid/app/midsize-desktop-banner-Sweaters-Common--3--1702617616.jpg"}];
+
+export const bestPics = [{src:"https://images.bewakoof.com/uploads/grid/app/720x420-Midsize-bannner-Combos-1699277122.jpg"},
+{src:"https://images.bewakoof.com/uploads/grid/app/Official-Merch-store-Desktop-banner-1700470826-1701771559.webp"}];
+
+export const customizedTShirt = [{src:"https://images.bewakoof.com/uploads/grid/app/Customise-Desktop-midsize-Banner-1699360277.jpg"},
+{src:"https://images.bewakoof.com/uploads/grid/app/Plus-Size-Desktop-midsize-Banner--1--1699360278.jpg"}];

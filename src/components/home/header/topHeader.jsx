@@ -9,9 +9,9 @@ const TopHeader = () =>{
   const [matchedProduct, setMatchedProducts] = useState([]);
   const location = useLocation();
   const { pathname } = location;
-  console.log("ophan ",pathname);
+ 
   const {loggedIn,handleLogout,handleLogin,cartItem,getCartItems,handleToken,wishlist,getWishListData} = useContext(categoryContext);
-  // console.log("inside top header ,",loggedIn);
+  
   const changeHandler = (event)=>{
     setSearch(event.target.value);
     let userInput = event.target.value;
@@ -74,7 +74,11 @@ const TopHeader = () =>{
                       <div className='col-xs-4 noPd'>
                       <a className="headings singleEntry false" href="/top-wear-for-men">Topwear</a>
                         {MenData.Topwear.list.map((i)=>{
-                          return(<Link to={`/allCategory?data=subCategory&filterdata=${i.filter.subCategory}`}  className="singleEntry false" ><span>{i.name}</span></Link>)
+                          return(
+                          // <Link to={`/allCategory?data=subCategory&filterdata=${i.filter.subCategory}`}  className="singleEntry false" >
+                            <Link to={`/allCategory?searcheddata=${JSON.stringify(i.search)}&filtereddata=${JSON.stringify(i.filter)}`} className="singleEntry false">
+
+                            <span>{i.name}</span></Link>)
                           // Link to={`/allCategory?data=${JSON.stringify(i.search)}&filterdata=${JSON.stringify(i.filter)}`} 
                         })}
                       </div>
@@ -83,14 +87,22 @@ const TopHeader = () =>{
                           <a className="headings singleEntry false" href="/men-bottom-wear-collection">Bottomwear</a>
                           {MenData.Bottomwear.list.map((i)=>{
                             
-                          return(<Link to={`/allCategory?data=subCategory&filterdata=${i.filter.subCategory}`} className="singleEntry false"><span>{i.name}</span></Link>)
+                          return(
+                          // <Link to={`/allCategory?data=subCategory&filterdata=${i.filter.subCategory}`} className="singleEntry false">
+                          <Link to={`/allCategory?searcheddata=${JSON.stringify(i.search)}&filtereddata=${JSON.stringify(i.filter)}`} className="singleEntry false">
+
+                            <span>{i.name}</span></Link>)
                           })}
                           
                       </div>
                       <div className="col-xs-4 noPd">
                           <a className="headings singleEntry false" href="/winter-wear-for-men">Winterwear</a>
                           {MenData.Winterwear.list.map((i)=>{
-                            return(<Link to={`/allCategory?data=subCategory&filterdata=${i.filter.subCategory}`} className="singleEntry false"><span>{i.name}</span></Link>)
+                            return(
+                            // <Link to={`/allCategory?data=subCategory&filterdata=${i.filter.subCategory}`} className="singleEntry false">
+                            <Link to={`/allCategory?searcheddata=${JSON.stringify(i.search)}&filtereddata=${JSON.stringify(i.filter)}`} className="singleEntry false">
+
+                              <span>{i.name}</span></Link>)
                           })}
                       </div>
                                     
@@ -119,21 +131,33 @@ const TopHeader = () =>{
                       <div className='col-xs-4 noPd'>
                       <a className="headings singleEntry false" href="/top-wear-for-men">Topwear</a>
                         {WomenData.Topwear.list.map((i)=>{
-                          return(<Link to={`/allCategory?data=subCategory&filterdata=${i.filter.subCategory}`}  className="singleEntry false" ><span>{i.name}</span></Link>)
+                          return(
+                          // <Link to={`/allCategory?data=subCategory&filterdata=${i.filter.subCategory}`}  className="singleEntry false" >
+                          <Link to={`/allCategory?searcheddata=${JSON.stringify(i.search)}&filtereddata=${JSON.stringify(i.filter)}`} className="singleEntry false">
+
+                            <span>{i.name}</span></Link>)
                         })}
                       </div>
 
                       <div className="col-xs-4 noPd">
                           <a className="headings singleEntry false" href="/men-bottom-wear-collection">Bottomwear</a>
                           {WomenData.Bottomwear.list.map((i)=>{
-                          return(<Link to={`/allCategory?data=subCategory&filterdata=${i.filter.subCategory}`}  className="singleEntry false" ><span>{i.name}</span></Link>)
+                          return(
+                          // <Link to={`/allCategory?data=subCategory&filterdata=${i.filter.subCategory}`}  className="singleEntry false" >
+                          <Link to={`/allCategory?searcheddata=${JSON.stringify(i.search)}&filtereddata=${JSON.stringify(i.filter)}`} className="singleEntry false">
+
+                            <span>{i.name}</span></Link>)
                           })}
                           
                       </div>
                       <div className="col-xs-4 noPd">
                           <a className="headings singleEntry false" href="/winter-wear-for-men">Winterwear</a>
                           {WomenData.Winterwear.list.map((i)=>{
-                            return(<Link to={`/allCategory?data=subCategory&filterdata=${i.filter.subCategory}`}  className="singleEntry false" ><span>{i.name}</span></Link>)
+                            return(
+                            // <Link to={`/allCategory?data=subCategory&filterdata=${i.filter.subCategory}`}  className="singleEntry false" >
+                          <Link to={`/allCategory?searcheddata=${JSON.stringify(i.search)}&filtereddata=${JSON.stringify(i.filter)}`} className="singleEntry false">
+                              
+                            <span>{i.name}</span></Link>)
                           })}
                       </div>
                                     

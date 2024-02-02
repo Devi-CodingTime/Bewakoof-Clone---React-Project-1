@@ -35,25 +35,16 @@ const Login = ()=>{
     const options = {
         method: 'POST',
         headers : {projectID:'ctxjid7mj6o5' , 'Content-Type': 'application/json'},
-        // headers: new Headers({projectID:'ctxjid7mj6o5' , 'Content-Type': 'application/json'} ),
         body: JSON.stringify(loginData)
     }
-    // console.log("options",options);
     const res = await fetch('https://academics.newtonschool.co/api/v1/user/login' ,options);
     
     const resJson = await res.json();
-    
-    
-    // console.log("token :",resJson.token);
-    
-    // console.log(resJson.data.email);
     
     if(resJson.status==="success")
     {
       handleLogin(true);
       handleToken(resJson.token);
-      // setUserName(resJson.data.name);
-      // setEmail(resJson.data.email);
       localStorage.setItem('token' , resJson.token);
       localStorage.setItem('userName' , resJson.data.name);
       localStorage.setItem('email' , resJson.data.email);
@@ -64,8 +55,10 @@ const Login = ()=>{
     {
       handleLogin(false);
       setErrorMsg(resJson.message);
+      setTimeout(()=>{
+        setErrorMsg("");
+      },2000);
       navigate('/login');
-      // localStorage.removeItem('token');
     }
 
   }
@@ -104,7 +97,7 @@ const Login = ()=>{
             </div>
             <div className="form-body">
               <form name="loginForm" noValidate="" autoComplete="off" className="loginForm">
-                  {errorMsg?<p style={{color:"red", fontSize:'20px'}}>{errorMsg}</p>:""}
+                  {errorMsg?<p style={{color:"red", fontSize:'20px'}}>{errorMsg}</p>:null}
                   <input className="email" onChange={handleChange} id="email" type="email" name="email" placeholder="Enter Your Email"/>
                   <input className="pass" onChange={handleChange} id="password" type="password" name="password" placeholder="Enter Your Password"/>
                   {/* <Link to="/forgetpassword" className="block mt-3">Forget Password</Link> */}

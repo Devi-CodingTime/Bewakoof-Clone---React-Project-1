@@ -8,12 +8,14 @@ import { categoryContext } from '../Context/provider';
 import { Link, useNavigate } from 'react-router-dom';
 import { wishlisted } from '../utility/storagewishlist';
 import Loader from '../loader/loader';
+import NoWishList from './noWishList';
 
 const ShowWishList = ()=> {
     const {wishlist,getWishListData,removeFromWishList,getCartItems,token} = useContext(categoryContext);
     const [loader,setLoader] = useState(false);
     const [bagItem,setBagItem] = useState({});
     const navigate = useNavigate();
+
     const addItemToBag = async(bagData,id) =>{     
     try
     {
@@ -42,6 +44,7 @@ const ShowWishList = ()=> {
   // }
     useEffect(()=>{
         getWishListData();
+        getCartItems();
     },[]);
 
   return (
@@ -49,6 +52,7 @@ const ShowWishList = ()=> {
       <TopHeader/>
       <SideNavbar/>
       {loader?<Loader/>:""}
+      {wishlist.length==0?<NoWishList/>:
         <div className="flex flex-wrap px-14 showWishList">
           
         {wishlist?.map((i,index)=>{
@@ -84,6 +88,7 @@ const ShowWishList = ()=> {
         })}
         
         </div>
+      }
       <FooterWithoutAbout/>
       
     </div>

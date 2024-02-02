@@ -12,7 +12,7 @@ const ContextProvider = (props)=>{
     const [token, setToken] = useState("");
     const [wishlist,setWishlist] = useState([]);
     const [wishListedItem,setWishListedItem] = useState([]);
-    const [wishlistMsg,setWishlistMsg] = useState("");
+    
     const [loader,setLoader] = useState(false);
     const[totalPrice,setTotalPrice] = useState(0);
     const [cartItem,setCartItem] = useState([]);
@@ -56,9 +56,7 @@ const ContextProvider = (props)=>{
                 });
                 let data = await res.json();
                 
-                if(data.status==="fail")
-                    setWishlistMsg(data.message);
-                else
+                if(data.status==="success")
                 {
                     setWishListedItem(data.data);
                     getWishListData();
@@ -66,7 +64,7 @@ const ContextProvider = (props)=>{
             }
             catch(error)
             {
-                console.log("devi error",error);
+                console.log(error);
             }
             finally{
                 setLoader(false);
@@ -82,7 +80,6 @@ const ContextProvider = (props)=>{
             {
                 setLoader(true);
                 wishlisted.delete(id);
-            //   console.log("deleted :",wishlisted);
                 let res = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/wishlist/${id}`,{
                     method:"DELETE",
                     headers : {projectID:'ctxjid7mj6o5' , 'Content-Type': 'application/json',Authorization:`Bearer ${token}`}
@@ -91,7 +88,6 @@ const ContextProvider = (props)=>{
                 let data = await res.json();
                 setWishlist(data.data.items);
                 
-                // console.log("wishlist item set done -------",data.data.items);
             }
             catch(error)
             {
@@ -112,8 +108,7 @@ const ContextProvider = (props)=>{
           });
           let data = await res.json();
           setCartItem(data.data.items);
-            // console.log("getCartItems---------",data);
-            setTotalPrice(data.data.totalPrice);
+          setTotalPrice(data.data.totalPrice);
     
         }catch(error){
             console.log(error);
@@ -149,12 +144,11 @@ const ContextProvider = (props)=>{
     }
     const handleLogout=()=>{
         setLoggedIn(false);
-        getCartItems();
-        getWishListData();
-        setToken("");
         localStorage.removeItem("token");
         localStorage.removeItem("userName");
         localStorage.removeItem("email");
+        setCartItem([]);
+        setWishlist([]);
         
         navigate("/login");
     }
@@ -168,7 +162,7 @@ const ContextProvider = (props)=>{
     }
 
     return(<>
-        <categoryContext.Provider value={{search,searchTerm,loggedIn,token,wishlist,cartItem,totalPrice,wishlistMsg,loader,
+        <categoryContext.Provider value={{search,searchTerm,loggedIn,token,wishlist,cartItem,totalPrice,loader,
             handleSearch,handleLogin,handleToken,handleLogout,getWishListData,getCartItems,removeFromCart,removeFromWishList,addToWishList,
             setCartItem}}>
             {props.children}

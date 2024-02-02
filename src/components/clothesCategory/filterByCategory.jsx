@@ -7,24 +7,10 @@ import { Button } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import './category.css';
 import {categoryContext } from "../Context/provider";
-import { category } from '../Context/data';
+import { category , colors, size, brand} from '../Context/data';
 
 const FilterByCategory = () =>{
     const {handleSearch} = React.useContext(categoryContext);
-    let colors = ["GREEN","CREAM","ORANGE","BLUE","BROWN","GREY","RED","YELLOW","WHITE","BLACK","OLIVE",
-    "MAROON","PURPLE","BEIGE","PINK","MULTICOLOR","CHARCOAL","SILVER"];
-    
-    // const category = ["jogger","jeans","Kurta","Kurti","Sweater","Shirt","T Shirt","Hoodie","JumpSuit",
-    // "Tracksuit","Shorts","Pyjamas"];
-
-    const size= ["S","M","L","XL","XXL"];
-    const brand = ["Bewakoof®","TISTABENE","7 Shores","Campus Sutra",
-    "Style Quotient","Breakbounce","Chkokko","XYXX","Rigo","Alstyle",
-    "Brown Mocha","Hubberholme","CHIMPAAANZEE","Smugglerz","Blue Tyga",
-    "TALES and STORIES","Belliskey","ANGEL FAB","Kotty","Belliskey",
-    "Thomas Scott","Old Grey","BLANCK","Urban Scottish","THE DAILY OUTFITS",
-    "TrueBuyWorld","INDICLUB","OFFICIAL TOM & JERRY MERCHANDISE","Bewakoof Air® 1.0",
-    "OFFICIAL CARTOON NETWORK MERCHANDISE","Mad Over Print","Lounge Dreams"];
 
     return (
         <div className='filterList'>
@@ -37,9 +23,11 @@ const FilterByCategory = () =>{
           <Typography>Category</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          {category.map((i)=>{
+          {category.map((i,index)=>{
             return(<Button className='btncomponent' style={{display:"block",fontSize:"10px",color:"grey"}} 
-            onClick={()=>{handleSearch("subCategory",i.filter.subCategory)}}>{i.name}</Button>)
+            onClick={()=>{handleSearch("subCategory",i.filter.subCategory)}} key={index}>{i.name}
+            {/* {click==index?<i className="fa-solid fa-circle fa-rotate-by" style={{color: "#42a2a2"}}></i>:null} */}
+            </Button>)
           })}
 
         </AccordionDetails>
@@ -54,9 +42,11 @@ const FilterByCategory = () =>{
 
         </AccordionSummary>
         <AccordionDetails>
-          {size.map((i)=>{
+          {size.map((i,index)=>{
             return(<Button className='btncomponent' style={{display:"block",fontSize:"10px",color:"grey"}}
-            onClick={()=>{handleSearch("size",i)}}>{i}</Button>)
+            onClick={()=>{handleSearch("size",i)}} key={index}>{i}
+            {/* {click==index?<i className="fa-solid fa-circle fa-rotate-by" style={{color: "#42a2a2"}}></i>:null} */}
+            </Button>)
           })}
           
         </AccordionDetails>
@@ -70,9 +60,11 @@ const FilterByCategory = () =>{
           <Typography>Brand</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          {brand.map((i)=>{
+          {brand.map((i,index)=>{
             return(<Button className='btncomponent' style={{display:"block",fontSize:"10px",color:"grey"}}
-            onClick={()=>{handleSearch("brand",i)}}>{i}</Button>)
+            onClick={()=>{handleSearch("brand",i)}} key={index}>{i} 
+            {/* {click==index?<i className="fa-solid fa-circle fa-rotate-by" style={{color: "#42a2a2"}}></i>:null} */}
+            </Button>)
           })}
           
         </AccordionDetails>
@@ -86,9 +78,11 @@ const FilterByCategory = () =>{
           <Typography>Color</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          {colors.map((i)=>{
+          {colors.map((i,index)=>{
             return(<Button className='btncomponent' style={{display:"block",fontSize:"10px",color:"grey"}}
-            onClick={()=>{handleSearch("color",i)}}>{i}</Button>)
+            onClick={()=>{handleSearch("color",i)}} key={index}>{i} 
+            {/* {click==index?<i className="fa-solid fa-circle fa-rotate-by" style={{color: "#42a2a2"}}></i>:null} */}
+            </Button>)
           })}
         </AccordionDetails>
       </Accordion>
@@ -142,7 +136,7 @@ const FilterByCategory = () =>{
         <AccordionDetails>
           <Button className='btncomponent' style={{display:"block",fontSize:"10px",color:"grey"}}
           onClick={()=>{handleSearch("price","1")}}>
-            Low to High
+            Low to High 
           </Button>
           <Button className='btncomponent' style={{display:"block",fontSize:"10px",color:"grey"}}
           onClick={()=>{handleSearch("price","-1")}}>

@@ -6,6 +6,8 @@ import { categoryContext } from '../Context/provider';
 import TopHeader from '../home/header/topHeader';
 import SideNavbar from '../home/header/sideNavbar';
 import FooterWithoutAbout from '../home/footer/footerWithoutAbout';
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 
 function ViewCategoriezedItem() {
     const {addToWishList,wishlistMsg} = useContext(categoryContext);
@@ -14,12 +16,18 @@ function ViewCategoriezedItem() {
     const [loader,setLoader] = useState(false);
     const [product,setProduct] = useState([]);
     const navigate = useNavigate();
+
+    const [page, setPage] = React.useState(1);
+    const handleChange = (event, value) => {
+      setPage(value);
+    };
+  
     async function categorizedProducts()
     {
         try
         {
             setLoader(true);
-            let api = `https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?filter={"subCategory":"${searchParams.get('category')}","gender":"${searchParams.get('gender')}"}&limit=100`;
+            let api = `https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?filter={"subCategory":"${searchParams.get('category')}","gender":"${searchParams.get('gender')}"}&limit=20&page=${page}`;
             console.log("apihit",api)
             const res = await fetch(api,{
                
@@ -46,14 +54,14 @@ function ViewCategoriezedItem() {
     }
     useEffect(()=>{
         categorizedProducts();
-    },[]);
+    },[page]);
   return (
     <div>
         <TopHeader/>
         <SideNavbar/>
         <img src='https://images.bewakoof.com/uploads/category/desktop/Printed-T-shirts_Inside_Desktop-Banner_Women-1704957648.jpg'/>
         <h1 style={{marginTop: "10px",fontSize: "17px",fontWeight: "500",color: "#635d5d",fontFamily: "sans-serif"}}>{searchParams.get('gender')}'s {searchParams.get('category')}</h1>
-    <div className="flex flex-wrap px-3 py-0 justify-center items-center">
+        <div className="flex flex-wrap px-3 py-0 justify-center items-center">
         {loader?<Loader/>:""}
         {product?.map((i,index)=>{
           return(<div className="categorycard relative" style={{padding:"10px",width:"339px"}} key={index}>
@@ -85,6 +93,9 @@ function ViewCategoriezedItem() {
         })}
        
         </div>
+        <Stack spacing={2} style={{width:"35%",margin:"10px auto"}}>
+            <Pagination count={10} page={page} onChange={handleChange}/>
+        </Stack>
         <FooterWithoutAbout/>
     </div>
   )

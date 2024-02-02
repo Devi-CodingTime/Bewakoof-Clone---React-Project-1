@@ -11,7 +11,7 @@ import { wishlisted } from "../../../utility/storagewishlist";
 const BestSellerSlider = () => {
   const sliderRef = useRef();
   const navigate = useNavigate();
-  const {addToWishList,wishlistMsg} = useContext(categoryContext);
+  const {addToWishList} = useContext(categoryContext);
 
   const [bestSeller,setBestSeller] = useState();
 
@@ -29,7 +29,7 @@ const BestSellerSlider = () => {
   }
 
   const handlemsgPopUp = ()=>{
-    alert(wishlistMsg);
+    alert("Product already exists in the wishlist.");
   }
 
   useEffect(()=>{

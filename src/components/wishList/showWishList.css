@@ -22,3 +22,29 @@
 {
     margin-top: 78px;
 }
+.emptycartwish
+{
+    margin: 35px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.wishlist_customBtn
+{
+    background-color: rgb(66, 162, 162);
+    padding: 20px;
+    display: inline-flex;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    width: 30%;
+    font-size: 0.9rem;
+    line-height: 0;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(66, 162, 162);
+    zoom: 1;
+    user-select: none;
+    border-radius: 4px;
+}
