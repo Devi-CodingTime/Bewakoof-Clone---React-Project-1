@@ -24,7 +24,7 @@ const FilterByCategory = () =>{
         </AccordionSummary>
         <AccordionDetails>
           {category.map((i,index)=>{
-            return(<Button className='btncomponent' style={{display:"block",fontSize:"10px",color:"grey"}} 
+            return(<Button className='btncomponent focus:active:hover:bg-emerald-200' style={{display:"block",fontSize:"10px",color:"grey"}} 
             onClick={()=>{handleSearch("subCategory",i.filter.subCategory)}} key={index}>{i.name}
             {/* {click==index?<i className="fa-solid fa-circle fa-rotate-by" style={{color: "#42a2a2"}}></i>:null} */}
             </Button>)
@@ -43,7 +43,7 @@ const FilterByCategory = () =>{
         </AccordionSummary>
         <AccordionDetails>
           {size.map((i,index)=>{
-            return(<Button className='btncomponent' style={{display:"block",fontSize:"10px",color:"grey"}}
+            return(<Button className='btncomponent focus:active:hover:bg-emerald-200' style={{display:"block",fontSize:"10px",color:"grey"}}
             onClick={()=>{handleSearch("size",i)}} key={index}>{i}
             {/* {click==index?<i className="fa-solid fa-circle fa-rotate-by" style={{color: "#42a2a2"}}></i>:null} */}
             </Button>)
@@ -61,7 +61,7 @@ const FilterByCategory = () =>{
         </AccordionSummary>
         <AccordionDetails>
           {brand.map((i,index)=>{
-            return(<Button className='btncomponent' style={{display:"block",fontSize:"10px",color:"grey"}}
+            return(<Button className='btncomponent focus:active:hover:bg-emerald-200' style={{display:"block",fontSize:"10px",color:"grey"}}
             onClick={()=>{handleSearch("brand",i)}} key={index}>{i} 
             {/* {click==index?<i className="fa-solid fa-circle fa-rotate-by" style={{color: "#42a2a2"}}></i>:null} */}
             </Button>)
@@ -79,7 +79,7 @@ const FilterByCategory = () =>{
         </AccordionSummary>
         <AccordionDetails>
           {colors.map((i,index)=>{
-            return(<Button className='btncomponent' style={{display:"block",fontSize:"10px",color:"grey"}}
+            return(<Button className='btncomponent focus:active:hover:bg-emerald-200' style={{display:"block",fontSize:"10px",color:"grey"}}
             onClick={()=>{handleSearch("color",i)}} key={index}>{i} 
             {/* {click==index?<i className="fa-solid fa-circle fa-rotate-by" style={{color: "#42a2a2"}}></i>:null} */}
             </Button>)
@@ -95,36 +95,17 @@ const FilterByCategory = () =>{
           <Typography>Gender</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Button className='btncomponent' style={{display:"block",fontSize:"10px",color:"grey"}}
+          <Button className='btncomponent focus:active:hover:bg-emerald-200' style={{display:"block",fontSize:"10px",color:"grey"}}
           onClick={()=>{handleSearch("gender","Men")}}>
             Male
           </Button>
-          <Button className='btncomponent' style={{display:"block",fontSize:"10px",color:"grey"}}
+          <Button className='btncomponent focus:active:hover:bg-emerald-200' style={{display:"block",fontSize:"10px",color:"grey"}}
           onClick={()=>{handleSearch("gender","Women")}}>
             female
           </Button>
         </AccordionDetails>
       </Accordion>
-      {/* <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel2a-content"
-          id="panel2a-header"
-        >
-          <Typography>Rating</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Button className='btncomponent' style={{display:"block",fontSize:"10px",color:"grey"}}>
-            4.5 and above
-          </Button>
-          <Button className='btncomponent' style={{display:"block",fontSize:"10px",color:"grey"}}>
-           4 and above 
-          </Button>
-          <Button className='btncomponent' style={{display:"block",fontSize:"10px",color:"grey"}}>
-           3.5 and above 
-          </Button>
-        </AccordionDetails>
-      </Accordion> */}
+      
       <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -134,11 +115,11 @@ const FilterByCategory = () =>{
           <Typography>Sort by</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Button className='btncomponent' style={{display:"block",fontSize:"10px",color:"grey"}}
+          <Button className='btncomponent focus:active:hover:bg-emerald-200' style={{display:"block",fontSize:"10px",color:"grey"}}
           onClick={()=>{handleSearch("price","1")}}>
             Low to High 
           </Button>
-          <Button className='btncomponent' style={{display:"block",fontSize:"10px",color:"grey"}}
+          <Button className='btncomponent focus:active:hover:bg-emerald-200' style={{display:"block",fontSize:"10px",color:"grey"}}
           onClick={()=>{handleSearch("price","-1")}}>
             High to Low
           </Button>

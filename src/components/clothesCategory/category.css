@@ -125,6 +125,9 @@ section
     top: -26px;
     left: 283px;
 }
+.btncomponent:hover{
+    color: rgb(62,162,162);
+}
 @media (max-width: 992px)
 {
     .mainwrapper
