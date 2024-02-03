@@ -78,7 +78,7 @@ const TopHeader = () =>{
                           // <Link to={`/allCategory?data=subCategory&filterdata=${i.filter.subCategory}`}  className="singleEntry false" >
                             <Link to={`/allCategory?searcheddata=${JSON.stringify(i.search)}&filtereddata=${JSON.stringify(i.filter)}`} className="singleEntry false">
 
-                            <span>{i.name}</span></Link>)
+                            <span className="hover:underline">{i.name}</span></Link>)
                           // Link to={`/allCategory?data=${JSON.stringify(i.search)}&filterdata=${JSON.stringify(i.filter)}`} 
                         })}
                       </div>
@@ -91,7 +91,7 @@ const TopHeader = () =>{
                           // <Link to={`/allCategory?data=subCategory&filterdata=${i.filter.subCategory}`} className="singleEntry false">
                           <Link to={`/allCategory?searcheddata=${JSON.stringify(i.search)}&filtereddata=${JSON.stringify(i.filter)}`} className="singleEntry false">
 
-                            <span>{i.name}</span></Link>)
+                            <span className="hover:underline">{i.name}</span></Link>)
                           })}
                           
                       </div>
@@ -102,7 +102,7 @@ const TopHeader = () =>{
                             // <Link to={`/allCategory?data=subCategory&filterdata=${i.filter.subCategory}`} className="singleEntry false">
                             <Link to={`/allCategory?searcheddata=${JSON.stringify(i.search)}&filtereddata=${JSON.stringify(i.filter)}`} className="singleEntry false">
 
-                              <span>{i.name}</span></Link>)
+                              <span className="hover:underline">{i.name}</span></Link>)
                           })}
                       </div>
                                     
@@ -135,7 +135,7 @@ const TopHeader = () =>{
                           // <Link to={`/allCategory?data=subCategory&filterdata=${i.filter.subCategory}`}  className="singleEntry false" >
                           <Link to={`/allCategory?searcheddata=${JSON.stringify(i.search)}&filtereddata=${JSON.stringify(i.filter)}`} className="singleEntry false">
 
-                            <span>{i.name}</span></Link>)
+                            <span className="hover:underline">{i.name}</span></Link>)
                         })}
                       </div>
 
@@ -146,7 +146,7 @@ const TopHeader = () =>{
                           // <Link to={`/allCategory?data=subCategory&filterdata=${i.filter.subCategory}`}  className="singleEntry false" >
                           <Link to={`/allCategory?searcheddata=${JSON.stringify(i.search)}&filtereddata=${JSON.stringify(i.filter)}`} className="singleEntry false">
 
-                            <span>{i.name}</span></Link>)
+                            <span className="hover:underline">{i.name}</span></Link>)
                           })}
                           
                       </div>
@@ -157,7 +157,7 @@ const TopHeader = () =>{
                             // <Link to={`/allCategory?data=subCategory&filterdata=${i.filter.subCategory}`}  className="singleEntry false" >
                           <Link to={`/allCategory?searcheddata=${JSON.stringify(i.search)}&filtereddata=${JSON.stringify(i.filter)}`} className="singleEntry false">
                               
-                            <span>{i.name}</span></Link>)
+                            <span className="hover:underline">{i.name}</span></Link>)
                           })}
                       </div>
                                     

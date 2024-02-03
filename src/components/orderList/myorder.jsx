@@ -58,7 +58,7 @@ function Myorder() {
         <div className='holdOrders'>
             <h1 className='orderHeading'>My Orders</h1>
             <div className='orderSpan'></div>
-            {orderItem.map((cartitem)=>{
+            {orderItem?.map((cartitem)=>{
                 return (<div className='orderConatiner'>
                     <img src={cartitem.order.items[0].product.displayImage} className='leftpart'/>
                     <div className='rightpart'>
