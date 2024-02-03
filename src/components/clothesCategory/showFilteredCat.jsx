@@ -53,28 +53,37 @@ const ShowFilterdCat = (props)=>{
             var api;
             if(searchTerm==="price")
             {
-                api = `https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?sort={"${searchTerm}":"${search}"}&limit=20&page=${page}`;
-                console.log("[rice]",api);
+                // api = `https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?sort={"${searchTerm}":"${search}"}&limit=20&page=${page}`;
+                if(search==-1){
+                    product.sort((a, b) => {
+                        return a.price - b.price;
+                    });
+                }
+                if(search==1){
+                    product.sort((a, b) => {
+                        return b.price - a.price;
+                    });
+                }
+                setProduct(product) ;
             }
             else
             {
+                alert("okk")
                 api = `https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?filter={"${searchTerm}":"${search}"}&limit=20&page=${page}`;
-            }
                 const data = await fetch(api,{
-                method: "GET", // *GET, POST, PUT, DELETE, etc.                        
-                headers: {
-                    "Content-Type": "application/json",
-                    'projectId': 'ctxjid7mj6o5',
-                }});
-
-            const res = await data.json();
-            console.log("my res",res);
-            const intersectionResult =  product.filter(e => { return res.data.some(item => item._id === e._id); // take the ! out and you'r done
-        });
-        console.log("intersectionResult",intersectionResult);
-            
-            { intersectionResult && setProduct(intersectionResult) }
-        // {res && setProduct(res?.data)}
+                    method: "GET", // *GET, POST, PUT, DELETE, etc.                        
+                    headers: {
+                        "Content-Type": "application/json",
+                        'projectId': 'ctxjid7mj6o5',
+                    }});
+    
+                const res = await data.json();
+                const intersectionResult =  product?.filter(e => { return res?.data.some(item => item._id === e._id); // take the ! out and you'r done
+                });
+                {intersectionResult && setProduct(intersectionResult)} ;
+            }
+                
+            // {res && setProduct(res?.data)}
         }                                                                                                          
         // sellerTag=best seller
         catch (error) {
@@ -87,7 +96,6 @@ const ShowFilterdCat = (props)=>{
 
     async function getproductBySearchAndFilter()
     {
-        // alert("item called") 
         // called from seach input or men women section of header
         try
         {
@@ -147,10 +155,9 @@ const ShowFilterdCat = (props)=>{
         {loader?<Loader/>:""}
         
         {product?product.map((i,index)=>{
-            console.log("string",i.displayImage);
           return(
           <div className="categorycard relative" style={{padding:"10px"}} key={index}>
-            {console.log("149",product)}
+           
             <div className="border-solid border-2 border-gray-200 w-56 rounded-md" style={{height:"370px"}}>
                 
             {/* <NavLink to = {(`/allCategory?search=${JSON.stringify(i.search)}&filter=${JSON.stringify(i.filter)}`)}> */}
