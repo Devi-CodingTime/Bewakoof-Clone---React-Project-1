@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 const Signup =()=> {
   const navigate = useNavigate();
-  cons
+  
     const  [signUpData , setSignUpData] = useState({
         name: '' ,
         email: '', 

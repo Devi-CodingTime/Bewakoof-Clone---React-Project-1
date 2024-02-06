@@ -17,6 +17,7 @@ const ShowFilterdCat = (props)=>{
 
     const [product,setProduct] = useState([]);
     const [filterList,setFilterList] = useState({});
+    
     const [page, setPage] = React.useState(1);
     const handleChange = (event, value) => {
       setPage(value);
