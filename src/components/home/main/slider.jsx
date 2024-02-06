@@ -60,7 +60,7 @@ const SliderShow = (props) => {
   return (<>
       <Slider {...settings} className="slider" ref={sliderRef}>
         {arrayImage.map((i,index)=>{
-          return(<div className="card">
+          return(<div className="card" key={index}>
           <Link to={`${pathcategory[index]}`}><img src={i.src}/></Link>
         </div>)
         })}
@@ -70,7 +70,7 @@ const SliderShow = (props) => {
         <i className="fa-solid fa-chevron-left prevIcon" onClick={goToPrev}></i>
       </div>
       <div className="iconContainerNext">
-        <i class="fa-solid fa-chevron-right nextIcon" onClick={goToNext}></i>
+        <i className="fa-solid fa-chevron-right nextIcon" onClick={goToNext}></i>
       </div>
     </>
   );

@@ -34,7 +34,7 @@ const CategoryWithSixImage = (props)=>{
     return(
         <div className="menCategory flex">
           {categoryImg.map((i,index)=>{
-            return(<Link to={`${pathcategory[index]}`} title="" style={{ display: "block", width: "100%", position: "relative" }}> 
+            return(<Link to={`${pathcategory[index]}`} title="" style={{ display: "block", width: "100%", position: "relative" }} key={index}> 
             <img src={i.src} alt="Printed t shirts" style={{ width: "100%"}} />
           </Link>)
           })}

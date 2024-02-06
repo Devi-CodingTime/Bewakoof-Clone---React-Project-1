@@ -1,10 +1,11 @@
 import { useContext,createContext, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { wishlisted } from "../utility/storagewishlist";
 
 const categoryContext = createContext();
 const ContextProvider = (props)=>{
     const navigate = useNavigate();
+    let [searchParams, setSearchParams] = useSearchParams();
     const [search, setSearch] = useState("");
     const [searchTerm,setsearchTerm] = useState("");
 
@@ -19,7 +20,6 @@ const ContextProvider = (props)=>{
     const getWishListData = async() =>{
         try
         {
-            console.log("getWishListData");
             setLoader(true);
             let res = await fetch("https://academics.newtonschool.co/api/v1/ecommerce/wishlist",{
                 method:"GET",
@@ -157,6 +157,7 @@ const ContextProvider = (props)=>{
         setToken(token);
     }
     const handleSearch = (term,s)=>{
+        
         setSearch(s);
         setsearchTerm(term);
     }

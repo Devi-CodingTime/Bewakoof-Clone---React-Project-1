@@ -44358,3 +44358,16 @@ let product=
 
 
 
+// 8888888888888888888888888888888888888888888888888888
+// async function fetdata(searcded)
+// {
+//     // console.log(JSON.stringify(searcded));
+//     let filter={"subCategory":"shirt","brand":"OFFICIAL DISNEY MERCHANDISE"};
+//     const updated = JSON.stringify({...filter,...searcded});
+//     // console.log(updated);
+//     const api = `https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?filter=${updated}&limit=20&page=1`;
+//     console.log(api);
+// }
+// fetdata({"gender":"Men"});
+// const api = `https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?filter={"subCategory":"shirt","brand":"OFFICIAL DISNEY MERCHANDISE"}`
+// 8888888888888888888888888888888888888888888888888888

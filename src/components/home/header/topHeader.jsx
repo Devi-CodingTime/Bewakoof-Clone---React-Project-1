@@ -30,13 +30,11 @@ const TopHeader = () =>{
 
   useEffect(()=>{
     let storedToken = localStorage.getItem("token");
-        console.log("storedToken :",storedToken);
         if(storedToken)
         { 
           handleLogin(true);
           handleToken(storedToken);
         }
-        console.log("1st effect",pathname);
 
   },[]);
 
@@ -73,10 +71,11 @@ const TopHeader = () =>{
                     <div className='col-xs-7 noPd navSeperator flex flex-wrap'>
                       <div className='col-xs-4 noPd'>
                       <a className="headings singleEntry false" href="/top-wear-for-men">Topwear</a>
-                        {MenData.Topwear.list.map((i)=>{
+                        {MenData.Topwear.list.map((i,index)=>{
                           return(
                           // <Link to={`/allCategory?data=subCategory&filterdata=${i.filter.subCategory}`}  className="singleEntry false" >
-                            <Link to={`/allCategory?searcheddata=${JSON.stringify(i.search)}&filtereddata=${JSON.stringify(i.filter)}`} className="singleEntry false">
+                            <Link to={`/allCategory?searcheddata=${JSON.stringify(i.search)}&filtereddata=${JSON.stringify(i.filter)}`} 
+                            key={index} className="singleEntry false">
 
                             <span className="hover:underline">{i.name}</span></Link>)
                           // Link to={`/allCategory?data=${JSON.stringify(i.search)}&filterdata=${JSON.stringify(i.filter)}`} 
@@ -85,11 +84,12 @@ const TopHeader = () =>{
 
                       <div className="col-xs-4 noPd">
                           <a className="headings singleEntry false" href="/men-bottom-wear-collection">Bottomwear</a>
-                          {MenData.Bottomwear.list.map((i)=>{
+                          {MenData.Bottomwear.list.map((i,index)=>{
                             
                           return(
                           // <Link to={`/allCategory?data=subCategory&filterdata=${i.filter.subCategory}`} className="singleEntry false">
-                          <Link to={`/allCategory?searcheddata=${JSON.stringify(i.search)}&filtereddata=${JSON.stringify(i.filter)}`} className="singleEntry false">
+                          <Link to={`/allCategory?searcheddata=${JSON.stringify(i.search)}&filtereddata=${JSON.stringify(i.filter)}`}
+                          key={index} className="singleEntry false">
 
                             <span className="hover:underline">{i.name}</span></Link>)
                           })}
@@ -97,10 +97,11 @@ const TopHeader = () =>{
                       </div>
                       <div className="col-xs-4 noPd">
                           <a className="headings singleEntry false" href="/winter-wear-for-men">Winterwear</a>
-                          {MenData.Winterwear.list.map((i)=>{
+                          {MenData.Winterwear.list.map((i,index)=>{
                             return(
                             // <Link to={`/allCategory?data=subCategory&filterdata=${i.filter.subCategory}`} className="singleEntry false">
-                            <Link to={`/allCategory?searcheddata=${JSON.stringify(i.search)}&filtereddata=${JSON.stringify(i.filter)}`} className="singleEntry false">
+                            <Link to={`/allCategory?searcheddata=${JSON.stringify(i.search)}&filtereddata=${JSON.stringify(i.filter)}`} 
+                            key={index} className="singleEntry false">
 
                               <span className="hover:underline">{i.name}</span></Link>)
                           })}
@@ -110,8 +111,8 @@ const TopHeader = () =>{
 
                     <div className="col-xs-3" style={{width: "calc(25% - 40px)"}}>
                       <span className="singleEntry headings specials">SPECIALS</span>
-                      {imgArray.map((i)=>{
-                        return(<Link to={`/comingsoon`} className="singleEntry false" href="/campaign/oof-sale-for-men">
+                      {imgArray.map((i,index)=>{
+                        return(<Link to={`/comingsoon`} className="singleEntry false" key={index}>
                         <img className="pull-left navBall" width={"40px"} height={"40px"} src={i.src} title="OOF Sale" alt="OOF Sale"/>
                         <span className="navBallTitle">{i.imgName}</span>
                       </Link>)
@@ -130,10 +131,11 @@ const TopHeader = () =>{
                     <div className='col-xs-7 noPd navSeperator flex flex-wrap'>
                       <div className='col-xs-4 noPd'>
                       <a className="headings singleEntry false" href="/top-wear-for-men">Topwear</a>
-                        {WomenData.Topwear.list.map((i)=>{
+                        {WomenData.Topwear.list.map((i,index)=>{
                           return(
                           // <Link to={`/allCategory?data=subCategory&filterdata=${i.filter.subCategory}`}  className="singleEntry false" >
-                          <Link to={`/allCategory?searcheddata=${JSON.stringify(i.search)}&filtereddata=${JSON.stringify(i.filter)}`} className="singleEntry false">
+                          <Link to={`/allCategory?searcheddata=${JSON.stringify(i.search)}&filtereddata=${JSON.stringify(i.filter)}`}
+                          key={index} className="singleEntry false">
 
                             <span className="hover:underline">{i.name}</span></Link>)
                         })}
@@ -141,10 +143,11 @@ const TopHeader = () =>{
 
                       <div className="col-xs-4 noPd">
                           <a className="headings singleEntry false" href="/men-bottom-wear-collection">Bottomwear</a>
-                          {WomenData.Bottomwear.list.map((i)=>{
+                          {WomenData.Bottomwear.list.map((i,index)=>{
                           return(
                           // <Link to={`/allCategory?data=subCategory&filterdata=${i.filter.subCategory}`}  className="singleEntry false" >
-                          <Link to={`/allCategory?searcheddata=${JSON.stringify(i.search)}&filtereddata=${JSON.stringify(i.filter)}`} className="singleEntry false">
+                          <Link to={`/allCategory?searcheddata=${JSON.stringify(i.search)}&filtereddata=${JSON.stringify(i.filter)}`} 
+                          key={index} className="singleEntry false">
 
                             <span className="hover:underline">{i.name}</span></Link>)
                           })}
@@ -152,10 +155,11 @@ const TopHeader = () =>{
                       </div>
                       <div className="col-xs-4 noPd">
                           <a className="headings singleEntry false" href="/winter-wear-for-men">Winterwear</a>
-                          {WomenData.Winterwear.list.map((i)=>{
+                          {WomenData.Winterwear.list.map((i,index)=>{
                             return(
                             // <Link to={`/allCategory?data=subCategory&filterdata=${i.filter.subCategory}`}  className="singleEntry false" >
-                          <Link to={`/allCategory?searcheddata=${JSON.stringify(i.search)}&filtereddata=${JSON.stringify(i.filter)}`} className="singleEntry false">
+                          <Link to={`/allCategory?searcheddata=${JSON.stringify(i.search)}&filtereddata=${JSON.stringify(i.filter)}`} 
+                          key={index} className="singleEntry false">
                               
                             <span className="hover:underline">{i.name}</span></Link>)
                           })}
@@ -165,8 +169,8 @@ const TopHeader = () =>{
 
                     <div className="col-xs-3" style={{width: "calc(25% - 40px)"}}>
                       <span className="singleEntry headings specials">SPECIALS</span>
-                      {imgArray.map((i)=>{
-                        return(<Link to={`/comingsoon`} className="singleEntry false" >
+                      {imgArray.map((i,index)=>{
+                        return(<Link to={`/comingsoon`} className="singleEntry false" key={index} >
                         <img className="pull-left navBall" width={"40px"} height={"40px"} src={i.src} title="OOF Sale" alt="OOF Sale"/>
                         <span className="navBallTitle">{i.imgName}</span>
                       </Link>)
@@ -237,9 +241,9 @@ const TopHeader = () =>{
       </div>
       {/* mathed product  */}
       {search?<div className="filtered1">
-        {matchedProduct?.map((i)=>{
+        {matchedProduct?.map((i,index)=>{
           return(<>
-          <Link to={`/allCategory?searcheddata=${JSON.stringify(i.search)}&filtereddata=${JSON.stringify(i.filter)}`}>
+          <Link to={`/allCategory?searcheddata=${JSON.stringify(i.search)}&filtereddata=${JSON.stringify(i.filter)}`} key={index}>
             <div className="child1" onClick={clearSearch}>{i.name}</div>
           </Link></>)
         })}

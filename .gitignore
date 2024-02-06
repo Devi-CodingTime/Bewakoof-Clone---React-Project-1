@@ -21,3 +21,16 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+
+# export const subCategoryBannerImg = [{src:"https://images.bewakoof.com/uploads/category/desktop/Printed-T-Shirts_Inside_Desktop-Banner_IK-1704957421.jpg",subName:"tshirt"},
+# {src:"https://images.bewakoof.com/uploads/category/desktop/Baggy-Jeans_IK_inside-desktop-banner_(1)-1706708497.jpg",subName:"jeans"},
+# {src:"https://images.bewakoof.com/uploads/category/desktop/Pajamas_Inside_Desktop-Banner_Common_(1)-1703737083.jpg",subName:"pyjamas"},
+# {src:"https://images.bewakoof.com/uploads/grid/app/Men-Plus-Size--desktop-store-banner-1706675714.jpg",subName:"plus-size"},
+# {src:"https://images.bewakoof.com/uploads/category/desktop/Winterwear_Inside_Desktop-Banner_Common_(2)_(1)-1705394747.jpg",subName:"winterwear"},
+# {src:"https://images.bewakoof.com/uploads/category/desktop/Casual-_Women_Desktop_InsideBanner_(1)-1706194573.jpg",subName:"pants"},
+# {src:"https://images.bewakoof.com/uploads/category/desktop/Dresses_Inside_Desktop-Banner_RM-1706177558.jpg",subName:"dresses"},
+# {src:"https://images.bewakoof.com/uploads/category/desktop/Oversized-Graphic-Printed-T-Shirts_Inside_Desktop-Banner_IK_(1)-1706729676.jpg",subName:"oversized-tshirt"},
+# {src:"https://images.bewakoof.com/uploads/category/desktop/Full-Sleeve-T-Shirts_Inside_Desktop-Banner_IK_(1)-1704959004.jpg",subName:"fullSleevetshirt"},
+# {src:"https://images.bewakoof.com/uploads/category/desktop/Hoodies-_-sweatshirts_Inside_Desktop-Banner_IK-1704957144.jpg",subName:"hoodiesSweatshirt"},
+# {src:"https://images.bewakoof.com/uploads/category/desktop/Oversize-cargo-Joggers_RM_Inside-Desktop-banner_(1)-1702821926.jpg",subName:"jogger"}];

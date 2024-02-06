@@ -33,11 +33,11 @@ const ShowAllCategory = () =>{
                 <span className="tophead">{query.get("filterdata")?.toUpperCase()}</span>
 
             </div>
-            <div class="mainHeading">
-                    <div class="NameContainer">
+            <div className="mainHeading">
+                    <div className="NameContainer">
                    
-                        <h1 class="searchResults">{query.get("filterdata")?query.get("filterdata")?.toUpperCase():"Results For"}</h1>
-                        <span class="totalProductCount">(20)</span>
+                        <h1 className="searchResults">{query.get("filterdata")?query.get("filterdata")?.toUpperCase():"Results For"}</h1>
+                        <span className="totalProductCount">(20)</span>
                     <div>
                         <div style={{width: "117px", height: "2px", backgroundColor: "#fbd139", display: "block", margin: "6px 0 0 2px"}}></div>
                 </div>

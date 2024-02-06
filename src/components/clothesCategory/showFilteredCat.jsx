@@ -16,16 +16,23 @@ const ShowFilterdCat = (props)=>{
     const navigate = useNavigate();
 
     const [product,setProduct] = useState([]);
-    
+    const [filterList,setFilterList] = useState({});
     const [page, setPage] = React.useState(1);
     const handleChange = (event, value) => {
       setPage(value);
     };
     // api call here
+    // let filter = `{"${searchParams.get("data")}":"${searchParams.get("filterdata")}"}`;
+    
+
+    
     async function getBestSellerProducts()
     {
         try
         {
+            let filter = {};
+            filter[searchParams.get("data")] = searchParams.get("filterdata");
+            setFilterList(filter);
             setLoader(true);
             const res = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?filter={"${searchParams.get("data")}":"${searchParams.get("filterdata")}"}&limit=20&page=${page}`,{
                
@@ -47,29 +54,36 @@ const ShowFilterdCat = (props)=>{
     }
     
     async function getsearchedProductsByCategory()
-    {
+    {   
         try{
+            let filterapplied={};
+            filterapplied[searchTerm] = search;
+            const updated = ({...filterList,...filterapplied});
+            setFilterList(updated);
             setLoader(true);
-            var api;
+            
             if(searchTerm==="price")
             {
-                // api = `https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?sort={"${searchTerm}":"${search}"}&limit=20&page=${page}`;
-                if(search==-1){
+                if(search==1){ 
+                    // high to low
                     product.sort((a, b) => {
                         return a.price - b.price;
                     });
+                    console.log();
                 }
-                if(search==1){
+                if(search==-1){ 
+                    // low to high
                     product.sort((a, b) => {
                         return b.price - a.price;
                     });
                 }
-                setProduct(product) ;
+                const sortedproduct = [...product];
+                console.log(sortedproduct);
+                setProduct(sortedproduct) ;
             }
             else
             {
-                alert("okk")
-                api = `https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?filter={"${searchTerm}":"${search}"}&limit=20&page=${page}`;
+                const api =`https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?filter=${JSON.stringify(updated)}&limit=20&page=1`
                 const data = await fetch(api,{
                     method: "GET", // *GET, POST, PUT, DELETE, etc.                        
                     headers: {
@@ -78,14 +92,10 @@ const ShowFilterdCat = (props)=>{
                     }});
     
                 const res = await data.json();
-                const intersectionResult =  product?.filter(e => { return res?.data.some(item => item._id === e._id); // take the ! out and you'r done
-                });
-                {intersectionResult && setProduct(intersectionResult)} ;
+                {res && setProduct(res?.data)}
             }
-                
-            // {res && setProduct(res?.data)}
         }                                                                                                          
-        // sellerTag=best seller
+        
         catch (error) {
             console.log(error);
         }
@@ -96,9 +106,9 @@ const ShowFilterdCat = (props)=>{
 
     async function getproductBySearchAndFilter()
     {
-        // called from seach input or men women section of header
         try
         {
+            setFilterList(JSON.parse(searcheddata.get("filtereddata")));
             setLoader(true);
             const res = await fetch(`https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?search=${searcheddata.get("searcheddata")}&filter=${searcheddata.get("filtereddata")}&limit=20&page=${page}`,{
                
@@ -107,7 +117,6 @@ const ShowFilterdCat = (props)=>{
                     "Content-Type": "application/json",
                     'projectId': 'ctxjid7mj6o5',
                 }});
-                // console.log("*****************",res);
             const result = await res.json();
             setProduct(result?.data);
         
@@ -129,16 +138,13 @@ const ShowFilterdCat = (props)=>{
       }
 
       useEffect(()=>{
-        if(searchParams.get("data")=="sellerTag" || searchParams.get("data")=="subCategory" || searchParams.get("data")=="gender"
-        ||searchParams.get("data")=="size" || searchParams.get("data")=="brand" )
-        {
-            getBestSellerProducts();
-        }
-        else
-        {
+        getBestSellerProducts();
+      },[]);
+      
+      useEffect(()=>{
             getproductBySearchAndFilter();
-        }
-    },[searchParams,page])
+
+        },[searchParams,page])
     
     useEffect(()=>{
         if(search)
@@ -196,5 +202,3 @@ const ShowFilterdCat = (props)=>{
     )
 }
 export default ShowFilterdCat
-
-// <img src="https://images.bewakoof.com/uploads/category/desktop/Oversize-cargo-Joggers_RM_Inside-Desktop-banner_(1)-1702821926.jpg"/>

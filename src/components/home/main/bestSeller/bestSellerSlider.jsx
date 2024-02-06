@@ -56,8 +56,8 @@ const BestSellerSlider = () => {
   }
   return (<>
       <Slider {...settings} className="slider" ref={sliderRef}>
-        {bestSeller?.map((i)=>{
-          return(<div className="card" style={{padding:"20px"}} 
+        {bestSeller?.map((i,index)=>{
+          return(<div className="card" style={{padding:"20px"}} key={index}
           >
             <div className="border-solid border-2 border-gray-200 w-56 rounded-md maincard">
             <img src={i.displayImage} height={250} className="Imagetag" onClick={()=>{cardClick(i._id)}}/>
@@ -85,7 +85,7 @@ const BestSellerSlider = () => {
             <i className="fa-solid fa-chevron-left prevIcon" onClick={goToPrev} style={{left:"-8px"}}></i>
           </div>
           <div className="iconContainerNext">
-            <i class="fa-solid fa-chevron-right nextIcon" onClick={goToNext} style={{left:"20px"}}></i>
+            <i className="fa-solid fa-chevron-right nextIcon" onClick={goToNext} style={{left:"20px"}}></i>
       </div>
     </>
   );

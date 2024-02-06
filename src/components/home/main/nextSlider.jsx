@@ -29,10 +29,11 @@ const NextSliderShow = (props) => {
     return (<>
         <Slider {...settings} className="slider" ref={sliderRef}>
             {arrayImage.map((i,index) => {
-                return (<Link to={`${path[index]}`}><div className="card">
-                    <img src={i.src} />
-                    <span>{i.category}</span>
-                </div>
+                return (<Link to={`${path[index]}`} key={index}>
+                    <div className="card">
+                        <img src={i.src} />
+                        <span>{i.category}</span>
+                    </div>
                 </Link>)
             })}
 

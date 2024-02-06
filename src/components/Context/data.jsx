@@ -527,7 +527,7 @@ export const colors = ["GREEN","CREAM","ORANGE","BLUE","BROWN","GREY","RED","YEL
 
 export const size= ["S","M","L","XL","XXL"];
 
-export const brand = ["Bewakoof®","TISTABENE","7 Shores","Campus Sutra",
+export const brand = ["Bewakoof®","TISTABENE","7 Shores","Campus Sutra","OFFICIAL DISNEY MERCHANDISE",
 "Style Quotient","Breakbounce","Chkokko","XYXX","Rigo","Alstyle",
 "Brown Mocha","Hubberholme","CHIMPAAANZEE","Smugglerz","Blue Tyga",
 "TALES and STORIES","Belliskey","ANGEL FAB","Kotty","Belliskey",
@@ -606,3 +606,4 @@ export const bestPics = [{src:"https://images.bewakoof.com/uploads/grid/app/720x
 
 export const customizedTShirt = [{src:"https://images.bewakoof.com/uploads/grid/app/Customise-Desktop-midsize-Banner-1699360277.jpg"},
 {src:"https://images.bewakoof.com/uploads/grid/app/Plus-Size-Desktop-midsize-Banner--1--1699360278.jpg"}];
+

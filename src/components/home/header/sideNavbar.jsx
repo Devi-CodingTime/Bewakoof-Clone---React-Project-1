@@ -9,10 +9,9 @@ const SideNavbar = () =>{
   const [checked,setChecked] = useState(false);  
   const location = useLocation();
   const { pathname } = location;
-  console.log("location is :",pathname);
+  
   const getchecked = ()=>{
     setChecked(!checked);
-    // console.log(checked," check");
   }
     return(<>
     <div className='sideNavBox' style={{ width:"100%", height:"20px"}}>
