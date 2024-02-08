@@ -24,37 +24,31 @@ const FilterByCategory = () =>{
       {
         filterState.category = index;
         setFilterState(filterState);
-        console.log(filterState);
       }
     if(term==="size")
       {
         filterState.size = index;
         setFilterState(filterState);
-        console.log(filterState);
       }
     if(term==="brand")
       {
         filterState.brand = index;
         setFilterState(filterState);
-        console.log(filterState);
       }
     if(term==="color")
       {
         filterState.color = index;
         setFilterState(filterState);
-        console.log(filterState);
       }
     if(term==="gender")
       {
         filterState.gender = index;
         setFilterState(filterState);
-        console.log(filterState);
       }
     if(term==="price")
       {
         filterState.sort = index;
         setFilterState(filterState);
-        console.log(filterState);
       }
    }
     return (

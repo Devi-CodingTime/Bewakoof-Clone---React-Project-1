@@ -1,4 +1,4 @@
-import { Route ,Routes} from "react-router-dom";
+import { Route ,Routes, useLocation} from "react-router-dom";
 import "../styles/App.css";
 import Home from "./home/main/main";
 import Login from "./login/login";
@@ -19,9 +19,13 @@ import SingleOrder from "./singleorder/singleOrder";
 import Comingsoon from "./comingSoon/comingsoon";
 import PageNotFound from "./pageNotFound/pageNotFound";
 import ViewCategoriezedItem from "./clothesCategory/categoriezedItem";
-// import Loader from "./loader/loader";
-function App() {
+import { useEffect } from "react";
 
+function App() {
+  const {pathname} = useLocation();
+useEffect(()=>{
+  window.scrollTo(0, 0);
+},[pathname]);
   return( <div className="App">
     
     <ContextProvider>

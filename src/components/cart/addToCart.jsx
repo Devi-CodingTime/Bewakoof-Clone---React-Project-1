@@ -13,7 +13,7 @@ const AddToCart =()=> {
   const [quantity, setQuantity] = React.useState('');
   const [addwishList,setAddWishList] = useState([]);
   // const [loader,setLoader] = useState(false);
-  const {token,wishlist,getWishListData,getCartItems,cartItem,removeFromCart,removeFromWishList,
+  const {token,wishlist,getWishListData,getCartItems,cartItem,setCartItem,removeFromCart,removeFromWishList,
     totalPrice,loader} = useContext(categoryContext);
  
 
@@ -56,7 +56,24 @@ const addToWishList = async(id)=>{
       //   setLoader(false);
       // }
 }
+const clearCart = async()=>{
+  const res = await fetch("https://academics.newtonschool.co/api/v1/ecommerce/cart/",{
+    method:"DELETE",
+    headers : {projectID:'ctxjid7mj6o5' , 'Content-Type': 'application/json',Authorization:`Bearer ${token}`},
+  });
+  let clearData = await res.json();
+  console.log("cart cleared");
+  console.log(clearData);
+  setCartItem(clearData.data.items);
+//   - Method: DELETE
+// - URL: {{base_domain}}/api/v1/ecommerce/cart/
+// -Headers: {
+//     'Authorization': 'Bearer YOUR_JWT_TOKEN',
+//      'projectID': 'Your_ProjectId'
+// }
 
+
+}
 const [bagItem,setBagItem] = useState({});
     const addToBagItems = async(bagData,id) =>{
       
@@ -187,10 +204,17 @@ useEffect(()=>{
             <span className='m-1'>total</span>
             <span className='mr-[50px]'>₹{totalPrice+100}</span>
             {/* <Link to={`/checkout`}> */}
-            <button id="web_continue_submit" style={{width:"width: 56%"}} type="button" className="loginSubmit"
-            onClick={openModal}>
-              ADD ADDRESS
-            </button>
+            <div className='flex gap-1'>
+              <button id="web_continue_submit" style={{width:"width: 56%"}} type="button" className="loginSubmit"
+              onClick={openModal}>
+                ADD ADDRESS
+              </button>
+              <button id="web_continue_submit" style={{width:"width: 56%"}} type="button" className="loginSubmit"
+              onClick={clearCart}>
+                CLEAR CART
+              </button>
+            </div>
+            
 
             <div className='mt-[-0.8rem]'>
               <Modal open={open} onClose={closeModal} style={{margin:"0",padding:"0"}}>
